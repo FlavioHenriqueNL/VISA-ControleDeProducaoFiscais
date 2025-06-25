@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:visa_arapiraca_app/pages/cnaes/cnaes.dart';
+import 'package:visa_arapiraca_app/pages/estabelecimentos/estabelecimentos.dart';
 import 'package:visa_arapiraca_app/pages/producao/producao_diaria.dart';
 import 'package:visa_arapiraca_app/widgets/home_elevated_button.dart';
 import 'package:visa_arapiraca_app/widgets/visa_app_bar.dart';
@@ -30,7 +32,10 @@ class _HomeState extends State<Home> {
 
               SizedBox(height: 25,),
 
-              HomeElevatedButton(title: "Lista de Estabelecimentos",onPressed: () {},),
+              HomeElevatedButton(
+                title: "CNAES",
+                onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => CnaesPage()));},
+              ),
               
               SizedBox(height: 25,),
 
