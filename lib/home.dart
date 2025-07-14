@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/pages/cnaes/cnaes.dart';
-import 'package:visa_arapiraca_app/pages/estabelecimentos/estabelecimentos.dart';
 import 'package:visa_arapiraca_app/pages/producao/producao_diaria.dart';
 import 'package:visa_arapiraca_app/widgets/home_elevated_button.dart';
 import 'package:visa_arapiraca_app/widgets/visa_app_bar.dart';
