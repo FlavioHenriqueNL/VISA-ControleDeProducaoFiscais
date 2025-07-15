@@ -12,12 +12,23 @@ class TesteResponsivo extends StatefulWidget {
 }
 
 class _TesteResponsivoState extends State<TesteResponsivo> {
+  Widget pageWidgets() {
+    return SafeArea(
+      child: Row(
+        children: [
+          if (ResponsiveLayout.isMobile(context)) Text("Texto em Mobile"),
+          if (ResponsiveLayout.isDesktop(context)) Text("Texto em Desktop"),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const ResponsiveLayout(
-      mobile: MobileScaffold(),
-      tablet: TabletScaffold(),
-      desktop: DesktopScaffold(),
+    return ResponsiveLayout(
+      mobile: const MobileScaffold(),
+      tablet: const TabletScaffold(),
+      desktop: DesktopScaffold(pageWidget: pageWidgets),
     );
   }
 }

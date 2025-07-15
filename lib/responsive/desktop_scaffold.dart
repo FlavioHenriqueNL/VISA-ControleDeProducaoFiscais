@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/widgets/MenuLateral/menu_lateral.dart';
+import 'package:visa_arapiraca_app/widgets/visa_app_bar.dart';
 
 class DesktopScaffold extends StatefulWidget {
-  const DesktopScaffold({super.key});
+  final Widget Function() pageWidget;
+  const DesktopScaffold({super.key, required this.pageWidget});
 
   @override
   State<DesktopScaffold> createState() => _DesktopScaffoldState();
@@ -15,18 +17,18 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
       body: SafeArea(
         child: Row(
           children: [
-            Expanded(
-              flex: 1,
-              child: MenuLateral()
-            ),  
+            Expanded(flex: 1, child: MenuLateral()),
             Expanded(
               flex: 5,
-              child: Container(
-                  color: Colors.grey[300],
-              )
-            )
+              child: Column(
+                children: [
+                  VisaAppBar(title: "VISA Arapiraca"),
+                  widget.pageWidget(),
+                ],
+              ),
+            ),
           ],
-        )
+        ),
       ),
     );
   }
