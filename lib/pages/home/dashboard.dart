@@ -6,14 +6,14 @@ import 'package:visa_arapiraca_app/responsive/mobile_scaffold.dart';
 import 'package:visa_arapiraca_app/responsive/responsive.dart';
 import 'package:visa_arapiraca_app/responsive/tablet_scaffold.dart';
 
-class TesteResponsivo extends StatefulWidget {
-  const TesteResponsivo({super.key});
+class Dashboard extends StatefulWidget {
+  const Dashboard({super.key});
 
   @override
-  State<TesteResponsivo> createState() => _TesteResponsivoState();
+  State<Dashboard> createState() => _DashboardState();
 }
 
-class _TesteResponsivoState extends State<TesteResponsivo> {
+class _DashboardState extends State<Dashboard> {
 
   //Para o controle de páginas
   late final PageController _pageController;

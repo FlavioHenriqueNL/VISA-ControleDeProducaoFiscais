@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/pages/cadastro/cadastro.dart';
-import 'package:visa_arapiraca_app/pages/home/home.dart';
+import 'package:visa_arapiraca_app/pages/home/dashboard.dart';
 import 'package:visa_arapiraca_app/pages/recuperar_senha/recuperar_senha.dart';
 import 'package:visa_arapiraca_app/widgets/scrollable_page.dart'; // ⬅️ importe o componente
 
@@ -79,7 +79,7 @@ class _LoginState extends State<Login> {
                         ),
                         ElevatedButton(
                           onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const Home()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const Dashboard()));
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.amber,
