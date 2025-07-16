@@ -3,13 +3,12 @@ import 'package:visa_arapiraca_app/widgets/MenuLateral/menu_lateral.dart';
 import 'package:visa_arapiraca_app/widgets/visa_app_bar.dart';
 
 class DesktopScaffold extends StatefulWidget {
-
   final PageController controller;
   final void Function(int) onPageSelected;
   final List<Widget> pages;
 
   const DesktopScaffold({
-    super.key, 
+    super.key,
     required this.controller,
     required this.onPageSelected,
     required this.pages,
@@ -26,18 +25,29 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
       body: SafeArea(
         child: Row(
           children: [
-            Expanded(flex: 1, child: MenuLateral(onItemSelected: widget.onPageSelected)),
+            Expanded(
+              flex: 1,
+              child: MenuLateral(onItemSelected: widget.onPageSelected),
+            ),
             Expanded(
               flex: 5,
-              child: Column(
-                children: [
-                  VisaAppBar(title: "VISA Arapiraca"),
-                  Expanded(child: PageView(
-                    controller: widget.controller,
-                    physics: const NeverScrollableScrollPhysics(),
-                    children: widget.pages,
-                  ))
-                ],
+              child: Container(
+                color: Colors.grey[300],
+                child: Column(
+                  children: [
+                    VisaAppBar(title: "VISA Arapiraca"),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.all(15.0),
+                        child: PageView(
+                          controller: widget.controller,
+                          physics: const NeverScrollableScrollPhysics(),
+                          children: widget.pages,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

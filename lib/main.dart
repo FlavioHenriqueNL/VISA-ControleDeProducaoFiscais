@@ -5,15 +5,15 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget{
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return MaterialApp(
-     title: "VISA ARAPIRACA",
-     home: Dashboard(),
+      title: "VISA ARAPIRACA",
+      home: Dashboard(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
