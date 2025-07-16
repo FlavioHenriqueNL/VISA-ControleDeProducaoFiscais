@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/cadastro.dart';
-import 'package:visa_arapiraca_app/home.dart';
-import 'package:visa_arapiraca_app/recuperar_senha.dart';
+import 'package:visa_arapiraca_app/pages/cadastro/cadastro.dart';
+import 'package:visa_arapiraca_app/pages/home/home.dart';
+import 'package:visa_arapiraca_app/pages/recuperar_senha/recuperar_senha.dart';
 import 'package:visa_arapiraca_app/widgets/scrollable_page.dart'; // ⬅️ importe o componente
 
 class Login extends StatefulWidget {
