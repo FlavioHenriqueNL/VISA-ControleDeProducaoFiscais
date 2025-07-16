@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:visa_arapiraca_app/pages/cnaes/cnaes.dart';
+import 'package:visa_arapiraca_app/pages/producao/producao_diaria.dart';
 import 'package:visa_arapiraca_app/responsive/desktop_scaffold.dart';
 import 'package:visa_arapiraca_app/responsive/mobile_scaffold.dart';
 import 'package:visa_arapiraca_app/responsive/responsive.dart';
@@ -12,23 +14,48 @@ class TesteResponsivo extends StatefulWidget {
 }
 
 class _TesteResponsivoState extends State<TesteResponsivo> {
-  Widget pageWidgets() {
-    return SafeArea(
-      child: Row(
-        children: [
-          if (ResponsiveLayout.isMobile(context)) Text("Texto em Mobile"),
-          if (ResponsiveLayout.isDesktop(context)) Text("Texto em Desktop"),
-        ],
-      ),
-    );
+
+  //Para o controle de páginas
+  late final PageController _pageController;
+  int _currentPage = 0;
+
+  final List<Widget> _pagesList = const [
+    Center(child: Text('Página 1')),
+    ProducaoDiaria(),
+    Center(child: Text('Página 3')),
+    Center(child: Text('Página 4')),
+    CnaesPage(),
+  ];
+  
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
   }
 
+  void _onPageSelected (int index) {
+    setState(() {
+      _currentPage = index;
+    });
+    _pageController.jumpToPage(index);
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return ResponsiveLayout(
       mobile: const MobileScaffold(),
       tablet: const TabletScaffold(),
-      desktop: DesktopScaffold(pageWidget: pageWidgets),
+      desktop: DesktopScaffold(
+        controller: _pageController,
+        onPageSelected: _onPageSelected,
+        pages: _pagesList
+      ),
     );
   }
 }
