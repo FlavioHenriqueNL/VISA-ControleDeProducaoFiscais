@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/models/producao/producao_model.dart';
 import 'package:visa_arapiraca_app/widgets/accordion.dart';
+import 'package:visa_arapiraca_app/widgets/producao/producao_box_item.dart';
 import 'package:visa_arapiraca_app/widgets/producao_criar.dart';
 import 'package:visa_arapiraca_app/widgets/table_notificados.dart';
 import 'package:intl/intl.dart';
@@ -127,8 +128,23 @@ class _ProducaoDiariaState extends State<ProducaoDiaria> {
                 color: Colors.white,
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  Text("Minha produção do mês"),
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      // calcula a largura de cada item com base na largura disponível
+                      double itemWidth = constraints.maxWidth / 5;
+                      return Wrap(
+                        spacing: 12,
+                        runSpacing: 12,
+                        children: List.generate(5, (index) {
+                          return ProducaoBox();
+                        }),
+                      );
+                    },
+                  ),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
