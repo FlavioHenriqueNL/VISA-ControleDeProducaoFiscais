@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/pages/cnaes/cnaes.dart';
+import 'package:visa_arapiraca_app/pages/home/home.dart';
 import 'package:visa_arapiraca_app/pages/producao/producao_diaria.dart';
 import 'package:visa_arapiraca_app/responsive/desktop_scaffold.dart';
 import 'package:visa_arapiraca_app/responsive/mobile_scaffold.dart';
@@ -20,7 +21,7 @@ class _DashboardState extends State<Dashboard> {
   int _currentPage = 0;
 
   final List<Widget> _pagesList = const [
-    Center(child: Text('Página 1')),
+    Home(),
     ProducaoDiaria(),
     Center(child: Text('Página 3')),
     Center(child: Text('Página 4')),
