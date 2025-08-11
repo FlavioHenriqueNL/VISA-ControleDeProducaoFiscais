@@ -18,29 +18,27 @@ class _AtividadesParecerState extends State<AtividadesParecer> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black, width: 1),
-        color: Colors.white,
       ),
+      padding: EdgeInsets.all(15.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
-            children: [
-              Text("Atividade Principal"),
-              Text(
-                "${widget.atividadePrincipal.entries.first.key} - ${widget.atividadePrincipal.entries.first.value}",
-              ),
-            ],
+          Text("Atividade Principal"),
+          Text(
+            "${widget.atividadePrincipal.entries.first.key} - ${widget.atividadePrincipal.entries.first.value}",
           ),
-          Column(
-            children: [
-              Text("Atividades Secundárias"),
-              if (widget.atividadesSecundarias?.isNotEmpty ?? false)
-                ...widget.atividadesSecundarias!.map((item) {
-                  var entry = item.entries.first;
-                  return Text("${entry.key} - ${entry.value}");
-                }),
-            ],
+          SizedBox(height: 25),
+          Text("Atividades Secundárias"),
+          if (widget.atividadesSecundarias?.isNotEmpty ?? false)
+            ...widget.atividadesSecundarias!.map((item) {
+              var entry = item.entries.first;
+              return Text("${entry.key} - ${entry.value}");
+            }),
+          Text(
+            "${widget.atividadePrincipal.entries.first.key} - ${widget.atividadePrincipal.entries.first.value}",
           ),
         ],
       ),
