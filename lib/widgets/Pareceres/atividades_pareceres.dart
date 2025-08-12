@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:visa_arapiraca_app/widgets/Pareceres/titulo_secao_pareceres.dart';
 
 class AtividadesParecer extends StatefulWidget {
   final Map<String, String> atividadePrincipal;
@@ -17,29 +18,39 @@ class AtividadesParecer extends StatefulWidget {
 class _AtividadesParecerState extends State<AtividadesParecer> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.black, width: 1),
-      ),
-      padding: EdgeInsets.all(15.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+    return Padding(
+      padding: const EdgeInsets.all(25),
+      child: Stack(
+        clipBehavior: Clip.none,
         children: [
-          Text("Atividade Principal"),
-          Text(
-            "${widget.atividadePrincipal.entries.first.key} - ${widget.atividadePrincipal.entries.first.value}",
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.grey,
+                width: 1.0,
+              ),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Atividade Principal"),
+                Text(
+                  "${widget.atividadePrincipal.entries.first.key} - ${widget.atividadePrincipal.entries.first.value}",
+                ),
+                SizedBox(height: 15),
+                Text("Atividades Secundárias"),
+                if (widget.atividadesSecundarias?.isNotEmpty ?? false)
+                  ...widget.atividadesSecundarias!.map((item) {
+                    var entry = item.entries.first;
+                    return Text("${entry.key} - ${entry.value}");
+                  }),
+              ],
+            ),
           ),
-          SizedBox(height: 25),
-          Text("Atividades Secundárias"),
-          if (widget.atividadesSecundarias?.isNotEmpty ?? false)
-            ...widget.atividadesSecundarias!.map((item) {
-              var entry = item.entries.first;
-              return Text("${entry.key} - ${entry.value}");
-            }),
-          Text(
-            "${widget.atividadePrincipal.entries.first.key} - ${widget.atividadePrincipal.entries.first.value}",
-          ),
+          TituloSecaoPareceres(title: "Atividades do Estabelecimento"),
         ],
       ),
     );
