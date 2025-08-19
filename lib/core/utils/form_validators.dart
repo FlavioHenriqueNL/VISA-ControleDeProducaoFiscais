@@ -16,3 +16,13 @@ String? validarEmail(String? nomeCampo, String? value) {
 
   return null;
 }
+
+String? validarCEP(String? nomeCampo, String? value) {
+  campoVazio(nomeCampo, value);
+
+  final cepRegExp = RegExp(r'^\d{5}-?\d{3}$');
+  if (!cepRegExp.hasMatch(value!)) {
+    return "Insira um cep válido";
+  }
+  return null;
+}
