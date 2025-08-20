@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/core/utils/form_validators.dart';
+import 'package:visa_arapiraca_app/widgets/Pareceres/Form/Controllers/InformacaoEstabelecimentoController.dart';
 import 'package:visa_arapiraca_app/widgets/Pareceres/Form/formfield_parecer.dart';
 
 class FormParecer extends StatefulWidget {
@@ -12,32 +13,9 @@ class FormParecer extends StatefulWidget {
 class _FormParecerState extends State<FormParecer> {
   final _formKey = GlobalKey<FormState>();
 
-  // Controladores
-  // Identificação do Estabelecimento
-  final TextEditingController numeroProcessoController =
-      TextEditingController();
-  final TextEditingController cpfCnpjController = TextEditingController();
-  final TextEditingController razaoSocialController = TextEditingController();
-  final TextEditingController nomeFantasiaController = TextEditingController();
-  final TextEditingController telefoneController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  // Atividades do Estabelecimento
-  final TextEditingController cnaeController = TextEditingController();
-  final TextEditingController cnaeDescricaoController = TextEditingController();
-  // Localização do Estabelecimento
-  final TextEditingController cepController = TextEditingController();
-  final TextEditingController logradouroController = TextEditingController();
-  final TextEditingController numeroResidenciaController =
-      TextEditingController();
-  final TextEditingController bairroController = TextEditingController();
-  final TextEditingController cidadeController = TextEditingController();
-  final TextEditingController complementoController = TextEditingController();
-  // Responsável Legal ou Técnico do Estbelecimento
-  final TextEditingController responsavelController = TextEditingController();
-  final TextEditingController cpfResponsavelController =
-      TextEditingController();
-  final TextEditingController codigoConselhoController =
-      TextEditingController();
+  // Controllers
+  final informacaoEstabelecimentoController =
+      Informacaoestabelecimentocontroller();
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +31,8 @@ class _FormParecerState extends State<FormParecer> {
               Expanded(
                 child: FormfieldParecer(
                   fieldTitle: "Nº Processo",
-                  fieldController: numeroProcessoController,
+                  fieldController: informacaoEstabelecimentoController
+                      .numeroProcessoController,
                   validator: (value) => campoVazio("Número do Processo", value),
                 ),
               ),
@@ -61,7 +40,8 @@ class _FormParecerState extends State<FormParecer> {
               Expanded(
                 child: FormfieldParecer(
                   fieldTitle: "CPF / CNPJ",
-                  fieldController: cpfCnpjController,
+                  fieldController:
+                      informacaoEstabelecimentoController.cpfCnpjController,
                   validator: (value) => campoVazio("CPF ou CNPJ", value),
                 ),
               ),
@@ -70,13 +50,15 @@ class _FormParecerState extends State<FormParecer> {
           const SizedBox(height: 20),
           FormfieldParecer(
             fieldTitle: "Razão Social",
-            fieldController: razaoSocialController,
+            fieldController:
+                informacaoEstabelecimentoController.razaoSocialController,
             validator: (value) => campoVazio("Razão Social", value),
           ),
           const SizedBox(height: 20),
           FormfieldParecer(
             fieldTitle: "Nome Fantasia",
-            fieldController: nomeFantasiaController,
+            fieldController:
+                informacaoEstabelecimentoController.nomeFantasiaController,
             validator: (value) => campoVazio("Nome Fantasia", value),
           ),
           const SizedBox(height: 20),
@@ -86,7 +68,8 @@ class _FormParecerState extends State<FormParecer> {
                 flex: 1,
                 child: FormfieldParecer(
                   fieldTitle: "Telefone para contato",
-                  fieldController: telefoneController,
+                  fieldController:
+                      informacaoEstabelecimentoController.telefoneController,
                   validator: (value) => campoVazio("Telefone", value),
                 ),
               ),
@@ -95,7 +78,8 @@ class _FormParecerState extends State<FormParecer> {
                 flex: 1,
                 child: FormfieldParecer(
                   fieldTitle: "Email para contato",
-                  fieldController: emailController,
+                  fieldController:
+                      informacaoEstabelecimentoController.emailController,
                   validator: (value) => campoVazio("Email", value),
                 ),
               ),
@@ -110,7 +94,8 @@ class _FormParecerState extends State<FormParecer> {
                 flex: 1,
                 child: FormfieldParecer(
                   fieldTitle: "CNAE",
-                  fieldController: cnaeController,
+                  fieldController:
+                      informacaoEstabelecimentoController.cnaeController,
                   validator: (value) => campoVazio("Código CNAE", value),
                 ),
               ),
@@ -120,7 +105,8 @@ class _FormParecerState extends State<FormParecer> {
                 child: FormfieldParecer(
                   readOnly: true,
                   fieldTitle: "Descrição do CNAE",
-                  fieldController: cnaeDescricaoController,
+                  fieldController: informacaoEstabelecimentoController
+                      .cnaeDescricaoController,
                 ),
               ),
             ],
@@ -136,7 +122,8 @@ class _FormParecerState extends State<FormParecer> {
                 flex: 1,
                 child: FormfieldParecer(
                   fieldTitle: "CEP",
-                  fieldController: cepController,
+                  fieldController:
+                      informacaoEstabelecimentoController.cepController,
                   validator: (value) => validarCEP("CEP", value),
                 ),
               ),
@@ -145,7 +132,8 @@ class _FormParecerState extends State<FormParecer> {
                 flex: 6,
                 child: FormfieldParecer(
                   fieldTitle: "Logradouro",
-                  fieldController: logradouroController,
+                  fieldController:
+                      informacaoEstabelecimentoController.logradouroController,
                   validator: (value) => campoVazio("Logradouro", value),
                   readOnly: true,
                 ),
@@ -159,7 +147,8 @@ class _FormParecerState extends State<FormParecer> {
                 flex: 1,
                 child: FormfieldParecer(
                   fieldTitle: "Número",
-                  fieldController: numeroResidenciaController,
+                  fieldController: informacaoEstabelecimentoController
+                      .numeroResidenciaController,
                   validator: (value) => campoVazio("Número", value),
                 ),
               ),
@@ -168,7 +157,8 @@ class _FormParecerState extends State<FormParecer> {
                 flex: 6,
                 child: FormfieldParecer(
                   fieldTitle: "Bairro",
-                  fieldController: bairroController,
+                  fieldController:
+                      informacaoEstabelecimentoController.bairroController,
                   validator: (value) => campoVazio("Bairro", value),
                   readOnly: true,
                 ),
@@ -178,7 +168,8 @@ class _FormParecerState extends State<FormParecer> {
                 flex: 6,
                 child: FormfieldParecer(
                   fieldTitle: "Cidade",
-                  fieldController: cidadeController,
+                  fieldController:
+                      informacaoEstabelecimentoController.cidadeController,
                   validator: (value) => campoVazio("Cidade", value),
                   readOnly: true,
                 ),
@@ -191,7 +182,8 @@ class _FormParecerState extends State<FormParecer> {
           const SizedBox(height: 30),
           FormfieldParecer(
             fieldTitle: "Nome do Responsável",
-            fieldController: responsavelController,
+            fieldController:
+                informacaoEstabelecimentoController.responsavelController,
             validator: (value) => campoVazio("Nome do Responsável", value),
           ),
           SizedBox(height: 20),
@@ -201,7 +193,8 @@ class _FormParecerState extends State<FormParecer> {
                 flex: 1,
                 child: FormfieldParecer(
                   fieldTitle: "CPF do Responsável",
-                  fieldController: cpfResponsavelController,
+                  fieldController: informacaoEstabelecimentoController
+                      .cpfResponsavelController,
                   validator: (value) => campoVazio("CPF do Responsável", value),
                 ),
               ),
@@ -210,7 +203,8 @@ class _FormParecerState extends State<FormParecer> {
                 flex: 1,
                 child: FormfieldParecer(
                   fieldTitle: "Código do Conselho",
-                  fieldController: codigoConselhoController,
+                  fieldController: informacaoEstabelecimentoController
+                      .codigoConselhoController,
                   validator: (value) => campoVazio("Código do Conselho", value),
                 ),
               ),
