@@ -57,7 +57,7 @@ class _RecuperarSenhaState extends State<RecuperarSenha> {
                       prefixIcon: Icon(Icons.email, color: Color.fromARGB(255, 4, 107, 184),),
                     ),
                     controller: email,
-                    validator: validarEmail,
+                    validator: (value) => validarEmail(value, "Email inválido"),
                   ),
 
                   SizedBox(height: 50,),

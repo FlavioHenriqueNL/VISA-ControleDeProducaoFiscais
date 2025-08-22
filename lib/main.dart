@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/pages/home/dashboard.dart';
-
 void main() {
   runApp(MyApp());
 }
