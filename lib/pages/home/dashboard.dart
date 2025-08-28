@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:visa_arapiraca_app/pages/Termos/termos.dart';
 import 'package:visa_arapiraca_app/pages/cnaes/cnaes.dart';
 import 'package:visa_arapiraca_app/pages/home/home.dart';
 import 'package:visa_arapiraca_app/pages/producao/producao_diaria.dart';
@@ -15,26 +16,26 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-
   //Para o controle de páginas
   late final PageController _pageController;
   int _currentPage = 0;
 
   final List<Widget> _pagesList = const [
     Home(),
+    TermosPage(),
     ProducaoDiaria(),
     Center(child: Text('Página 3')),
     Center(child: Text('Página 4')),
     CnaesPage(),
   ];
-  
+
   @override
   void initState() {
     super.initState();
     _pageController = PageController();
   }
 
-  void _onPageSelected (int index) {
+  void _onPageSelected(int index) {
     setState(() {
       _currentPage = index;
     });
@@ -46,7 +47,7 @@ class _DashboardState extends State<Dashboard> {
     _pageController.dispose();
     super.dispose();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return ResponsiveLayout(
@@ -55,7 +56,7 @@ class _DashboardState extends State<Dashboard> {
       desktop: DesktopScaffold(
         controller: _pageController,
         onPageSelected: _onPageSelected,
-        pages: _pagesList
+        pages: _pagesList,
       ),
     );
   }

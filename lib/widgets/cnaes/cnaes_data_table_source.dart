@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/models/cnaes/cnaes_model.dart';
+import '../../domain/entities/cnae.dart';
+
 
 
 class CnaeDataSource extends DataTableSource {
-  final List<Cnaes> cnaes;
+  final List<Cnae> cnaes;
 
   CnaeDataSource(this.cnaes);
 
