@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/data/cnae_repository.dart';
-import 'package:visa_arapiraca_app/models/cnaes/cnaes_model.dart';
+import 'package:visa_arapiraca_app/data/repositories/cnae_repository.dart';
+import 'package:visa_arapiraca_app/domain/entities/cnae.dart';
 import 'package:visa_arapiraca_app/widgets/visa_app_bar.dart';
 
 class CnaesPage extends StatefulWidget {
@@ -12,7 +12,7 @@ class CnaesPage extends StatefulWidget {
 
 class _CnaesPageState extends State<CnaesPage> {
 
-  List<Cnaes> _cnaes = [];
+  List<Cnae> _cnaes = [];
   bool _loading = true;
   String? _error; 
 
