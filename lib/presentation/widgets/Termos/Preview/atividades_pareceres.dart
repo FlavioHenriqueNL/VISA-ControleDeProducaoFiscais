@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/Pareceres/titulo_secao_pareceres.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/Termos/Componentes/titulo_secao_pareceres.dart';
 
 class AtividadesParecer extends StatefulWidget {
   final Map<String, String> atividadePrincipal;

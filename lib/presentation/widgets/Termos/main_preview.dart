@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/Pareceres/PreviewParecerSanitario.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/Termos/Preview/VisualizarDocumento.dart';
 
 void main() {
   runApp(
