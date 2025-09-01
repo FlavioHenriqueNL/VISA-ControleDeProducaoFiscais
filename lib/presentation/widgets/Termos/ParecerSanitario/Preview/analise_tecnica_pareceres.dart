@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/Termos/Componentes/titulo_secao_pareceres.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/Termos/ParecerSanitario/Componentes/titulo_secao_pareceres.dart';
 
 class AnaliseTecnicaParecer extends StatelessWidget {
   const AnaliseTecnicaParecer({super.key});

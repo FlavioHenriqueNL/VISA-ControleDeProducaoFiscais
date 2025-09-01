@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/core/utils/form_validators.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/Termos/Formulario/formfield_parecer.dart';
-import 'package:visa_arapiraca_app/widgets/Pareceres/Form/Controllers/InformacaoEstabelecimentoController.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/Termos/Componentes/formfield_parecer.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/Termos/Controllers/informacaoEstabelecimentoController.dart';
 
 
-class FormParecer extends StatefulWidget {
-  const FormParecer({super.key});
+
+class IdentificacaoestabelecimentoFormWidget extends StatefulWidget {
+  const IdentificacaoestabelecimentoFormWidget({super.key});
 
   @override
-  State<FormParecer> createState() => _FormParecerState();
+  State<IdentificacaoestabelecimentoFormWidget> createState() => _IdentificacaoestabelecimentoFormWidgetState();
 }
 
-class _FormParecerState extends State<FormParecer> {
+class _IdentificacaoestabelecimentoFormWidgetState extends State<IdentificacaoestabelecimentoFormWidget> {
   final _formKey = GlobalKey<FormState>();
 
   // Controllers
-  final informacaoEstabelecimentoController =
-      Informacaoestabelecimentocontroller();
+  final informacaoEstabelecimentoController = Informacaoestabelecimentocontroller();
 
   @override
   Widget build(BuildContext context) {
