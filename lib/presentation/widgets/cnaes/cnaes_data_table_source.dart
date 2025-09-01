@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../domain/entities/cnae.dart';
+import '../../../domain/entities/cnae.dart';
 
 
 

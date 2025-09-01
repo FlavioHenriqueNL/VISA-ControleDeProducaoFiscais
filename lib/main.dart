@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/pages/home/dashboard.dart';
 import 'package:visa_arapiraca_app/routes/app_router.dart';
 void main() {
   runApp(MyApp());

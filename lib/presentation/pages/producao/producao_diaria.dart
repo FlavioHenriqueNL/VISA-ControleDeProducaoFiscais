@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/models/producao/producao_model.dart';
-import 'package:visa_arapiraca_app/widgets/accordion.dart';
-import 'package:visa_arapiraca_app/widgets/producao/producao_resumo.dart';
-import 'package:visa_arapiraca_app/widgets/producao/producao_resumo_box_item.dart';
-import 'package:visa_arapiraca_app/widgets/producao_criar.dart';
-import 'package:visa_arapiraca_app/widgets/table_notificados.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/accordion.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/producao/producao_resumo.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/producao/producao_resumo_box_item.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/producao_criar.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/table_notificados.dart';
 import 'package:intl/intl.dart';
 
 class ProducaoPage extends StatefulWidget {

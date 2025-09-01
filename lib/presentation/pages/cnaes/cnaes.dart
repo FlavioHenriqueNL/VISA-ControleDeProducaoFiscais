@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/data/repositories/cnae_repository.dart';
 import 'package:visa_arapiraca_app/domain/entities/cnae.dart';
-import 'package:visa_arapiraca_app/widgets/visa_app_bar.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/visa_app_bar.dart';
 
 class CnaesPage extends StatefulWidget {
   const CnaesPage({super.key});

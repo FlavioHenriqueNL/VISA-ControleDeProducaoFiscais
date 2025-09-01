@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/widgets/visa_app_bar.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/visa_app_bar.dart';
 
 class Cadastro extends StatefulWidget{
   const Cadastro({super.key});

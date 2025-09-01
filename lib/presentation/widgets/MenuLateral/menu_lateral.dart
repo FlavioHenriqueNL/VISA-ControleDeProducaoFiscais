@@ -21,7 +21,7 @@ class MenuLateral extends StatelessWidget {
               title: Text("Termos e Pareceres"),
             ),
             ListTile(
-              onTap: () => context.go('/dashboard'),
+              onTap: () => context.go('/producao'),
               leading: Icon(Icons.bar_chart),
               title: Text("Produção"),
             ),

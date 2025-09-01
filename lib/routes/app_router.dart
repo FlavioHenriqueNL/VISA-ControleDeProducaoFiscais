@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:visa_arapiraca_app/pages/Termos/termos.dart';
-import 'package:visa_arapiraca_app/pages/cnaes/cnaes.dart';
-import 'package:visa_arapiraca_app/pages/home/dashboard.dart';
-import 'package:visa_arapiraca_app/pages/home/home.dart';
-import 'package:visa_arapiraca_app/pages/login/login.dart';
-import 'package:visa_arapiraca_app/pages/producao/producao_diaria.dart';
-import 'package:visa_arapiraca_app/pages/recuperar_senha/recuperar_senha.dart';
+import 'package:visa_arapiraca_app/presentation/pages/Termos/termos.dart';
+import 'package:visa_arapiraca_app/presentation/pages/cnaes/cnaes.dart';
+import 'package:visa_arapiraca_app/presentation/pages/home/dashboard.dart';
+import 'package:visa_arapiraca_app/presentation/pages/home/home.dart';
+import 'package:visa_arapiraca_app/presentation/pages/login/login.dart';
+import 'package:visa_arapiraca_app/presentation/pages/producao/producao_diaria.dart';
+import 'package:visa_arapiraca_app/presentation/pages/recuperar_senha/recuperar_senha.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/login',
