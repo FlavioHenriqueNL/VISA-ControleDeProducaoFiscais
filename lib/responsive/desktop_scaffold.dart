@@ -1,24 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:visa_arapiraca_app/widgets/MenuLateral/menu_lateral.dart';
 import 'package:visa_arapiraca_app/widgets/visa_app_bar.dart';
 
-class DesktopScaffold extends StatefulWidget {
-  final PageController controller;
-  final void Function(int) onPageSelected;
-  final List<Widget> pages;
+class DesktopScaffold extends StatelessWidget {
+  final Widget content; // Recebe o conteúdo da rota filha
 
-  const DesktopScaffold({
-    super.key,
-    required this.controller,
-    required this.onPageSelected,
-    required this.pages,
-  });
+  const DesktopScaffold({super.key, required this.content});
 
-  @override
-  State<DesktopScaffold> createState() => _DesktopScaffoldState();
-}
-
-class _DesktopScaffoldState extends State<DesktopScaffold> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +16,9 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
           children: [
             Expanded(
               flex: 1,
-              child: MenuLateral(onItemSelected: widget.onPageSelected),
+              child: MenuLateral(
+                key: Key('menu_lateral'),
+              ),
             ),
             Expanded(
               flex: 5,
@@ -39,11 +30,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                     Expanded(
                       child: Padding(
                         padding: EdgeInsets.all(15.0),
-                        child: PageView(
-                          controller: widget.controller,
-                          physics: const NeverScrollableScrollPhysics(),
-                          children: widget.pages,
-                        ),
+                        child: content, // Renderiza o conteúdo da rota filha
                       ),
                     ),
                   ],

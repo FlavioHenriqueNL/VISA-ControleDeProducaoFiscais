@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/pages/home/dashboard.dart';
+import 'package:visa_arapiraca_app/routes/app_router.dart';
 void main() {
   runApp(MyApp());
 }
@@ -9,9 +10,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       title: "VISA ARAPIRACA",
-      home: Dashboard(),
       debugShowCheckedModeBanner: false,
     );
   }

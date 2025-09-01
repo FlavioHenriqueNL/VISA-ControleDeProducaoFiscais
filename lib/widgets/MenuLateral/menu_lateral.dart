@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class MenuLateral extends StatelessWidget {
-  final void Function(int) onItemSelected;
-  const MenuLateral({required this.onItemSelected, super.key});
-
+  const MenuLateral({super.key});
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -12,32 +11,32 @@ class MenuLateral extends StatelessWidget {
           children: [
             DrawerHeader(child: Image.asset("assets/VisaLogo.png")),
             ListTile(
-              onTap: () => onItemSelected.call(0),
+              onTap: () => context.go('/dashboard'),
               leading: Icon(Icons.home),
               title: Text("Dashboard"),
             ),
             ListTile(
-              onTap: () => onItemSelected.call(1),
+              onTap: () => context.go('/termos'),
               leading: Icon(Icons.description),
               title: Text("Termos e Pareceres"),
             ),
             ListTile(
-              onTap: () => onItemSelected.call(2),
+              onTap: () => context.go('/dashboard'),
               leading: Icon(Icons.bar_chart),
               title: Text("Produção"),
             ),
             ListTile(
-              onTap: () => onItemSelected.call(3),
+              onTap: () => context.go('/estabelecimentos'),
               leading: Icon(Icons.business),
               title: Text("Estabelecimentos"),
             ),
             ListTile(
-              onTap: () => onItemSelected.call(4),
+              onTap: () => context.go('/notificacoes'),
               leading: Icon(Icons.list),
               title: Text("Lista de Notificações"),
             ),
             ListTile(
-              onTap: () => onItemSelected.call(5),
+              onTap: () => context.go('/lista-cnaes'),
               leading: Icon(Icons.list_alt),
               title: Text("Lista de CNAES"),
             ),

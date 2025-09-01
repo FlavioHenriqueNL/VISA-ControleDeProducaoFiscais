@@ -7,14 +7,14 @@ import 'package:visa_arapiraca_app/widgets/producao_criar.dart';
 import 'package:visa_arapiraca_app/widgets/table_notificados.dart';
 import 'package:intl/intl.dart';
 
-class ProducaoDiaria extends StatefulWidget {
-  const ProducaoDiaria({super.key});
+class ProducaoPage extends StatefulWidget {
+  const ProducaoPage({super.key});
 
   @override
-  State<ProducaoDiaria> createState() => _ProducaoDiariaState();
+  State<ProducaoPage> createState() => _ProducaoPageState();
 }
 
-class _ProducaoDiariaState extends State<ProducaoDiaria> {
+class _ProducaoPageState extends State<ProducaoPage> {
   late List<Producao> producoesTeste;
 
   @override

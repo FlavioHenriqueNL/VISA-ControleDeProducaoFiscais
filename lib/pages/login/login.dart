@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:visa_arapiraca_app/pages/cadastro/cadastro.dart';
 import 'package:visa_arapiraca_app/pages/home/dashboard.dart';
 import 'package:visa_arapiraca_app/pages/recuperar_senha/recuperar_senha.dart';
@@ -79,7 +80,7 @@ class _LoginState extends State<Login> {
                         ),
                         ElevatedButton(
                           onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> const Dashboard()));
+                            context.go('/dashboard'); // ou a rota inicial do seu dashboard
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.amber,
