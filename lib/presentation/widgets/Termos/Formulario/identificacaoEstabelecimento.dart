@@ -6,25 +6,28 @@ import 'package:visa_arapiraca_app/presentation/widgets/Termos/Controllers/infor
 
 
 class IdentificacaoestabelecimentoFormWidget extends StatefulWidget {
-  const IdentificacaoestabelecimentoFormWidget({super.key});
+  
+  final Informacaoestabelecimentocontroller controller;
+
+  const IdentificacaoestabelecimentoFormWidget({
+    super.key,
+    required this.controller
+  });
 
   @override
   State<IdentificacaoestabelecimentoFormWidget> createState() => _IdentificacaoestabelecimentoFormWidgetState();
 }
 
 class _IdentificacaoestabelecimentoFormWidgetState extends State<IdentificacaoestabelecimentoFormWidget> {
-  final _formKey = GlobalKey<FormState>();
-
+  
   // Controllers
-  final informacaoEstabelecimentoController = Informacaoestabelecimentocontroller();
+  late final informacaoEstabelecimentoController = widget.controller;
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
+    return 
+      Column(
         children: [
-          const SizedBox(height: 30),
           const Text("Identificação do Estabelecimento"),
           const SizedBox(height: 30),
           Row(
@@ -212,7 +215,6 @@ class _IdentificacaoestabelecimentoFormWidgetState extends State<Identificacaoes
             ],
           ),
         ],
-      ),
-    );
+      );  
   }
 }

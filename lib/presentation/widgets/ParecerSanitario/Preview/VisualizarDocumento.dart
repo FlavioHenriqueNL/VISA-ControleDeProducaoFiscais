@@ -3,11 +3,11 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/pdf.dart';
 import 'package:printing/printing.dart';
 import 'dart:typed_data';
-import 'package:visa_arapiraca_app/presentation/widgets/Termos/ParecerSanitario/Preview/analise_tecnica_pareceres.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/Termos/ParecerSanitario/Preview/atividades_pareceres.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/Termos/ParecerSanitario/Preview/cabecalho_pareceres.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/Termos/ParecerSanitario/Componentes/identificacao_field_pareceres.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/Termos/ParecerSanitario/Componentes/titulo_secao_pareceres.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Preview/analise_tecnica_pareceres.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Preview/atividades_pareceres.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Preview/cabecalho_pareceres.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Componentes/identificacao_field_pareceres.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Componentes/titulo_secao_pareceres.dart';
 
 class PreviewParecerSanitario extends StatelessWidget {
   const PreviewParecerSanitario({super.key});

@@ -1,0 +1,66 @@
+  import 'package:flutter/material.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/Termos/Componentes/formfield_parecer.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Controllers/AnaliseTecnicaController.dart';
+
+class AnaliseTecnicaForm extends StatefulWidget {
+  final AnaliseTecnicaController controller;
+  const AnaliseTecnicaForm({
+    required this.controller,
+    super.key
+  });
+
+  @override
+  State<AnaliseTecnicaForm> createState() => _AnaliseTecnicaFormState();
+}
+
+class _AnaliseTecnicaFormState extends State<AnaliseTecnicaForm> {
+ 
+  late final analiseTecnicaController = widget.controller;
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Column(
+      children: [
+        const Text("Análise Técnica"),
+        const SizedBox(height: 30),
+        
+        SizedBox(
+          height: 200,
+          child: TextFormField(
+            controller: analiseTecnicaController.parecerController,
+            maxLines: null,
+            expands: true,
+            keyboardType: TextInputType.multiline,
+            textAlignVertical: TextAlignVertical.top,
+            decoration: InputDecoration(
+              labelText: "Análise Técnica",
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+              border: OutlineInputBorder(),
+            ),
+            validator: (value) => null,
+          ),
+        ),
+
+        const SizedBox(height: 20),
+        Row(
+          children: [
+            Expanded(
+              child: FormfieldParecer(
+                fieldTitle: "Taxa do Alvará",
+                fieldController: analiseTecnicaController.taxaAlvaraController,
+              ),
+            ),
+            const SizedBox(width: 20),
+            Expanded(
+              child: FormfieldParecer(
+                fieldTitle: "Validade do Alvará",
+                fieldController: analiseTecnicaController.validadeAlvaraController,
+              ),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+}
