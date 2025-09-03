@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/Termos/Controllers/informacaoEstabelecimentoController.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/formControllers/informacaoEstabelecimentoController.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Formulario/identificacaoEstabelecimento.dart';
 
 void main() {

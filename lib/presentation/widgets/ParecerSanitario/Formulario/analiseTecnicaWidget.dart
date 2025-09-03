@@ -1,9 +1,9 @@
   import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Componentes/formfield_parecer.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Controllers/AnaliseTecnicaController.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Controllers/ParecerTecnicoController.dart';
 
 class AnaliseTecnicaForm extends StatefulWidget {
-  final AnaliseTecnicaController controller;
+  final ParecerTecnicoController controller;
   const AnaliseTecnicaForm({
     required this.controller,
     super.key

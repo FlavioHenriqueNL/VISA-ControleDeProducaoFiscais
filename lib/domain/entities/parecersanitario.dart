@@ -1,6 +1,7 @@
 class ParecerSanitario {
   final String id;
   final String cnpj;
+  final String razaoSocial;
   final String numeroProcesso;
   final String cnaePrincipal;
   final List<String>? cnaesSecundarios;
@@ -13,6 +14,7 @@ class ParecerSanitario {
   ParecerSanitario({
     required this.id,
     required this.cnpj,
+    required this.razaoSocial,
     required this.data,
     required this.numeroProcesso,
     required this.cnaePrincipal,

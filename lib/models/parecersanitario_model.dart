@@ -3,6 +3,7 @@ import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
 class ParecerSanitarioModel {
   final String id;
   final String cnpj;
+  final String razaoSocial;
   final String numeroProcesso;
   final String cnaePrincipal;
   final List<String>? cnaesSecundarios;
@@ -15,6 +16,7 @@ class ParecerSanitarioModel {
   ParecerSanitarioModel({
     required this.id,
     required this.cnpj,
+    required this.razaoSocial,
     required this.data,
     required this.numeroProcesso,
     required this.cnaePrincipal,
@@ -29,6 +31,7 @@ class ParecerSanitarioModel {
     return ParecerSanitarioModel(
       id: json['id'],
       cnpj: json['cnpj'],
+      razaoSocial: json['razaoSocial'],
       data: DateTime.parse(json['data']),
       numeroProcesso: json['numeroProcesso'],
       cnaePrincipal: json['cnaePrincipal'],
@@ -43,6 +46,7 @@ class ParecerSanitarioModel {
     return {
       'id': id,
       'cnpj': cnpj,
+      'razaoSocial': razaoSocial,
       'data': data.toIso8601String(),
       'numeroProcesso': numeroProcesso,
       'cnaePrincipal': cnaePrincipal,
@@ -57,6 +61,7 @@ class ParecerSanitarioModel {
     return ParecerSanitario(
       id: id,
       cnpj: cnpj,
+      razaoSocial: razaoSocial,
       data: data,
       numeroProcesso: numeroProcesso,
       cnaePrincipal: cnaePrincipal,
@@ -71,6 +76,7 @@ class ParecerSanitarioModel {
     return ParecerSanitarioModel(
       id: entity.id,
       cnpj: entity.cnpj,
+      razaoSocial: entity.razaoSocial,
       data: entity.data,
       numeroProcesso: entity.numeroProcesso,
       cnaePrincipal: entity.cnaePrincipal,

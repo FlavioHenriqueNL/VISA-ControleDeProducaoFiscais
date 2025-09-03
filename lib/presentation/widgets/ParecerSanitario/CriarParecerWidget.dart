@@ -1,38 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Controllers/AnaliseTecnicaController.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Controllers/ParecerTecnicoController.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Formulario/analiseTecnicaWidget.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/Termos/Controllers/informacaoEstabelecimentoController.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Formulario/identificacaoEstabelecimento.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/scrollable_page.dart';
 
 class CriarParecerWidget extends StatefulWidget {
   
-  final ParecerSanitario parecer;
-
-  const CriarParecerWidget({
-    required this.parecer,
-    super.key
-  });
+  const CriarParecerWidget({super.key});
 
   @override
   State<CriarParecerWidget> createState() => _CriarParecerWidgetState();
 }
 
 class _CriarParecerWidgetState extends State<CriarParecerWidget> {
-
   //Formulário Controllers
-  final informacaoEstabelecimentoController = Informacaoestabelecimentocontroller();
-  final analiseTecnicaController = AnaliseTecnicaController();
-  late ParecerSanitario documentoParecerSantinario;
+  final ParecerTecnicoController parecerTecnicoController = ParecerTecnicoController();
 
   @override
   void initState() {
     super.initState();
-    
   }
 
+  @override
+  void dispose() {
+    parecerTecnicoController.dispose();
+    super.dispose();
+  }
 
+  void salvarParecer() {
+
+    final parecer = ParecerSanitario(
+      id: "", // ID será gerado pelo backend
+      cnpj: parecerTecnicoController.informacaoEstabelecimento.cpfCnpjController.text,
+      razaoSocial: parecerTecnicoController.informacaoEstabelecimento.razaoSocialController.text,
+      data: DateTime.now(),
+      numeroProcesso: parecerTecnicoController.informacaoEstabelecimento.numeroProcessoController.text,
+      cnaePrincipal: parecerTecnicoController.informacaoEstabelecimento.cnaeController.text,
+      analiseTecnica: parecerTecnicoController.parecerController.text,
+      validade: parecerTecnicoController.validadeAlvaraController.text,
+      taxa: parecerTecnicoController.taxaAlvaraController.text,
+      cpfFiscal: "10512310432", // Manter o CPF do fiscal existente
+    );
+
+    Navigator.of(context).pop(parecer);
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,11 +67,11 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
                       leading: Icon(Icons.add_chart_outlined, size: 40, color: Colors.blue),
                       contentPadding: EdgeInsets.zero,
                       title: Text(
-                        widget.parecer == null ? "Criar Parecer Sanitário" : "Editar Parecer Sanitário",
+                        "Criar Parecer Sanitário",
                         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                       ),
                       subtitle: Text(
-                        widget.parecer == null ? "Preencha os campos abaixo para criar um novo parecer." : "Edite os campos abaixo para atualizar o parecer.",
+                        "Preencha os campos abaixo para criar um novo parecer.",
                         style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                       ),
                     ), 
@@ -78,14 +91,14 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
                     child: Column(
                       children: [
                         // Identificação do Estabelecimento
-                        IdentificacaoestabelecimentoFormWidget(controller: informacaoEstabelecimentoController),
+                        IdentificacaoestabelecimentoFormWidget(controller: parecerTecnicoController.informacaoEstabelecimento),
                         SizedBox(height: 30),
                         // Análise Técnica
-                        AnaliseTecnicaForm(controller: analiseTecnicaController),
+                        AnaliseTecnicaForm(controller: parecerTecnicoController),
                       ],
                     ),
                   )
-                ),
+                ), 
               ),
               SizedBox(height: 20),
 
@@ -124,9 +137,9 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
                         foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
                       ),
                       onPressed: () {
-                        //Salvar Parecer
+                        salvarParecer();
                       }, 
-                      label: Text(widget.parecer == null ? "Criar Parecer" : "Salvar Alterações", style: TextStyle(fontSize: 16)),
+                      label: Text("Salvar Alterações", style: TextStyle(fontSize: 16)),
                       icon: Icon(Icons.save, color: Colors.white, size: 20),
                     ),
                   ],
@@ -135,44 +148,6 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class CriarParecerSanitarioButton extends StatelessWidget {
-  
-  const CriarParecerSanitarioButton({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton.icon(
-      // ignore: avoid_print
-      onPressed: () async { 
-        final novoParecer = await showDialog(
-          context: context,
-          builder: (context) => CriarParecerWidget(
-            parecer: 
-              ParecerSanitario(
-                id: '', 
-                cnpj: '', 
-                data: DateTime.now(), 
-                numeroProcesso: '', 
-                cnaePrincipal: '', 
-                analiseTecnica: '', 
-                validade: '', 
-                taxa: '', 
-                cpfFiscal: ''
-              ),
-            ),
-        );
-
-        print('Adicionar Parecer'); 
-      }, 
-      icon: Icon(Icons.add_box_outlined, color: Colors.white),
-      label: Text('Adicionar Parecer'),
-      style: ParecerBottomWidgetStyle.copyWith(
-        backgroundColor: WidgetStateProperty.all<Color>(Colors.blue),
-        foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
       ),
     );
   }

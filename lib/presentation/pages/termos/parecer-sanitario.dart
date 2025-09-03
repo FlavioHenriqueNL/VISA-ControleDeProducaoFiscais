@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/CriarParecerWidget.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/scrollable_page.dart';
 
@@ -48,7 +49,33 @@ class _ParecerSanitarioPageState extends State<ParecerSanitarioPage> {
                   ),
                 ),
                 
-                CriarParecerSanitarioButton()
+                ElevatedButton.icon(
+                  // ignore: avoid_print
+                  onPressed: () async { 
+                    final ParecerSanitario? novoParecer = await showDialog(
+                      context: context,
+                      builder: (context) => CriarParecerWidget()
+                    );
+
+                    print(novoParecer);
+
+                    if(novoParecer != null){
+                      print("Novo parecer criado: ${novoParecer.numeroProcesso} - ${novoParecer.cnpj}"); 
+
+                    }
+                  }, 
+                  icon: Icon(Icons.add_box_outlined, color: Colors.white),
+                  label: Text('Adicionar Parecer'),
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                    textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    backgroundColor: Colors.blue,
+                    foregroundColor: Colors.white,
+                  )
+                )
               ],
             ),
            

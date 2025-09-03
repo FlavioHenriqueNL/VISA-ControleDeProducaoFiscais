@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/core/utils/form_validators.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Componentes/formfield_parecer.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/Termos/Controllers/informacaoEstabelecimentoController.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/formControllers/informacaoEstabelecimentoController.dart';
 
 
 
