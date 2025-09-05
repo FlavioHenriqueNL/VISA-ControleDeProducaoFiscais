@@ -6,7 +6,7 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: PreviewParecerSanitario()
+        body: PreviewParecerSanitario(parecerSanitario: ,)
       ),
     ),
   );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/data/dtos/parecer_completo_dto.dart';
+import 'package:visa_arapiraca_app/data/dtos/ParecerDTO.dart';
 import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
 import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Controllers/ParecerTecnicoController.dart';
@@ -8,7 +8,6 @@ import 'package:visa_arapiraca_app/presentation/widgets/Termos/Formulario/identi
 import 'package:visa_arapiraca_app/presentation/widgets/scrollable_page.dart';
 
 class CriarParecerWidget extends StatefulWidget {
-  
   const CriarParecerWidget({super.key});
 
   @override
@@ -17,7 +16,8 @@ class CriarParecerWidget extends StatefulWidget {
 
 class _CriarParecerWidgetState extends State<CriarParecerWidget> {
   //Formulário Controllers
-  final ParecerTecnicoController parecerTecnicoController = ParecerTecnicoController();
+  final ParecerTecnicoController parecerTecnicoController =
+      ParecerTecnicoController();
 
   @override
   void initState() {
@@ -31,14 +31,25 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
   }
 
   void salvarParecer() {
-
     final parecer = ParecerSanitario(
       id: "", // ID será gerado pelo backend
-      cnpj: parecerTecnicoController.informacaoEstabelecimento.cpfCnpjController.text,
-      razaoSocial: parecerTecnicoController.informacaoEstabelecimento.razaoSocialController.text,
+      cnpj: parecerTecnicoController
+          .informacaoEstabelecimento
+          .cpfCnpjController
+          .text,
+      razaoSocial: parecerTecnicoController
+          .informacaoEstabelecimento
+          .razaoSocialController
+          .text,
       data: DateTime.now(),
-      numeroProcesso: parecerTecnicoController.informacaoEstabelecimento.numeroProcessoController.text,
-      cnaePrincipal: parecerTecnicoController.informacaoEstabelecimento.cnaeController.text,
+      numeroProcesso: parecerTecnicoController
+          .informacaoEstabelecimento
+          .numeroProcessoController
+          .text,
+      cnaePrincipal: parecerTecnicoController
+          .informacaoEstabelecimento
+          .cnaeController
+          .text,
       analiseTecnica: parecerTecnicoController.parecerController.text,
       validade: parecerTecnicoController.validadeAlvaraController.text,
       taxa: parecerTecnicoController.taxaAlvaraController.text,
@@ -46,20 +57,59 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
     );
 
     final estabelecimento = Estabelecimento(
-      cpfCnpj: parecerTecnicoController.informacaoEstabelecimento.cpfCnpjController.text, 
-      razaoSocial: parecerTecnicoController.informacaoEstabelecimento.razaoSocialController.text, 
-      nomeFantasia: parecerTecnicoController.informacaoEstabelecimento.nomeFantasiaController.text, 
-      telefone: parecerTecnicoController.informacaoEstabelecimento.telefoneController.text, 
-      email: parecerTecnicoController.informacaoEstabelecimento.emailController.text, 
-      cnae: parecerTecnicoController.informacaoEstabelecimento.cnaeController.text, 
-      cep: parecerTecnicoController.informacaoEstabelecimento.cepController.text, 
-      numeroResidencia: parecerTecnicoController.informacaoEstabelecimento.numeroResidenciaController.text, 
-      complemento: parecerTecnicoController.informacaoEstabelecimento.complementoController.text, 
-      responsavel: parecerTecnicoController.informacaoEstabelecimento.responsavelController.text, 
-      cpfResponsavel: parecerTecnicoController.informacaoEstabelecimento.cpfResponsavelController.text, 
-      codigoConselho: parecerTecnicoController.informacaoEstabelecimento.codigoConselhoController.text.isNotEmpty 
-        ? parecerTecnicoController.informacaoEstabelecimento.codigoConselhoController.text 
-        : null,
+      cpfCnpj: parecerTecnicoController
+          .informacaoEstabelecimento
+          .cpfCnpjController
+          .text,
+      razaoSocial: parecerTecnicoController
+          .informacaoEstabelecimento
+          .razaoSocialController
+          .text,
+      nomeFantasia: parecerTecnicoController
+          .informacaoEstabelecimento
+          .nomeFantasiaController
+          .text,
+      telefone: parecerTecnicoController
+          .informacaoEstabelecimento
+          .telefoneController
+          .text,
+      email: parecerTecnicoController
+          .informacaoEstabelecimento
+          .emailController
+          .text,
+      cnae: parecerTecnicoController
+          .informacaoEstabelecimento
+          .cnaeController
+          .text,
+      cep:
+          parecerTecnicoController.informacaoEstabelecimento.cepController.text,
+      numeroResidencia: parecerTecnicoController
+          .informacaoEstabelecimento
+          .numeroResidenciaController
+          .text,
+      complemento: parecerTecnicoController
+          .informacaoEstabelecimento
+          .complementoController
+          .text,
+      responsavel: parecerTecnicoController
+          .informacaoEstabelecimento
+          .responsavelController
+          .text,
+      cpfResponsavel: parecerTecnicoController
+          .informacaoEstabelecimento
+          .cpfResponsavelController
+          .text,
+      codigoConselho:
+          parecerTecnicoController
+              .informacaoEstabelecimento
+              .codigoConselhoController
+              .text
+              .isNotEmpty
+          ? parecerTecnicoController
+                .informacaoEstabelecimento
+                .codigoConselhoController
+                .text
+          : null,
     );
 
     final parecerCompleto = ParecerDTO(
@@ -68,7 +118,6 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
     );
 
     Navigator.of(context).pop(parecerCompleto);
-
   }
 
   @override
@@ -88,19 +137,30 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
                 children: [
                   Expanded(
                     child: ListTile(
-                      leading: Icon(Icons.add_chart_outlined, size: 40, color: Colors.blue),
+                      leading: Icon(
+                        Icons.add_chart_outlined,
+                        size: 40,
+                        color: Colors.blue,
+                      ),
                       contentPadding: EdgeInsets.zero,
                       title: Text(
                         "Criar Parecer Sanitário",
-                        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       subtitle: Text(
                         "Preencha os campos abaixo para criar um novo parecer.",
                         style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                       ),
-                    ), 
+                    ),
                   ),
-                  IconButton(icon: Icon(Icons.close), iconSize: 40, onPressed: () => Navigator.of(context).pop()),
+                  IconButton(
+                    icon: Icon(Icons.close),
+                    iconSize: 40,
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
                 ],
               ),
               Divider(),
@@ -115,14 +175,19 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
                     child: Column(
                       children: [
                         // Identificação do Estabelecimento
-                        IdentificacaoestabelecimentoFormWidget(controller: parecerTecnicoController.informacaoEstabelecimento),
+                        IdentificacaoestabelecimentoFormWidget(
+                          controller: parecerTecnicoController
+                              .informacaoEstabelecimento,
+                        ),
                         SizedBox(height: 30),
                         // Análise Técnica
-                        AnaliseTecnicaForm(controller: parecerTecnicoController),
+                        AnaliseTecnicaForm(
+                          controller: parecerTecnicoController,
+                        ),
                       ],
                     ),
-                  )
-                ), 
+                  ),
+                ),
               ),
               SizedBox(height: 20),
 
@@ -134,41 +199,64 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
                   children: [
                     ElevatedButton.icon(
                       style: ParecerBottomWidgetStyle.copyWith(
-                        backgroundColor: WidgetStateProperty.all<Color>(Colors.red),
-                        foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
+                        backgroundColor: WidgetStateProperty.all<Color>(
+                          Colors.red,
+                        ),
+                        foregroundColor: WidgetStateProperty.all<Color>(
+                          Colors.white,
+                        ),
                       ),
-                      onPressed:() => Navigator.of(context).pop(), 
+                      onPressed: () => Navigator.of(context).pop(),
                       label: Text("Cancelar", style: TextStyle(fontSize: 16)),
-                      icon: Icon(Icons.cancel_rounded, color: Colors.white, size: 20),
+                      icon: Icon(
+                        Icons.cancel_rounded,
+                        color: Colors.white,
+                        size: 20,
+                      ),
                     ),
-                  
+
                     SizedBox(width: 20),
 
                     ElevatedButton.icon(
                       style: ParecerBottomWidgetStyle.copyWith(
-                        backgroundColor: WidgetStateProperty.all<Color>(Colors.yellow.shade600),
-                        foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
+                        backgroundColor: WidgetStateProperty.all<Color>(
+                          Colors.yellow.shade600,
+                        ),
+                        foregroundColor: WidgetStateProperty.all<Color>(
+                          Colors.white,
+                        ),
                       ),
-                      onPressed:() => Navigator.of(context).pop(), 
+                      onPressed: () => Navigator.of(context).pop(),
                       label: Text("Limpar", style: TextStyle(fontSize: 16)),
-                      icon: Icon(Icons.cleaning_services, color: Colors.white, size: 20),
+                      icon: Icon(
+                        Icons.cleaning_services,
+                        color: Colors.white,
+                        size: 20,
+                      ),
                     ),
-                  
+
                     SizedBox(width: 20),
                     ElevatedButton.icon(
                       style: ParecerBottomWidgetStyle.copyWith(
-                        backgroundColor: WidgetStateProperty.all<Color>(Colors.green),
-                        foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
+                        backgroundColor: WidgetStateProperty.all<Color>(
+                          Colors.green,
+                        ),
+                        foregroundColor: WidgetStateProperty.all<Color>(
+                          Colors.white,
+                        ),
                       ),
                       onPressed: () {
                         salvarParecer();
-                      }, 
-                      label: Text("Salvar Alterações", style: TextStyle(fontSize: 16)),
+                      },
+                      label: Text(
+                        "Salvar Alterações",
+                        style: TextStyle(fontSize: 16),
+                      ),
                       icon: Icon(Icons.save, color: Colors.white, size: 20),
                     ),
                   ],
                 ),
-              )              
+              ),
             ],
           ),
         ),
@@ -181,7 +269,5 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
 final ParecerBottomWidgetStyle = ElevatedButton.styleFrom(
   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
   textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
-  shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(5),
-  ),
+  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
 );

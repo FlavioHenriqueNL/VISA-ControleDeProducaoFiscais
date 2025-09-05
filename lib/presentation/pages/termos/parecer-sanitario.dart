@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/data/dtos/parecer_completo_dto.dart';
+import 'package:visa_arapiraca_app/data/dtos/ParecerDTO.dart';
 import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/CriarParecerWidget.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Preview/VisualizarDocumento.dart';
@@ -15,7 +15,7 @@ class ParecerSanitarioPage extends StatefulWidget {
 class _ParecerSanitarioPageState extends State<ParecerSanitarioPage> {
   @override
   Widget build(BuildContext context) {
-    return  ScrollablePage(
+    return ScrollablePage(
       child: Container(
         padding: EdgeInsets.all(26),
         decoration: BoxDecoration(
@@ -39,10 +39,17 @@ class _ParecerSanitarioPageState extends State<ParecerSanitarioPage> {
                 Expanded(
                   child: ListTile(
                     contentPadding: EdgeInsets.all(0),
-                    leading: Icon(Icons.description, size: 60, color: Colors.blue),
+                    leading: Icon(
+                      Icons.description,
+                      size: 60,
+                      color: Colors.blue,
+                    ),
                     title: Text(
                       'Termos e Pareceres',
-                      style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     subtitle: Text(
                       'Parecer Sanitário',
@@ -50,52 +57,71 @@ class _ParecerSanitarioPageState extends State<ParecerSanitarioPage> {
                     ),
                   ),
                 ),
-                
+
                 ElevatedButton.icon(
                   // ignore: avoid_print
-                  onPressed: () async { 
+                  onPressed: () async {
                     final ParecerDTO novoParecer = await showDialog(
                       context: context,
-                      builder: (context) => CriarParecerWidget()
+                      builder: (context) => CriarParecerWidget(),
                     );
 
                     print(novoParecer);
 
-                    if(novoParecer != null){
-                      print("Novo parecer criado: ${novoParecer.parecerSanitario.numeroProcesso} - ${novoParecer.parecerSanitario.cnpj}"); 
-
+                    if (novoParecer != null) {
+                      print(
+                        "Novo parecer criado: ${novoParecer.parecerSanitario.numeroProcesso} - ${novoParecer.parecerSanitario.cnpj}",
+                      );
                     }
 
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => PreviewParecerSanitario(parecerSanitario: novoParecer)
-                    ));
-                  }, 
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PreviewParecerSanitario(
+                          parecerSanitario: novoParecer,
+                        ),
+                      ),
+                    );
+                  },
                   icon: Icon(Icons.add_box_outlined, color: Colors.white),
                   label: Text('Adicionar Parecer'),
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                    textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+                    textStyle: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.normal,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                     ),
                     backgroundColor: Colors.blue,
                     foregroundColor: Colors.white,
-                  )
-                )
+                  ),
+                ),
               ],
             ),
-           
+
             SizedBox(height: 60),
-            Center(child: Text("Seção de estatísticas e gráficos (em desenvolvimento)...")),
+            Center(
+              child: Text(
+                "Seção de estatísticas e gráficos (em desenvolvimento)...",
+              ),
+            ),
             SizedBox(height: 60),
 
-            Text("Seus últimos pareceres",style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-            Text("Gerencie e visualize os pareceres emitidos recentemente.",style: TextStyle(fontSize: 16, color: Colors.grey[800])),
+            Text(
+              "Seus últimos pareceres",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              "Gerencie e visualize os pareceres emitidos recentemente.",
+              style: TextStyle(fontSize: 16, color: Colors.grey[800]),
+            ),
             SizedBox(height: 30),
-            Text("Lista de pareceres (em desenvolvimento)...",style: TextStyle(fontSize: 16, color: Colors.grey[800])),
-
-
-           
+            Text(
+              "Lista de pareceres (em desenvolvimento)...",
+              style: TextStyle(fontSize: 16, color: Colors.grey[800]),
+            ),
           ],
         ),
       ),
