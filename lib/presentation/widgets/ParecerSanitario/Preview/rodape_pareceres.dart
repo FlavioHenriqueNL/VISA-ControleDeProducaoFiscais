@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Componentes/identificacao_field_pareceres.dart';
 
 class RodapeParecer extends StatelessWidget {
-  const RodapeParecer({super.key});
+  final ParecerSanitario parecerSanitario;
+  const RodapeParecer({super.key, required this.parecerSanitario});
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +16,10 @@ class RodapeParecer extends StatelessWidget {
           children: [
              IdentificacaoField(
                 field: "Taxa do Alvará:",
-                value: "R\$ 0,00",
+                value: "R\$ ${parecerSanitario.taxa})}",
               ),
             SizedBox(width: 350),
-            IdentificacaoField(field: "Validade:", value: "1 Ano",),
+            IdentificacaoField(field: "Validade:", value: parecerSanitario.validade,),
           ],
         ),
         const SizedBox(height: 150),

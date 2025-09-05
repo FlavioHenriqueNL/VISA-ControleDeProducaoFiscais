@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:visa_arapiraca_app/data/dtos/parecer_completo_dto.dart';
+import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
 import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Controllers/ParecerTecnicoController.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Formulario/analiseTecnicaWidget.dart';
@@ -43,7 +45,29 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
       cpfFiscal: "10512310432", // Manter o CPF do fiscal existente
     );
 
-    Navigator.of(context).pop(parecer);
+    final estabelecimento = Estabelecimento(
+      cpfCnpj: parecerTecnicoController.informacaoEstabelecimento.cpfCnpjController.text, 
+      razaoSocial: parecerTecnicoController.informacaoEstabelecimento.razaoSocialController.text, 
+      nomeFantasia: parecerTecnicoController.informacaoEstabelecimento.nomeFantasiaController.text, 
+      telefone: parecerTecnicoController.informacaoEstabelecimento.telefoneController.text, 
+      email: parecerTecnicoController.informacaoEstabelecimento.emailController.text, 
+      cnae: parecerTecnicoController.informacaoEstabelecimento.cnaeController.text, 
+      cep: parecerTecnicoController.informacaoEstabelecimento.cepController.text, 
+      numeroResidencia: parecerTecnicoController.informacaoEstabelecimento.numeroResidenciaController.text, 
+      complemento: parecerTecnicoController.informacaoEstabelecimento.complementoController.text, 
+      responsavel: parecerTecnicoController.informacaoEstabelecimento.responsavelController.text, 
+      cpfResponsavel: parecerTecnicoController.informacaoEstabelecimento.cpfResponsavelController.text, 
+      codigoConselho: parecerTecnicoController.informacaoEstabelecimento.codigoConselhoController.text.isNotEmpty 
+        ? parecerTecnicoController.informacaoEstabelecimento.codigoConselhoController.text 
+        : null,
+    );
+
+    final parecerCompleto = ParecerDTO(
+      estabelecimento: estabelecimento,
+      parecerSanitario: parecer,
+    );
+
+    Navigator.of(context).pop(parecerCompleto);
 
   }
 

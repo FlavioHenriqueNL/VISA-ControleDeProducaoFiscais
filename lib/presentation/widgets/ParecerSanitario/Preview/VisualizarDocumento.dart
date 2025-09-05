@@ -2,22 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/pdf.dart';
 import 'package:printing/printing.dart';
+import 'package:visa_arapiraca_app/data/dtos/parecer_completo_dto.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Preview/analisetecnica_pareceres.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Preview/atividades_pareceres.dart';
 import 'dart:typed_data';
-
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Preview/cabecalho_pareceres.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Preview/identificacaoestabelecimento_pareceres.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Preview/rodape_pareceres.dart';
 
 class PreviewParecerSanitario extends StatelessWidget {
-  const PreviewParecerSanitario({super.key});
+
+  final ParecerDTO parecerSanitario;
+
+  const PreviewParecerSanitario({
+    super.key,
+    required this.parecerSanitario
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Preview Parecer Sanitário'),
+        title: const Text('Pré-visualização do Parecer Sanitário'),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -42,14 +49,13 @@ class PreviewParecerSanitario extends StatelessWidget {
                   children: [
                     CabecalhoParecer(),
                     const SizedBox(height: 40),
-                    IdentificacaoEstabelecimentoParecer(),
+                    IdentificacaoEstabelecimentoParecer(estabelecimento: parecerSanitario.estabelecimento ,),
                     const SizedBox(height: 30),
-                    AtividadesParecer(atividadePrincipal: {'5611201' : 'Restaurante e similares'},),
+                    AtividadesParecer(atividadePrincipal: {parecerSanitario.estabelecimento.cnae: ""},),
                     const SizedBox(height: 30),
-                    AnaliseTecnicaParecer(),
+                    AnaliseTecnicaParecer(analiseTecnica: parecerSanitario.parecerSanitario.analiseTecnica),
                     const SizedBox(height: 75),
-                    RodapeParecer(),
-                    const SizedBox(height: 75),
+                    RodapeParecer(parecerSanitario: parecerSanitario.parecerSanitario),
                   ]
                 ),
               ),
