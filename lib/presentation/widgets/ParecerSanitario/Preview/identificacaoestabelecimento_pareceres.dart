@@ -30,7 +30,7 @@ class IdentificacaoEstabelecimentoParecer extends StatelessWidget {
               Expanded(
                 child: IdentificacaoField(
                   field: "Número do Processo",
-                  value: numeroProcesso,
+                  value: estabelecimento.numeroAlvara ?? "N/A",
                 ),
               ),
             ],

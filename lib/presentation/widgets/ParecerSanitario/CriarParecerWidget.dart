@@ -33,14 +33,8 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
   void salvarParecer() {
     final parecer = ParecerSanitario(
       id: "", // ID será gerado pelo backend
-      cnpj: parecerTecnicoController
-          .informacaoEstabelecimento
-          .cpfCnpjController
-          .text,
-      razaoSocial: parecerTecnicoController
-          .informacaoEstabelecimento
-          .razaoSocialController
-          .text,
+      cnpj: parecerTecnicoController.informacaoEstabelecimento.cpfCnpjController.text,
+      razaoSocial: parecerTecnicoController.informacaoEstabelecimento.razaoSocialController.text,
       data: DateTime.now(),
       numeroProcesso: parecerTecnicoController
           .informacaoEstabelecimento
@@ -57,7 +51,11 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
     );
 
     final estabelecimento = Estabelecimento(
-      cpfCnpj: parecerTecnicoController
+      numeroAlvara: parecerTecnicoController
+          .informacaoEstabelecimento
+          .numeroProcessoController
+          .text,
+        cpfCnpj: parecerTecnicoController
           .informacaoEstabelecimento
           .cpfCnpjController
           .text,
@@ -177,7 +175,7 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
                         // Identificação do Estabelecimento
                         IdentificacaoestabelecimentoFormWidget(
                           controller: parecerTecnicoController
-                              .informacaoEstabelecimento,
+                              .informacaoEstabelecimento, 
                         ),
                         SizedBox(height: 30),
                         // Análise Técnica
