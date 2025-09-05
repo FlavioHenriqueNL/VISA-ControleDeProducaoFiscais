@@ -18,7 +18,7 @@ class PWStackContainer extends pw.StatelessWidget {
             border: pw.Border.all(color: PdfColors.grey, width: 1.0),
             borderRadius: pw.BorderRadius.circular(8),
           ),
-          padding: const pw.EdgeInsets.all(25),
+          padding: const pw.EdgeInsets.all(15),
           child: child,
         ),
         PWTituloSecaoPareceres(title: title),

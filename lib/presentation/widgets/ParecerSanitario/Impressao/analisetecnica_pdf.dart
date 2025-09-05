@@ -14,7 +14,7 @@ class PWAnaliseTecnicaParecer extends pw.StatelessWidget {
         children: [
           pw.Text(
             analiseTecnica,
-            style: pw.TextStyle(fontSize: 14),
+            style: pw.TextStyle(fontSize: 10),
             textAlign: pw.TextAlign.justify,
           ),
         ],

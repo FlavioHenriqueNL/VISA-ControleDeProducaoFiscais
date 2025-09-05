@@ -36,7 +36,7 @@ Future<Uint8List> generateDocument(ParecerDTO parecerSanitario) async {
                 analiseTecnica:
                     parecerSanitario.parecerSanitario.analiseTecnica,
               ),
-              pw.SizedBox(height: 150),
+              pw.SizedBox(height: 50),
               PWRodapeParecer(
                 parecerSanitario: parecerSanitario.parecerSanitario,
               ),

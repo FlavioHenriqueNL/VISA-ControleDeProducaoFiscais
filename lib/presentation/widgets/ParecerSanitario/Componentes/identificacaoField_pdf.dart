@@ -12,10 +12,10 @@ class PWIdentificacaoField extends pw.StatelessWidget {
       children: [
         pw.Text(
           field,
-          style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold),
+          style: pw.TextStyle(fontSize: 12, fontWeight: pw.FontWeight.bold),
         ),
         pw.SizedBox(width: 10),
-        pw.Text(value ?? "", style: pw.TextStyle(fontSize: 18)),
+        pw.Text(value ?? "", style: pw.TextStyle(fontSize: 10)),
       ],
     );
   }

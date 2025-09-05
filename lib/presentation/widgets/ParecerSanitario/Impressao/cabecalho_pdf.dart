@@ -21,7 +21,7 @@ class PWCabecalhoParecer extends pw.StatelessWidget {
           //pw.Image.asset("assets/VisaLogo.png", width: 250),
           pw.Text(
             titulo?.toUpperCase() ?? "Parecer Sanitário".toUpperCase(),
-            style: pw.TextStyle(fontSize: 24, fontWeight: pw.FontWeight.bold),
+            style: pw.TextStyle(fontSize: 16, fontWeight: pw.FontWeight.bold),
           ),
           // Image.asset("assets/VisaLogo.png", width: 250),
         ],
