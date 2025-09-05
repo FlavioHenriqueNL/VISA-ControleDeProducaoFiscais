@@ -10,21 +10,20 @@ class RodapeParecer extends StatelessWidget {
     return Column(
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(
-              child: IdentificacaoField(
+             IdentificacaoField(
                 field: "Taxa do Alvará:",
                 value: "R\$ 0,00",
               ),
-            ),
-            Expanded(child: IdentificacaoField(field: "Validade:")),
+            SizedBox(width: 350),
+            IdentificacaoField(field: "Validade:", value: "1 Ano",),
           ],
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 150),
         Text(
           "Arapiraca, ${DateTime.now().day} de ${DateFormat('MMMM').format(DateTime.now())} de ${DateTime.now().year}",
-          style: const TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 10),
         Text(

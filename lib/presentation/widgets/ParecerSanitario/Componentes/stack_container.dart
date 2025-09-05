@@ -23,7 +23,7 @@ class _StackContainerState extends State<StackContainer> {
             border: Border.all(color: Colors.grey, width: 1.0),
             borderRadius: BorderRadius.circular(8),
           ),
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(25),
           child: widget.child,
         ),
         TituloSecaoPareceres(title: widget.title),

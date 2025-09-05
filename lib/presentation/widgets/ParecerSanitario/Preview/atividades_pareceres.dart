@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Componentes/stack_container.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Componentes/titulo_secao_pareceres.dart';
 
 class AtividadesParecer extends StatefulWidget {
@@ -18,41 +19,25 @@ class AtividadesParecer extends StatefulWidget {
 class _AtividadesParecerState extends State<AtividadesParecer> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(25),
-      child: Stack(
-        clipBehavior: Clip.none,
+    return StackContainer(
+      title: "Atividades do Estabelecimento", 
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: double.infinity,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.grey,
-                width: 1.0,
-              ),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Atividade Principal"),
-                Text(
-                  "${widget.atividadePrincipal.entries.first.key} - ${widget.atividadePrincipal.entries.first.value}",
-                ),
-                SizedBox(height: 15),
-                Text("Atividades Secundárias"),
-                if (widget.atividadesSecundarias?.isNotEmpty ?? false)
-                  ...widget.atividadesSecundarias!.map((item) {
-                    var entry = item.entries.first;
-                    return Text("${entry.key} - ${entry.value}");
-                  }),
-              ],
-            ),
+          Text("Atividade Principal", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+          Text(
+            "${widget.atividadePrincipal.entries.first.key} - ${widget.atividadePrincipal.entries.first.value}",
+            style: TextStyle(fontSize: 14)
           ),
-          TituloSecaoPareceres(title: "Atividades do Estabelecimento"),
+          SizedBox(height: 15),
+          Text("Atividades Secundárias", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+          if (widget.atividadesSecundarias?.isNotEmpty ?? false)
+            ...widget.atividadesSecundarias!.map((item) {
+              var entry = item.entries.first;
+              return Text("${entry.key} - ${entry.value}");
+            }),
         ],
-      ),
+      ),   
     );
   }
 }

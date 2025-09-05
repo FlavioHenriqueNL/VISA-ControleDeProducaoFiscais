@@ -20,9 +20,9 @@ class _IdentificacaoFieldState extends State<IdentificacaoField> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(widget.field, style: TextStyle(fontSize: 18)),
+        Text(widget.field, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
         SizedBox(width: 10),
-        Text(widget.value ?? "", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        Text(widget.value ?? "", style: TextStyle(fontSize: 18)),
       ],
     );
   }

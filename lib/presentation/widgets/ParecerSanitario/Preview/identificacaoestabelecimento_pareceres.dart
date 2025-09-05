@@ -8,7 +8,7 @@ class IdentificacaoEstabelecimentoParecer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StackContainer(
-      title: "Atividade do Estabelecimento",
+      title: "Identificação do Estabelecimento",
       child: Column(
         children: [
           IdentificacaoField(field: "Razão Social:"),
