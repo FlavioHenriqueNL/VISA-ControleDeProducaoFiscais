@@ -38,6 +38,7 @@ dependencies:
   printing: ^5.14.2
   pdf: ^3.11.3
   go_router: ^16.2.1
+  mask_text_input_formatter: ^2.9.0
 
 dev_dependencies:
   flutter_test:

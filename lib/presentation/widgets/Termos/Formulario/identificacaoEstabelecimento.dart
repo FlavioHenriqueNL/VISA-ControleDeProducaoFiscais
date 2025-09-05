@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/core/utils/form_validators.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/Termos/Componentes/formfield_parecer.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/formControllers/informacaoEstabelecimentoController.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_cpfCnpj.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_parecer.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/forms/formControllers/informacaoEstabelecimentoController.dart';
 
 
 
@@ -42,11 +43,9 @@ class _IdentificacaoestabelecimentoFormWidgetState extends State<Identificacaoes
               ),
               const SizedBox(width: 20),
               Expanded(
-                child: FormfieldParecer(
-                  fieldTitle: "CPF / CNPJ",
-                  fieldController:
-                      informacaoEstabelecimentoController.cpfCnpjController,
-                  validator: (value) => campoVazio("CPF ou CNPJ", value),
+                child: FormfieldCpfcnpj(
+                  controller: informacaoEstabelecimentoController
+                      .cpfCnpjController,
                 ),
               ),
             ],

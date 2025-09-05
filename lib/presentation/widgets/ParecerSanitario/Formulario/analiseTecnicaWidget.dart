@@ -1,5 +1,5 @@
   import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/Termos/Componentes/formfield_parecer.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_parecer.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Controllers/ParecerTecnicoController.dart';
 
 class AnaliseTecnicaForm extends StatefulWidget {

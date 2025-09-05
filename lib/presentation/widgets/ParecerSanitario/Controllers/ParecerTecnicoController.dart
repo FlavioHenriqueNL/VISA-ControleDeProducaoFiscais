@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/formControllers/informacaoEstabelecimentoController.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/forms/formControllers/informacaoEstabelecimentoController.dart';
 
 class ParecerTecnicoController {
   final Informacaoestabelecimentocontroller informacaoEstabelecimento;

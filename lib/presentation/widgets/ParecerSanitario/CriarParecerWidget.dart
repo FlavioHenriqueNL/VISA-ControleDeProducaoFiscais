@@ -115,8 +115,13 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
       parecerSanitario: parecer,
     );
 
-    Navigator.of(context).pop(parecerCompleto);
+    if(_formKey.currentState!.validate()){
+      Navigator.of(context).pop(parecerCompleto);
+    }
+
   }
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -169,7 +174,7 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
                 child: SingleChildScrollView(
                   padding: EdgeInsets.symmetric(horizontal: 30),
                   child: Form(
-                    key: GlobalKey<FormState>(),
+                    key: _formKey,
                     child: Column(
                       children: [
                         // Identificação do Estabelecimento
