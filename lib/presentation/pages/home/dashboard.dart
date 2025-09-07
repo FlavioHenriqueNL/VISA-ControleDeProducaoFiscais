@@ -23,7 +23,7 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return ResponsiveLayout(
       mobile: const MobileScaffold(),
-      tablet: const TabletScaffold(),
+      tablet:  TabletScaffold(content: widget.content),
       desktop: DesktopScaffold(content: widget.content),
     );
   }

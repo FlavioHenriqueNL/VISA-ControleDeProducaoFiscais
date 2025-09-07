@@ -12,6 +12,7 @@ class _MobileScaffoldState extends State<MobileScaffold> {
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: Colors.red,
+      body: Text("Em fase de planejamento", style: TextStyle(fontSize: 28, color: Colors.white)),
     );
   }
 }
