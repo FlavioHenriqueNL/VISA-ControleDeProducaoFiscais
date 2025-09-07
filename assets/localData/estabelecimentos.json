@@ -1,21 +1,6 @@
 [
   {
-    "numeroAlvara": "12345",
-    "cpfCnpj": "12345678000199",
-    "razaoSocial": "Comércio de Alimentos LTDA",
-    "nomeFantasia": "Supermercado Bom Preço",
-    "telefone": "11987654321",
-    "email": "contato@bompreco.com",
-    "cnae": "4711302",
-    "cep": "01001000",
-    "numeroResidencia": "120",
-    "complemento": "Loja 5",
-    "responsavel": "João da Silva",
-    "cpfResponsavel": "12345678901",
-    "codigoConselho": null
-  },
-  {
-    "numeroAlvara": null,
+    "numeroAlvara": "",
     "cpfCnpj": "98765432000155",
     "razaoSocial": "Farmácia Saúde LTDA",
     "nomeFantasia": "Farmácia Popular",
@@ -24,7 +9,7 @@
     "cnae": "4771701",
     "cep": "20040002",
     "numeroResidencia": "45",
-    "complemento": null,
+    "complemento": "",
     "responsavel": "Maria Oliveira",
     "cpfResponsavel": "98765432100",
     "codigoConselho": "CRM12345"
@@ -39,13 +24,13 @@
     "cnae": "1091102",
     "cep": "30140071",
     "numeroResidencia": "320",
-    "complemento": null,
+    "complemento": "",
     "responsavel": "Carlos Mendes",
     "cpfResponsavel": "32165498700",
-    "codigoConselho": null
+    "codigoConselho": ""
   },
   {
-    "numeroAlvara": null,
+    "numeroAlvara": "",
     "cpfCnpj": "55667788000144",
     "razaoSocial": "Restaurante Sabor Caseiro ME",
     "nomeFantasia": "Sabor Caseiro",
@@ -57,7 +42,7 @@
     "complemento": "Sala 3",
     "responsavel": "Fernanda Costa",
     "cpfResponsavel": "45612378910",
-    "codigoConselho": null
+    "codigoConselho": ""
   },
   {
     "numeroAlvara": "99999",
@@ -84,13 +69,13 @@
     "cnae": "9609205",
     "cep": "05577000",
     "numeroResidencia": "25",
-    "complemento": null,
+    "complemento": "",
     "responsavel": "Lucas Pereira",
     "cpfResponsavel": "85274196300",
-    "codigoConselho": null
+    "codigoConselho": ""
   },
   {
-    "numeroAlvara": null,
+    "numeroAlvara": "",
     "cpfCnpj": "99887766000111",
     "razaoSocial": "Academia Boa Forma LTDA",
     "nomeFantasia": "Academia Boa Forma",
@@ -102,7 +87,7 @@
     "complemento": "2º andar",
     "responsavel": "Patrícia Gomes",
     "cpfResponsavel": "96325874100",
-    "codigoConselho": null
+    "codigoConselho": ""
   },
   {
     "numeroAlvara": "44444",
@@ -114,7 +99,7 @@
     "cnae": "8630501",
     "cep": "01310000",
     "numeroResidencia": "75",
-    "complemento": null,
+    "complemento": "",
     "responsavel": "Tatiane Moreira",
     "cpfResponsavel": "25836914700",
     "codigoConselho": "CRO123456"
@@ -129,13 +114,13 @@
     "cnae": "4781400",
     "cep": "36010001",
     "numeroResidencia": "300",
-    "complemento": null,
+    "complemento": "",
     "responsavel": "Gabriel Rocha",
     "cpfResponsavel": "14725836900",
-    "codigoConselho": null
+    "codigoConselho": ""
   },
   {
-    "numeroAlvara": null,
+    "numeroAlvara": "",
     "cpfCnpj": "55443322000144",
     "razaoSocial": "Oficina Auto Mecânica LTDA",
     "nomeFantasia": "Mecânica Rápida",
@@ -147,7 +132,7 @@
     "complemento": "Galpão",
     "responsavel": "Eduardo Lima",
     "cpfResponsavel": "32198765400",
-    "codigoConselho": null
+    "codigoConselho": ""
   },
   {
     "numeroAlvara": "10101",
@@ -159,10 +144,10 @@
     "cnae": "1052000",
     "cep": "04750001",
     "numeroResidencia": "85",
-    "complemento": null,
+    "complemento": "",
     "responsavel": "Juliana Souza",
     "cpfResponsavel": "65498732100",
-    "codigoConselho": null
+    "codigoConselho": ""
   },
   {
     "numeroAlvara": "20202",
@@ -177,10 +162,10 @@
     "complemento": "Loja 10",
     "responsavel": "Marcelo Vieira",
     "cpfResponsavel": "15935748600",
-    "codigoConselho": null
+    "codigoConselho": ""
   },
   {
-    "numeroAlvara": null,
+    "numeroAlvara": "",
     "cpfCnpj": "88990011000122",
     "razaoSocial": "Mercado Central LTDA",
     "nomeFantasia": "Mercadão Central",
@@ -189,10 +174,10 @@
     "cnae": "4711301",
     "cep": "80020030",
     "numeroResidencia": "210",
-    "complemento": null,
+    "complemento": "",
     "responsavel": "Sérgio Nunes",
     "cpfResponsavel": "75395145600",
-    "codigoConselho": null
+    "codigoConselho": ""
   },
   {
     "numeroAlvara": "30303",
@@ -204,7 +189,7 @@
     "cnae": "8640201",
     "cep": "22020010",
     "numeroResidencia": "95",
-    "complemento": null,
+    "complemento": "",
     "responsavel": "Renata Lima",
     "cpfResponsavel": "25814736900",
     "codigoConselho": "CRM56789"
@@ -222,10 +207,10 @@
     "complemento": "Sala 8",
     "responsavel": "Aline Ferreira",
     "cpfResponsavel": "95175385200",
-    "codigoConselho": null
+    "codigoConselho": ""
   },
   {
-    "numeroAlvara": null,
+    "numeroAlvara": "",
     "cpfCnpj": "22331144000166",
     "razaoSocial": "Distribuidora de Bebidas LTDA",
     "nomeFantasia": "Bebidas Baratas",
@@ -234,10 +219,10 @@
     "cnae": "4635502",
     "cep": "30180030",
     "numeroResidencia": "120",
-    "complemento": null,
+    "complemento": "",
     "responsavel": "Rodrigo Santos",
     "cpfResponsavel": "15948726300",
-    "codigoConselho": null
+    "codigoConselho": ""
   },
   {
     "numeroAlvara": "50505",
@@ -252,10 +237,10 @@
     "complemento": "Loja B",
     "responsavel": "Clara Mendes",
     "cpfResponsavel": "35715925800",
-    "codigoConselho": null
+    "codigoConselho": ""
   },
   {
-    "numeroAlvara": null,
+    "numeroAlvara": "",
     "cpfCnpj": "44332255000177",
     "razaoSocial": "Loja de Eletrônicos Tech",
     "nomeFantasia": "Tech Store",
@@ -264,10 +249,10 @@
     "cnae": "4751201",
     "cep": "23010010",
     "numeroResidencia": "150",
-    "complemento": null,
+    "complemento": "",
     "responsavel": "Paulo Henrique",
     "cpfResponsavel": "74196325800",
-    "codigoConselho": null
+    "codigoConselho": ""
   },
   {
     "numeroAlvara": "60606",
@@ -279,13 +264,13 @@
     "cnae": "8630502",
     "cep": "05422020",
     "numeroResidencia": "42",
-    "complemento": null,
+    "complemento": "",
     "responsavel": "Simone Braga",
     "cpfResponsavel": "12378945600",
     "codigoConselho": "CRO98765"
   },
   {
-    "numeroAlvara": null,
+    "numeroAlvara": "",
     "cpfCnpj": "77885544000188",
     "razaoSocial": "Oficina Moto Speed LTDA",
     "nomeFantasia": "Moto Speed",
@@ -297,6 +282,6 @@
     "complemento": "Box 4",
     "responsavel": "Felipe Costa",
     "cpfResponsavel": "85296374100",
-    "codigoConselho": null
+    "codigoConselho": ""
   }
 ]

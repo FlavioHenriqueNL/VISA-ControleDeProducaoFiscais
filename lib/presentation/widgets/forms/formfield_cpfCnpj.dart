@@ -6,20 +6,37 @@ import 'package:visa_arapiraca_app/core/utils/form_validators.dart';
 class FormfieldCpfcnpj extends StatefulWidget {
   final TextEditingController? controller;
   final String? title;
-  const FormfieldCpfcnpj({super.key, this.controller, this.title});
+  final VoidCallback? onFieldLostFocus; // <-- função chamada ao perder foco
+
+  const FormfieldCpfcnpj({
+    super.key,
+    this.controller,
+    this.title,
+    this.onFieldLostFocus,
+  });
 
   @override
   State<FormfieldCpfcnpj> createState() => _FormfieldCpfcnpjState();
 }
 
 class _FormfieldCpfcnpjState extends State<FormfieldCpfcnpj> {
-
   late MaskTextInputFormatter maskFormatter;
+  late FocusNode _focusNode;
 
   @override
   void initState() {
     super.initState();
     maskFormatter = cpfMask;
+
+    _focusNode = FocusNode();
+    _focusNode.addListener(() {
+      if (!_focusNode.hasFocus) {
+        // Quando perder foco, chama a função externa
+        if (widget.onFieldLostFocus != null) {
+          widget.onFieldLostFocus!();
+        }
+      }
+    });
   }
 
   void _updateMask(String value) {
@@ -34,6 +51,12 @@ class _FormfieldCpfcnpjState extends State<FormfieldCpfcnpj> {
   }
 
   @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
@@ -45,6 +68,7 @@ class _FormfieldCpfcnpjState extends State<FormfieldCpfcnpj> {
       readOnly: false,
       validator: (value) => validarCpfCnpj("CPF ou CNPJ", value),
       controller: widget.controller,
+      focusNode: _focusNode, // <-- adiciona o FocusNode
       onChanged: _updateMask,
     );
   }

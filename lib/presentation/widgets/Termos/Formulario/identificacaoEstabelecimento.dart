@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/core/utils/form_masks.dart';
 import 'package:visa_arapiraca_app/core/utils/form_validators.dart';
+import 'package:visa_arapiraca_app/data/repositories/estabelecimento_repository.dart';
+import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_cep.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_cpfCnpj.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_parecer.dart';
@@ -23,6 +25,35 @@ class _IdentificacaoestabelecimentoFormWidgetState extends State<Identificacaoes
   
   // Controllers
   late final informacaoEstabelecimentoController = widget.controller;
+  late bool estabelecimentoExiste = false;
+  // late Estabelecimento estabelecimentoPesquisado;
+
+  
+  Future<void> _carregarEstabelecimento(String cnpj) async {
+    print(cnpj);
+    cnpj = cnpj.replaceAll(RegExp(r'[^0-9]'), '');
+    print(cnpj);
+
+    final estabelecimentoPesquisado = await EstabelecimentoRepository().getEstabelecimentoByCpfCnpj(cnpj);
+    if(estabelecimentoPesquisado != null){
+      informacaoEstabelecimentoController.razaoSocialController.text = estabelecimentoPesquisado.razaoSocial;
+      informacaoEstabelecimentoController.nomeFantasiaController.text = estabelecimentoPesquisado.nomeFantasia;
+      informacaoEstabelecimentoController.telefoneController.text = estabelecimentoPesquisado.telefone;
+      informacaoEstabelecimentoController.emailController.text = estabelecimentoPesquisado.email;
+      informacaoEstabelecimentoController.cnaeController.text = estabelecimentoPesquisado.cnae;
+      informacaoEstabelecimentoController.cepController.text = estabelecimentoPesquisado.cep;
+      informacaoEstabelecimentoController.numeroResidenciaController.text = estabelecimentoPesquisado.numeroResidencia;
+      informacaoEstabelecimentoController.complementoController.text = estabelecimentoPesquisado.complemento;
+      informacaoEstabelecimentoController.responsavelController.text = estabelecimentoPesquisado.responsavel;
+      informacaoEstabelecimentoController.cpfResponsavelController.text = estabelecimentoPesquisado.razaoSocial;
+      informacaoEstabelecimentoController.codigoConselhoController.text = estabelecimentoPesquisado.codigoConselho ?? "N/A";
+      
+      setState(() {
+        estabelecimentoExiste = true;
+      });
+    }
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,25 +74,29 @@ class _IdentificacaoestabelecimentoFormWidgetState extends State<Identificacaoes
               ),
               const SizedBox(width: 20),
               Expanded(
-                child: FormfieldCpfcnpj(controller: informacaoEstabelecimentoController.cpfCnpjController),
-              ),
+                child: FormfieldCpfcnpj(
+                  controller: informacaoEstabelecimentoController.cpfCnpjController, 
+                  onFieldLostFocus: () => _carregarEstabelecimento(informacaoEstabelecimentoController.cpfCnpjController.text)
+                )
+              )
             ],
           ),
           const SizedBox(height: 20),
           FormfieldParecer(
             fieldTitle: "Razão Social",
-            fieldController:
-                informacaoEstabelecimentoController.razaoSocialController,
+            fieldController: informacaoEstabelecimentoController.razaoSocialController,
             validator: (value) => campoVazio("Razão Social", value),
+            readOnly: estabelecimentoExiste,
           ),
           const SizedBox(height: 20),
           FormfieldParecer(
             fieldTitle: "Nome Fantasia",
-            fieldController:
-                informacaoEstabelecimentoController.nomeFantasiaController,
+            fieldController: informacaoEstabelecimentoController.nomeFantasiaController,
             validator: (value) => campoVazio("Nome Fantasia", value),
+            readOnly: estabelecimentoExiste,
           ),
           const SizedBox(height: 20),
+          
           Row(
             children: [
               Expanded(

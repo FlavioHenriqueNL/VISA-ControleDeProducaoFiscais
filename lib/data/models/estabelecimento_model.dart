@@ -34,22 +34,22 @@
     factory EstabelecimentoModel.fromJson(Map<String, dynamic> json){
         return EstabelecimentoModel(
             numeroAlvara: json['numeroAlvara'],
-            cpfCnpj: json['cpfCpnj'], 
+            cpfCnpj: json['cpfCnpj'], 
             razaoSocial: json['razaoSocial'], 
             nomeFantasia: json['nomeFantasia'], 
             telefone: json['telefone'], 
             email: json['email'], 
             cnae: json['cnae'], 
             cep: json['cep'], 
-            numeroResidencia: json['numeroResidencia'] , 
-            complemento: json['complemento'] , 
-            responsavel: json['responsavel'] , 
-            cpfResponsavel: json['cpfResponsavel'] 
+            numeroResidencia: json['numeroResidencia'], 
+            complemento: json['complemento'], 
+            responsavel: json['responsavel'], 
+            cpfResponsavel: json['cpfResponsavel']
         );
     }
     Map<String, dynamic> toJson() => {
         'numeroAlvara': numeroAlvara,
-        'cpfCpj': cpfCnpj,
+        'cpfCnpj': cpfCnpj,
         'razaoSocial': razaoSocial,
         'nomeFantasia': nomeFantasia,
         'telefone': telefone,
