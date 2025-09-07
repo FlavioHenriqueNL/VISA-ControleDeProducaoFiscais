@@ -49,6 +49,7 @@ class _AnaliseTecnicaFormState extends State<AnaliseTecnicaForm> {
               child: FormfieldParecer(
                 fieldTitle: "Taxa do Alvará",
                 fieldController: analiseTecnicaController.taxaAlvaraController,
+                prefix: "R\$",
               ),
             ),
             const SizedBox(width: 20),

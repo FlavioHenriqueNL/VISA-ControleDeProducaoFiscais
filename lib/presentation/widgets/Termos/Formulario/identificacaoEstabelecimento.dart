@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:visa_arapiraca_app/core/utils/form_masks.dart';
 import 'package:visa_arapiraca_app/core/utils/form_validators.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_cep.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_cpfCnpj.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_parecer.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formControllers/informacaoEstabelecimentoController.dart';
-
-
+import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_telefone.dart';
 
 class IdentificacaoestabelecimentoFormWidget extends StatefulWidget {
-  
   final Informacaoestabelecimentocontroller controller;
 
   const IdentificacaoestabelecimentoFormWidget({
@@ -43,10 +43,7 @@ class _IdentificacaoestabelecimentoFormWidgetState extends State<Identificacaoes
               ),
               const SizedBox(width: 20),
               Expanded(
-                child: FormfieldCpfcnpj(
-                  controller: informacaoEstabelecimentoController
-                      .cpfCnpjController,
-                ),
+                child: FormfieldCpfcnpj(controller: informacaoEstabelecimentoController.cpfCnpjController),
               ),
             ],
           ),
@@ -69,12 +66,7 @@ class _IdentificacaoestabelecimentoFormWidgetState extends State<Identificacaoes
             children: [
               Expanded(
                 flex: 1,
-                child: FormfieldParecer(
-                  fieldTitle: "Telefone para contato",
-                  fieldController:
-                      informacaoEstabelecimentoController.telefoneController,
-                  validator: (value) => campoVazio("Telefone", value),
-                ),
+                child: FormfieldTelefone(controller: informacaoEstabelecimentoController.telefoneController)
               ),
               const SizedBox(width: 30),
               Expanded(
@@ -83,7 +75,7 @@ class _IdentificacaoestabelecimentoFormWidgetState extends State<Identificacaoes
                   fieldTitle: "Email para contato",
                   fieldController:
                       informacaoEstabelecimentoController.emailController,
-                  validator: (value) => campoVazio("Email", value),
+                  validator: (value) => validarEmail("Email para contato", value),
                 ),
               ),
             ],
@@ -123,12 +115,7 @@ class _IdentificacaoestabelecimentoFormWidgetState extends State<Identificacaoes
             children: [
               Expanded(
                 flex: 1,
-                child: FormfieldParecer(
-                  fieldTitle: "CEP",
-                  fieldController:
-                      informacaoEstabelecimentoController.cepController,
-                  validator: (value) => validarCEP("CEP", value),
-                ),
+                child: FormfieldCEP(controller: informacaoEstabelecimentoController.cepController,)
               ),
               const SizedBox(width: 30),
               Expanded(
@@ -137,7 +124,7 @@ class _IdentificacaoestabelecimentoFormWidgetState extends State<Identificacaoes
                   fieldTitle: "Logradouro",
                   fieldController:
                       informacaoEstabelecimentoController.logradouroController,
-                  validator: (value) => campoVazio("Logradouro", value),
+                  validator: null,
                   readOnly: true,
                 ),
               ),
@@ -162,7 +149,7 @@ class _IdentificacaoestabelecimentoFormWidgetState extends State<Identificacaoes
                   fieldTitle: "Bairro",
                   fieldController:
                       informacaoEstabelecimentoController.bairroController,
-                  validator: (value) => campoVazio("Bairro", value),
+                  validator: null,
                   readOnly: true,
                 ),
               ),
@@ -173,7 +160,7 @@ class _IdentificacaoestabelecimentoFormWidgetState extends State<Identificacaoes
                   fieldTitle: "Cidade",
                   fieldController:
                       informacaoEstabelecimentoController.cidadeController,
-                  validator: (value) => campoVazio("Cidade", value),
+                  validator: null,
                   readOnly: true,
                 ),
               ),
@@ -199,6 +186,7 @@ class _IdentificacaoestabelecimentoFormWidgetState extends State<Identificacaoes
                   fieldController: informacaoEstabelecimentoController
                       .cpfResponsavelController,
                   validator: (value) => campoVazio("CPF do Responsável", value),
+                  maskTextInputFormatter: cpfMask
                 ),
               ),
               const SizedBox(width: 30),
