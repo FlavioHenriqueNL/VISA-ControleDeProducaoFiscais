@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/core/utils/form_masks.dart';
 import 'package:visa_arapiraca_app/core/utils/form_validators.dart';
+import 'package:visa_arapiraca_app/data/repositories/cnae_repository.dart';
 import 'package:visa_arapiraca_app/data/repositories/estabelecimento_repository.dart';
 import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_cep.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_cnae.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_cpfCnpj.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_parecer.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formControllers/informacaoEstabelecimentoController.dart';
@@ -47,6 +49,7 @@ class _IdentificacaoestabelecimentoFormWidgetState extends State<Identificacaoes
       informacaoEstabelecimentoController.responsavelController.text = estabelecimentoPesquisado.responsavel;
       informacaoEstabelecimentoController.cpfResponsavelController.text = estabelecimentoPesquisado.razaoSocial;
       informacaoEstabelecimentoController.codigoConselhoController.text = estabelecimentoPesquisado.codigoConselho ?? "N/A";
+      _caregarCnae(estabelecimentoPesquisado.cnae);
       
       setState(() {
         estabelecimentoExiste = true;
@@ -54,6 +57,18 @@ class _IdentificacaoestabelecimentoFormWidgetState extends State<Identificacaoes
     }
     
   }
+Future<void> _caregarCnae(String cnae) async{
+  try {
+    final cnaeBuscado = await CnaeRepository().getCnaeByID(cnae);
+    informacaoEstabelecimentoController.cnaeController.text = cnaeBuscado!.codigo;
+    informacaoEstabelecimentoController.cnaeDescricaoController.text = cnaeBuscado.descricao;
+  }catch (e) {
+    print(e);
+    informacaoEstabelecimentoController.cnaeDescricaoController.text = "Cnae não encontrado";
+    informacaoEstabelecimentoController.cnaeController.text = "";
+  }
+  
+}
 
   @override
   Widget build(BuildContext context) {
@@ -122,12 +137,10 @@ class _IdentificacaoestabelecimentoFormWidgetState extends State<Identificacaoes
             children: [
               Expanded(
                 flex: 1,
-                child: FormfieldParecer(
-                  fieldTitle: "CNAE",
-                  fieldController:
-                      informacaoEstabelecimentoController.cnaeController,
-                  validator: (value) => campoVazio("Código CNAE", value),
-                ),
+                child: FormfieldCnae(
+                  controller: informacaoEstabelecimentoController.cnaeController,
+                  onFieldLostFocus: () => _caregarCnae(informacaoEstabelecimentoController.cnaeController.text),
+                )
               ),
               SizedBox(width: 30),
               Expanded(

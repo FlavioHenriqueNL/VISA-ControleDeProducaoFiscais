@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:visa_arapiraca_app/data/dtos/ParecerDTO.dart';
 import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
 import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
@@ -116,7 +117,7 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
     );
 
     if(_formKey.currentState!.validate()){
-      Navigator.of(context).pop(parecerCompleto);
+      context.pop(parecerCompleto);
     }
 
   }

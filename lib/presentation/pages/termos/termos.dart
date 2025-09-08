@@ -40,7 +40,6 @@ class _TermosPageState extends State<TermosPage> {
                   style: botaoTermos,
                   onPressed: () {
                     context.go('/termos/${termo[1]}');
-                    Navigator.pushNamed(context, '/termos/${termo[1]}');
                   },
                   child: Text(termo[0], textAlign: TextAlign.center),
                 );

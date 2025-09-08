@@ -11,4 +11,30 @@ class CnaeRepository {
 
     return jsonList.map((item) => CnaeModel.fromJson(item)).toList();
   }
+
+
+
+  Future<Cnae?> getCnaeByID(String cnae) async{
+
+    /*  
+      TODO: Ver forma de fazer um DTO para CNAE 
+      para não precisar carregar 
+      (Categoria, nivelRisco e PBAObrigatorio);
+    */
+    
+    List<Cnae> listaCnaes = await carregarLocal();
+    final cnaeFiltrado = listaCnaes.where((e) => e.codigo == cnae);
+    if(cnaeFiltrado.isNotEmpty){
+      final cnaeEncontrado = cnaeFiltrado.first;
+      return Cnae(
+        codigo: cnaeEncontrado.codigo,
+        descricao: cnaeEncontrado.descricao,
+        categoria: cnaeEncontrado.categoria,
+        nivelRisco: cnaeEncontrado.nivelRisco,
+        pbaObrigatorio: cnaeEncontrado.pbaObrigatorio,
+      );
+    }else{
+      return null;
+    }
+  }
 }
