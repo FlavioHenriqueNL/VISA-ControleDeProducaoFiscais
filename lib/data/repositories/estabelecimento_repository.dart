@@ -5,14 +5,17 @@ import 'package:visa_arapiraca_app/data/models/estabelecimento_model.dart';
 import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
 
 class EstabelecimentoRepository {
-  
-  Future<Estabelecimento?> getEstabelecimentoByCpfCnpj(String cnpj) async{
+  Future<Estabelecimento?> getEstabelecimentoByCpfCnpj(String cnpj) async {
     print("Entrou na função com o valor: $cnpj");
-    final String jsonString = await rootBundle.loadString('/localData/estabelecimentos.json');
+    final String jsonString = await rootBundle.loadString(
+      '/localData/estabelecimentos.json',
+    );
     print("Imprimiu o json $jsonString");
     final List<dynamic> jsonList = json.decode(jsonString);
 
-    final List<EstabelecimentoModel> estabelecimentoList = jsonList.map((item) => EstabelecimentoModel.fromJson(item)).toList();
+    final List<EstabelecimentoModel> estabelecimentoList = jsonList
+        .map((item) => EstabelecimentoModel.fromJson(item))
+        .toList();
     print("Aqui já é ele convertodo pra Lista de Model $estabelecimentoList");
     for (var e in estabelecimentoList) {
       print('CNPJ: "${e.cpfCnpj}"');
@@ -20,11 +23,12 @@ class EstabelecimentoRepository {
     final modeloFiltrado = estabelecimentoList.where((e) => e.cpfCnpj == cnpj);
     print("Esse é o valor encontrado: $modeloFiltrado");
 
-    if(modeloFiltrado.isEmpty){
+    if (modeloFiltrado.isEmpty) {
       print("Retornou vazio por algum motivo.");
       return null;
-    }else{
+    } else {
       final estabelecimentoEncontrado = modeloFiltrado.first;
+      print(estabelecimentoEncontrado.cpfResponsavel);
       return Estabelecimento(
         numeroAlvara: estabelecimentoEncontrado.numeroAlvara,
         cpfCnpj: estabelecimentoEncontrado.cpfCnpj,
@@ -42,5 +46,4 @@ class EstabelecimentoRepository {
       );
     }
   }
-
 }
