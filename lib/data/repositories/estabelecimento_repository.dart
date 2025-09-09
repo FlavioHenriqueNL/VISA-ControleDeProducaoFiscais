@@ -8,7 +8,7 @@ class EstabelecimentoRepository {
   Future<Estabelecimento?> getEstabelecimentoByCpfCnpj(String cnpj) async {
     print("Entrou na função com o valor: $cnpj");
     final String jsonString = await rootBundle.loadString(
-      '/localData/estabelecimentos.json',
+      'assets/localData/estabelecimentos.json',
     );
     print("Imprimiu o json $jsonString");
     final List<dynamic> jsonList = json.decode(jsonString);
