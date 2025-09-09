@@ -4,7 +4,6 @@ import 'package:visa_arapiraca_app/core/utils/form_validators.dart';
 import 'package:visa_arapiraca_app/data/repositories/cnae_repository.dart';
 import 'package:visa_arapiraca_app/data/repositories/endereco_repository.dart';
 import 'package:visa_arapiraca_app/data/repositories/estabelecimento_repository.dart';
-import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_cep.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_cnae.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_cpfCnpj.dart';
@@ -62,7 +61,8 @@ class _IdentificacaoestabelecimentoFormWidgetState
           estabelecimentoPesquisado.cpfResponsavel;
       informacaoEstabelecimentoController.codigoConselhoController.text =
           estabelecimentoPesquisado.codigoConselho ?? "N/A";
-      _caregarCnae(estabelecimentoPesquisado.cnae);
+      _carregarCnae(estabelecimentoPesquisado.cnae);
+      _carregarCEP(estabelecimentoPesquisado.cep);
 
       setState(() {
         estabelecimentoExiste = true;
@@ -70,7 +70,7 @@ class _IdentificacaoestabelecimentoFormWidgetState
     }
   }
 
-  Future<void> _caregarCnae(String cnae) async {
+  Future<void> _carregarCnae(String cnae) async {
     try {
       final cnaeBuscado = await CnaeRepository().getCnaeByID(cnae);
       informacaoEstabelecimentoController.cnaeController.text =
@@ -84,6 +84,32 @@ class _IdentificacaoestabelecimentoFormWidgetState
       informacaoEstabelecimentoController.cnaeController.text = "";
     }
   }
+  Future<void> _carregarCEP(String cep) async {
+  cep = cep.replaceAll(RegExp(r'[^0-9]'), '');
+  final cepBuscado = await EnderecoRepository().getEnderecoByCEP(cep);
+
+  if (cepBuscado != null) {
+    informacaoEstabelecimentoController.cepController.text = cepBuscado.cep!;
+    informacaoEstabelecimentoController.logradouroController.text = cepBuscado.logradouro!;
+    informacaoEstabelecimentoController.bairroController.text = cepBuscado.bairro!;
+    informacaoEstabelecimentoController.cidadeController.text = cepBuscado.cidade!;
+  } else {
+    // CEP retornou mas sem dados suficientes
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text("Aviso"),
+        content: Text("Esse é um aviso dentro de um Dialog"),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text("Fechar"),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -161,16 +187,7 @@ class _IdentificacaoestabelecimentoFormWidgetState
               flex: 1,
               child: FormfieldCnae(
                 controller: informacaoEstabelecimentoController.cnaeController,
-                onFieldLostFocus: () => _caregarCnae(
-                  informacaoEstabelecimentoController.cnaeController.text,
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: FormfieldCnae(
-                controller: informacaoEstabelecimentoController.cnaeController,
-                onFieldLostFocus: () => EnderecoRepository().getEnderecoByCEP(
+                onFieldLostFocus: () => _carregarCnae(
                   informacaoEstabelecimentoController.cnaeController.text,
                 ),
               ),
@@ -198,6 +215,7 @@ class _IdentificacaoestabelecimentoFormWidgetState
               flex: 1,
               child: FormfieldCEP(
                 controller: informacaoEstabelecimentoController.cepController,
+                onFieldLostFocus: () => _carregarCEP(informacaoEstabelecimentoController.cepController.text),
               ),
             ),
             const SizedBox(width: 30),

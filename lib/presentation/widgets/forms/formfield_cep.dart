@@ -5,7 +5,8 @@ import 'package:visa_arapiraca_app/core/utils/form_validators.dart';
 
 class FormfieldCEP extends StatefulWidget {
   final TextEditingController? controller;
-  const FormfieldCEP({super.key, this.controller});
+  final VoidCallback? onFieldLostFocus;
+  const FormfieldCEP({super.key, this.controller, this.onFieldLostFocus});
 
   @override
   State<FormfieldCEP> createState() => _FormfieldCEPState();
@@ -14,11 +15,27 @@ class FormfieldCEP extends StatefulWidget {
 class _FormfieldCEPState extends State<FormfieldCEP> {
 
   late MaskTextInputFormatter maskFormatter;
+  late FocusNode _focusNode;
 
   @override
   void initState() {
     super.initState();
     maskFormatter = cepMask;
+
+    _focusNode = FocusNode();
+    _focusNode.addListener(() {
+      if (!_focusNode.hasFocus) {
+        // Quando perder foco, chama a função externa
+        if (widget.onFieldLostFocus != null) {
+          widget.onFieldLostFocus!();
+        }
+      }
+    });
+  }
+    @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
   }
 
   @override
@@ -32,7 +49,8 @@ class _FormfieldCEPState extends State<FormfieldCEP> {
       inputFormatters: [maskFormatter],
       readOnly: false,
       validator: (value) => validarCEP("CEP", value),
-      controller: widget.controller,
+      controller: widget.controller,     
+      focusNode: _focusNode,                                                                                   
     );
   }
 }
