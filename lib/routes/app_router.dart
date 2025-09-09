@@ -8,10 +8,12 @@ import 'package:visa_arapiraca_app/presentation/pages/login/login.dart';
 import 'package:visa_arapiraca_app/presentation/pages/producao/producao_diaria.dart';
 import 'package:visa_arapiraca_app/presentation/pages/recuperar_senha/recuperar_senha.dart';
 import 'package:visa_arapiraca_app/presentation/pages/termos/parecer-sanitario.dart';
+import 'package:visa_arapiraca_app/presentation/pages/termos/termo-inspecao.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/login',
   routes: [
+    GoRoute(path: '/', redirect: (context, state)=> '/dashboard'),
     GoRoute(path: '/login', builder: (context, state) => Login()),
     GoRoute(
       path: '/recuperar-acesso',
@@ -26,6 +28,7 @@ final GoRouter router = GoRouter(
           path: '/termos/parecer-sanitario',
           builder: (context, state) => ParecerSanitarioPage(),
         ),
+        GoRoute(path: '/termos/termo-inspecao', builder: (context, state) => TermoInspecaoPage()),
         GoRoute(path: '/producao', builder: (context, state) => ProducaoPage()),
         GoRoute(
           path: '/estabelecimentos',
