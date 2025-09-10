@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/forms/formControllers/informacaoEstabelecimentoController.dart';
 
-class Termodeinspecaocontroller {
+class TermoInspecaoController {
+  final Informacaoestabelecimentocontroller informacaoEstabelecimento;
   final dataInspecaoController = TextEditingController();
   final horaInspecaoController = TextEditingController();
   final objetoInspecao = TextEditingController();
@@ -8,6 +10,8 @@ class Termodeinspecaocontroller {
   final fundamentosLegais = TextEditingController();
   final fiscalResponsavel = TextEditingController();
   final matriculaFiscal = TextEditingController();
+
+  TermoInspecaoController() : informacaoEstabelecimento = Informacaoestabelecimentocontroller();
 
   void dispose(){
     dataInspecaoController.dispose();

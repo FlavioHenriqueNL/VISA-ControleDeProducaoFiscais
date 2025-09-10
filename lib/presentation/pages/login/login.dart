@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:visa_arapiraca_app/presentation/pages/cadastro/cadastro.dart';
 import 'package:visa_arapiraca_app/presentation/pages/recuperar_senha/recuperar_senha.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/scrollable_page.dart'; // ⬅️ importe o componente
+import 'package:visa_arapiraca_app/presentation/widgets/Componentes/scrollable_page.dart'; // ⬅️ importe o componente
 
 class Login extends StatefulWidget {
   const Login({super.key});

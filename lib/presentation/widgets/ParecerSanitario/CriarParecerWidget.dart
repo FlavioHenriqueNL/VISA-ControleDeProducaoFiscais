@@ -5,6 +5,7 @@ import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
 import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Controllers/ParecerTecnicoController.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Formulario/analiseTecnicaWidget.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/Termos/Componentes/DialogHeader.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Formulario/identificacaoEstabelecimento.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/scrollable_page.dart';
 
@@ -136,36 +137,10 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
           padding: EdgeInsets.symmetric(vertical: 25, horizontal: 20),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.add_chart_outlined,
-                        size: 40,
-                        color: Colors.blue,
-                      ),
-                      contentPadding: EdgeInsets.zero,
-                      title: Text(
-                        "Criar Parecer Sanitário",
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      subtitle: Text(
-                        "Preencha os campos abaixo para criar um novo parecer.",
-                        style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-                      ),
-                    ),
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.close),
-                    iconSize: 40,
-                    onPressed: () => Navigator.of(context).pop(),
-                  ),
-                ],
+              //Header 
+              DialogHeader(
+                headerTitle: "Criar Parecer sanitário", 
+                headerSubtitle: "Preencha os campos abaixo para criar um novo parecer."
               ),
               Divider(),
               SizedBox(height: 20),

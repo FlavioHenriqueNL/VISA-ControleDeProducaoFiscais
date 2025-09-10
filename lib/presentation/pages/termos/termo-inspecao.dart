@@ -3,6 +3,7 @@ import 'package:visa_arapiraca_app/data/dtos/ParecerDTO.dart';
 import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/CriarParecerWidget.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Preview/VisualizarDocumento.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/Termos/CriarTermoInspecaoWidget.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/scrollable_page.dart';
 
 class TermoInspecaoPage extends StatefulWidget {
@@ -63,7 +64,7 @@ class _TermoInspecaoPageState extends State<TermoInspecaoPage> {
                   onPressed: () async {
                     final ParecerDTO novoParecer = await showDialog(
                       context: context,
-                      builder: (context) => CriarParecerWidget(),
+                      builder: (context) => CriarTermoinspecaoWidget(),
                     );
 
                     print(novoParecer);

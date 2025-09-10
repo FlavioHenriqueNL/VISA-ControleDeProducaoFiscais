@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/models/producao/producao_model.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/accordion.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/Componentes/accordion.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/producao/producao_criacao_field.dart';
 
 class FieldAccordion extends StatelessWidget {
