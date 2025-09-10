@@ -7,7 +7,7 @@ import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Control
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Formulario/analiseTecnicaWidget.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Componentes/DialogHeader.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Formulario/identificacaoEstabelecimento.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/scrollable_page.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/Componentes/scrollable_page.dart';
 
 class CriarParecerWidget extends StatefulWidget {
   const CriarParecerWidget({super.key});
@@ -35,8 +35,14 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
   void salvarParecer() {
     final parecer = ParecerSanitario(
       id: "", // ID será gerado pelo backend
-      cnpj: parecerTecnicoController.informacaoEstabelecimento.cpfCnpjController.text,
-      razaoSocial: parecerTecnicoController.informacaoEstabelecimento.razaoSocialController.text,
+      cnpj: parecerTecnicoController
+          .informacaoEstabelecimento
+          .cpfCnpjController
+          .text,
+      razaoSocial: parecerTecnicoController
+          .informacaoEstabelecimento
+          .razaoSocialController
+          .text,
       data: DateTime.now(),
       numeroProcesso: parecerTecnicoController
           .informacaoEstabelecimento
@@ -57,7 +63,7 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
           .informacaoEstabelecimento
           .numeroProcessoController
           .text,
-        cpfCnpj: parecerTecnicoController
+      cpfCnpj: parecerTecnicoController
           .informacaoEstabelecimento
           .cpfCnpjController
           .text,
@@ -117,10 +123,9 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
       parecerSanitario: parecer,
     );
 
-    if(_formKey.currentState!.validate()){
+    if (_formKey.currentState!.validate()) {
       context.pop(parecerCompleto);
     }
-
   }
 
   final _formKey = GlobalKey<FormState>();
@@ -137,10 +142,11 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
           padding: EdgeInsets.symmetric(vertical: 25, horizontal: 20),
           child: Column(
             children: [
-              //Header 
+              //Header
               DialogHeader(
-                headerTitle: "Criar Parecer sanitário", 
-                headerSubtitle: "Preencha os campos abaixo para criar um novo parecer."
+                headerTitle: "Criar Parecer sanitário",
+                headerSubtitle:
+                    "Preencha os campos abaixo para criar um novo parecer.",
               ),
               Divider(),
               SizedBox(height: 20),
@@ -156,7 +162,7 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
                         // Identificação do Estabelecimento
                         IdentificacaoestabelecimentoFormWidget(
                           controller: parecerTecnicoController
-                              .informacaoEstabelecimento, 
+                              .informacaoEstabelecimento,
                         ),
                         SizedBox(height: 30),
                         // Análise Técnica

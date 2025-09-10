@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/scrollable_page.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/Componentes/scrollable_page.dart';
 
 class TermosPage extends StatefulWidget {
   const TermosPage({super.key});

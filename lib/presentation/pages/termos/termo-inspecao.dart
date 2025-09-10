@@ -4,7 +4,7 @@ import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/CriarParecerWidget.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Preview/VisualizarDocumento.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/CriarTermoInspecaoWidget.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/scrollable_page.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/Componentes/scrollable_page.dart';
 
 class TermoInspecaoPage extends StatefulWidget {
   const TermoInspecaoPage({super.key});

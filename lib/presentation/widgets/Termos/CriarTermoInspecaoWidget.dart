@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/Termos/Componentes/DialogFooter.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Componentes/DialogHeader.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Controllers/termodeinspecaoController.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Formulario/identificacaoEstabelecimento.dart';
@@ -9,13 +10,18 @@ class CriarTermoinspecaoWidget extends StatefulWidget {
   const CriarTermoinspecaoWidget({super.key});
 
   @override
-  State<CriarTermoinspecaoWidget> createState() => _CriarTermoinspecaoWidgetState();
+  State<CriarTermoinspecaoWidget> createState() =>
+      _CriarTermoinspecaoWidgetState();
 }
 
 class _CriarTermoinspecaoWidgetState extends State<CriarTermoinspecaoWidget> {
-  
-  final TermoInspecaoController termoInspecaoController = TermoInspecaoController(); 
+  final TermoInspecaoController termoInspecaoController =
+      TermoInspecaoController();
   final _formKey = GlobalKey<FormState>();
+
+  void salvar() {
+    print("Apenas pra saber se o botão foi acionado.");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,33 +36,38 @@ class _CriarTermoinspecaoWidgetState extends State<CriarTermoinspecaoWidget> {
           children: [
             DialogHeader(
               headerTitle: "Criar Termo de Inspeção",
-              headerSubtitle: "Preencha os campos abaixo para criar um novo Termo de Inspeção",
+              headerSubtitle:
+                  "Preencha os campos abaixo para criar um novo Termo de Inspeção",
             ),
-            Divider(height: 20),
+            Divider(height: 30),
 
-            Expanded(child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(horizontal: 30),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    // Identificação do Estabelecimento
-                    IdentificacaoestabelecimentoFormWidget(
-                      controller: termoInspecaoController.informacaoEstabelecimento
-                    ),
-                    SizedBox(height: 30),
-                    // Análise Técnica
-                    TermoinspecaoFormwidget(controller: termoInspecaoController)
-                  ],
+            Expanded(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      // Identificação do Estabelecimento
+                      IdentificacaoestabelecimentoFormWidget(
+                        controller:
+                            termoInspecaoController.informacaoEstabelecimento,
+                      ),
+                      SizedBox(height: 30),
+                      // Análise Técnica
+                      TermoinspecaoFormwidget(
+                        controller: termoInspecaoController,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ))
-
+            ),
+            Divider(height: 30),
+            DialogFooter(salvar: salvar),
           ],
         ),
-          
       ),
     );
-    
   }
 }

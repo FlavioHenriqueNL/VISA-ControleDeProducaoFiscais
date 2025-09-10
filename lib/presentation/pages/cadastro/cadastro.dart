@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/visa_app_bar.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/Componentes/visa_app_bar.dart';
 
-class Cadastro extends StatefulWidget{
+class Cadastro extends StatefulWidget {
   const Cadastro({super.key});
 
   @override
   State<Cadastro> createState() => _CadastroState();
 }
 
-class _CadastroState extends State<Cadastro>{
-
+class _CadastroState extends State<Cadastro> {
   late TextEditingController numeroMatricula;
   late TextEditingController nomeCompleto;
   late TextEditingController email;
   late TextEditingController senha;
- 
+
   @override
-  void initState(){
+  void initState() {
     super.initState();
     numeroMatricula = TextEditingController();
     nomeCompleto = TextEditingController();
@@ -37,24 +36,23 @@ class _CadastroState extends State<Cadastro>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: VisaAppBar(title: "Cadastro"),
-      body:
-        Container(
-          padding: EdgeInsets.fromLTRB(40, 120, 40, 120),
-          decoration: BoxDecoration(
-            color: Colors.lightBlueAccent
-          ),
-          child: 
-            Form(
+      body: Container(
+        padding: EdgeInsets.fromLTRB(40, 120, 40, 120),
+        decoration: BoxDecoration(color: Colors.lightBlueAccent),
+        child: Form(
           child: Column(
             children: [
-
               TextFormField(
                 autofocus: true,
                 decoration: InputDecoration(
                   labelText: "Número de Matrícula",
                   labelStyle: TextStyle(color: Colors.white, fontSize: 21),
-                  enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white, width: 1.5)),
-                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white, width: 1.5)),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white, width: 1.5),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white, width: 1.5),
+                  ),
                 ),
                 style: TextStyle(color: Colors.white, fontSize: 14),
                 controller: numeroMatricula,
@@ -68,8 +66,12 @@ class _CadastroState extends State<Cadastro>{
                 decoration: InputDecoration(
                   labelText: "Nome Completo",
                   labelStyle: TextStyle(color: Colors.white, fontSize: 21),
-                  enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white, width: 1.5)),
-                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white, width: 1.5)),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white, width: 1.5),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white, width: 1.5),
+                  ),
                 ),
                 style: TextStyle(color: Colors.white, fontSize: 14),
                 controller: numeroMatricula,
@@ -83,8 +85,12 @@ class _CadastroState extends State<Cadastro>{
                 decoration: InputDecoration(
                   labelText: "E-mail",
                   labelStyle: TextStyle(color: Colors.white, fontSize: 21),
-                  enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white, width: 1.5)),
-                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white, width: 1.5)),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white, width: 1.5),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white, width: 1.5),
+                  ),
                 ),
                 style: TextStyle(color: Colors.white, fontSize: 14),
                 controller: numeroMatricula,
@@ -98,8 +104,12 @@ class _CadastroState extends State<Cadastro>{
                 decoration: InputDecoration(
                   labelText: "Crie sua senha",
                   labelStyle: TextStyle(color: Colors.white, fontSize: 21),
-                  enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white, width: 1.5)),
-                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white, width: 1.5)),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white, width: 1.5),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white, width: 1.5),
+                  ),
                 ),
                 style: TextStyle(color: Colors.white, fontSize: 14),
                 controller: numeroMatricula,
@@ -113,8 +123,12 @@ class _CadastroState extends State<Cadastro>{
                 decoration: InputDecoration(
                   labelText: "Confirme a senha",
                   labelStyle: TextStyle(color: Colors.white, fontSize: 21),
-                  enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white, width: 1.5)),
-                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white, width: 1.5)),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white, width: 1.5),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white, width: 1.5),
+                  ),
                 ),
                 style: TextStyle(color: Colors.white, fontSize: 14),
                 controller: numeroMatricula,
@@ -123,8 +137,10 @@ class _CadastroState extends State<Cadastro>{
                 },
               ),
               SizedBox(height: 25),
-              
-              SizedBox(width: double.infinity, height: 50,
+
+              SizedBox(
+                width: double.infinity,
+                height: 50,
                 child: ElevatedButton(
                   onPressed: () {
                     print("Cadastrar.");
@@ -133,23 +149,25 @@ class _CadastroState extends State<Cadastro>{
                     backgroundColor: WidgetStateProperty.all(Colors.blueAccent),
                     shape: WidgetStateProperty.all(
                       RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(2)
-                      )
-                    )
-                  ), 
-                    
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                    ),
+                  ),
+
                   child: Text(
                     "Cadastrar",
                     style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold, fontSize: 19
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 19,
                     ),
-                  )
+                  ),
                 ),
-              )
+              ),
             ],
           ),
         ),
-      ),  
+      ),
     );
   }
 }
