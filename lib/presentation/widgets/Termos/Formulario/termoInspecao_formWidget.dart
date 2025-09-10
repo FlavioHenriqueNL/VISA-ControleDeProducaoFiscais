@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/core/utils/form_validators.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formControllers/termodeinspecaoController.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_datepicker.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_parecer.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_selector.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_timepicker.dart';
 
 class TermoinspecaoFormwidget extends StatefulWidget {
 
@@ -33,12 +35,17 @@ class _TermoinspecaoFormwidgetState extends State<TermoinspecaoFormwidget> {
                 validator: (value) => campoVazio("Data da inspeção", value),
               ), 
             ),
+            SizedBox(width: 25,),
             Expanded(
               flex: 1,
-              child: Text("Hora da inspeção")
+              child: FormfieldTimepicker(
+                fieldTitle: "Hora da inspeção", 
+                fieldController: widget.controller.horaInspecaoController
+              )
             ),
+            SizedBox(width: 25,),
             Expanded(
-              flex: 1,
+              flex: 5,
               child: FormfieldSelector(
                 fieldTitle: "Objeto da Inspeção", 
                 fieldController: widget.controller.objetoInspecao, 
@@ -52,8 +59,68 @@ class _TermoinspecaoFormwidgetState extends State<TermoinspecaoFormwidget> {
             )
           ],
         ),
-        //Objeto da inspeção
 
+        SizedBox(height: 25),
+        
+        SizedBox(
+          height: 200,
+          child: TextFormField(
+            controller: widget.controller.fatoInspecao,
+            maxLines: null,
+            expands: true,
+            keyboardType: TextInputType.multiline,
+            textAlignVertical: TextAlignVertical.top,
+            decoration: InputDecoration(
+              labelText: "Constatamos o seguinte:",
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+              border: OutlineInputBorder(),
+            ),
+            validator: (value) => null,
+          ),
+        ),
+
+        SizedBox(height: 25),
+
+        SizedBox(
+          height: 100,
+          child: TextFormField(
+            controller: widget.controller.fatoInspecao,
+            maxLines: null,
+            expands: true,
+            keyboardType: TextInputType.multiline,
+            textAlignVertical: TextAlignVertical.top,
+            decoration: InputDecoration(
+              labelText: "Fundamentos Legais",
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+              border: OutlineInputBorder(),
+            ),
+            validator: (value) => null,
+          ),
+        ),
+
+        SizedBox(height: 25),
+
+        Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: FormfieldParecer(
+                fieldTitle: "Fiscal Responsável", 
+                fieldController: widget.controller.fiscalResponsavel,
+                validator: (value) => campoVazio("Nome do fiscal", value),
+              )
+            ),
+            SizedBox(width: 25),
+            Expanded(
+              flex: 1,
+              child: FormfieldParecer(
+                fieldTitle: "Matricula do Fiscal", 
+                fieldController: widget.controller.matriculaFiscal,
+                validator: (value) => campoVazio("Matrícula do fiscal", value),
+              )
+            ),
+          ],
+        )
       ],
     ));
   }
