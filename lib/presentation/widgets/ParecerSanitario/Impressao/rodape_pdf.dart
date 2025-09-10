@@ -27,7 +27,7 @@ class PWRodapeParecer extends pw.StatelessWidget {
         ),
         pw.SizedBox(height: 50),
         pw.Text(
-          "Arapiraca, ${DateTime.now().day} de ${DateFormat('MMMM').format(DateTime.now())} de ${DateTime.now().year}",
+          "Arapiraca, ${DateTime.now().day} de ${DateFormat('MMMM', 'pt_BR').format(DateTime.now())} de ${DateTime.now().year}",
           style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold),
         ),
         pw.SizedBox(height: 10),

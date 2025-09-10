@@ -27,7 +27,7 @@ class RodapeParecer extends StatelessWidget {
         ),
         const SizedBox(height: 150),
         Text(
-          "Arapiraca, ${DateTime.now().day} de ${DateFormat('MMMM').format(DateTime.now())} de ${DateTime.now().year}",
+          "Arapiraca, ${DateTime.now().day} de ${DateFormat('MMMM','pt_BR').format(DateTime.now())} de ${DateTime.now().year}",
           style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 10),

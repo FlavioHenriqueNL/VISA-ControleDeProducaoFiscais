@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Preview/VisualizarDocumento.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Formulario/termoInspecao_formWidget.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formControllers/termodeinspecaoController.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(
@@ -10,6 +11,14 @@ void main() {
       home: Scaffold(
         body: TermoinspecaoFormwidget(controller: Termodeinspecaocontroller())
       ),
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate
+      ],
+      supportedLocales: const[
+        Locale('pt', 'BR')
+      ]
     ),
   );
 }
