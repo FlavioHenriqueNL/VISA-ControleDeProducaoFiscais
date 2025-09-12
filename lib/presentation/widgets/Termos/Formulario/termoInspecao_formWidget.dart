@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/core/utils/form_validators.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/Termos/Controllers/termodeinspecaoController.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/Termos/Controllers/termoInspecao_controller.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_datepicker.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_parecer.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_selector.dart';

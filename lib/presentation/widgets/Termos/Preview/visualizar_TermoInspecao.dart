@@ -17,7 +17,7 @@ class PreviewTermoInspecao extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pré-visualização do Parecer Sanitário'),
+        title: const Text('Pré-visualização do Termo de Inspeção'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(

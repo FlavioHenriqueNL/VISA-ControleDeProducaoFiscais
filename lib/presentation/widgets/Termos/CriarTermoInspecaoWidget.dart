@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
+import 'package:visa_arapiraca_app/domain/entities/termoInspecao.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Componentes/DialogFooter.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Componentes/DialogHeader.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/Termos/Controllers/termodeinspecaoController.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/Termos/Controllers/termoInspecao_controller.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Formulario/identificacaoEstabelecimento.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Formulario/termoInspecao_formWidget.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Componentes/scrollable_page.dart';
@@ -21,6 +23,40 @@ class _CriarTermoinspecaoWidgetState extends State<CriarTermoinspecaoWidget> {
 
   void salvar() {
     print("Apenas pra saber se o botão foi acionado.");
+    final estabelecimento = Estabelecimento(
+      numeroAlvara: termoInspecaoController.informacaoEstabelecimento.numeroProcessoController.text,
+      cpfCnpj: termoInspecaoController.informacaoEstabelecimento.cpfCnpjController.text,
+      razaoSocial: termoInspecaoController.informacaoEstabelecimento.razaoSocialController.text,
+      nomeFantasia: termoInspecaoController.informacaoEstabelecimento.nomeFantasiaController.text,
+      telefone: termoInspecaoController.informacaoEstabelecimento.telefoneController.text,
+      email: termoInspecaoController.informacaoEstabelecimento.emailController.text,
+      cnae: termoInspecaoController.informacaoEstabelecimento.cnaeController.text,
+      cep: termoInspecaoController.informacaoEstabelecimento.cepController.text,
+      numeroResidencia: termoInspecaoController.informacaoEstabelecimento.numeroResidenciaController.text,
+      complemento: termoInspecaoController.informacaoEstabelecimento.complementoController.text,
+      responsavel: termoInspecaoController.informacaoEstabelecimento.responsavelController.text,
+      cpfResponsavel: termoInspecaoController.informacaoEstabelecimento.cpfResponsavelController.text,
+      codigoConselho: 
+        termoInspecaoController.informacaoEstabelecimento.codigoConselhoController.text.isNotEmpty
+          ? 
+        termoInspecaoController.informacaoEstabelecimento.codigoConselhoController.text
+          : null,
+    );
+
+    final termoDeInspecao = TermoInspecao(
+      id: "", 
+      numeroProcesso: termoInspecaoController.informacaoEstabelecimento.numeroProcessoController.text, 
+      cnpj: termoInspecaoController.informacaoEstabelecimento.cpfCnpjController.text, 
+      razaoSocial: termoInspecaoController.informacaoEstabelecimento.razaoSocialController.text, 
+      cnaePrincipal: termoInspecaoController.informacaoEstabelecimento.cnaeController.text, 
+      data: DateTime.parse(termoInspecaoController.dataInspecaoController.text), 
+      hora: DateTime.parse(termoInspecaoController.horaInspecaoController.text),
+      objetoInspecao: termoInspecaoController.objetoInspecao.text,
+      fatoInspecao: termoInspecaoController.fatoInspecao.text,
+      fundamentosLegais: termoInspecaoController.fundamentosLegais.text,
+      fiscalResponsavel: termoInspecaoController.fiscalResponsavel.text,
+      matriculaFiscal: termoInspecaoController.matriculaFiscal.text
+    );
   }
 
   @override

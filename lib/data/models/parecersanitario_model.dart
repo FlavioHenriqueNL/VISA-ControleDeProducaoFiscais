@@ -11,7 +11,7 @@ class ParecerSanitarioModel {
   final DateTime data;
   final String validade;
   final String taxa;
-  final String cpfFiscal; // Identificador do fiscal responsável
+  final String matriculaFiscal; // Identificador do fiscal responsável
 
   ParecerSanitarioModel({
     required this.id,
@@ -24,7 +24,7 @@ class ParecerSanitarioModel {
     required this.analiseTecnica,
     required this.validade,
     required this.taxa,
-    required this.cpfFiscal,
+    required this.matriculaFiscal,
   });
 
   factory ParecerSanitarioModel.fromJson(Map<String, dynamic> json) {
@@ -39,7 +39,7 @@ class ParecerSanitarioModel {
       analiseTecnica: json['analiseTecnica'],
       validade: json['validade'],
       taxa: json['taxa'],
-      cpfFiscal: json['cpfFiscal'],
+      matriculaFiscal: json['matriculaFiscal'],
     );
   }
   Map<String, dynamic> toJson() {
@@ -54,7 +54,7 @@ class ParecerSanitarioModel {
       'analiseTecnica': analiseTecnica,
       'validade': validade,
       'taxa': taxa,
-      'cpfFiscal': cpfFiscal,
+      'matriculaFiscal': matriculaFiscal,
     };
   }
   ParecerSanitario toEntity() {
@@ -69,7 +69,7 @@ class ParecerSanitarioModel {
       analiseTecnica: analiseTecnica,
       validade: validade,
       taxa: taxa,
-      cpfFiscal: cpfFiscal,
+      matriculaFiscal: matriculaFiscal,
     );
   }
   factory ParecerSanitarioModel.fromEntity(ParecerSanitario entity) {
@@ -84,7 +84,7 @@ class ParecerSanitarioModel {
       analiseTecnica: entity.analiseTecnica,
       validade: entity.validade,
       taxa: entity.taxa,
-      cpfFiscal: entity.cpfFiscal,
+      matriculaFiscal: entity.matriculaFiscal,
     );
   }
 }

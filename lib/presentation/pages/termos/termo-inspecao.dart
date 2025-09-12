@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/data/dtos/ParecerDTO.dart';
 import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/CriarParecerWidget.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Preview/VisualizarDocumento.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/CriarParecerWidget.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/visualizar_ParecerSanitario.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/visualizar_TermoInspecao.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/CriarTermoInspecaoWidget.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Componentes/scrollable_page.dart';
 
@@ -46,14 +47,14 @@ class _TermoInspecaoPageState extends State<TermoInspecaoPage> {
                       color: Colors.blue,
                     ),
                     title: Text(
-                      'Termos e Pareceres',
+                      'Termo de inspeção',
                       style: TextStyle(
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     subtitle: Text(
-                      'Termo de inspeção',
+                      'Termos e Pareceres',
                       style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                     ),
                   ),

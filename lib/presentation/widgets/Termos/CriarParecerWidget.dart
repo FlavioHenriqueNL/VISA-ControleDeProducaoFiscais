@@ -55,7 +55,7 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
       analiseTecnica: parecerTecnicoController.parecerController.text,
       validade: parecerTecnicoController.validadeAlvaraController.text,
       taxa: parecerTecnicoController.taxaAlvaraController.text,
-      cpfFiscal: "10512310432", // Manter o CPF do fiscal existente
+      matriculaFiscal: "107363", // Manter o CPF do fiscal existente
     );
 
     final estabelecimento = Estabelecimento(
