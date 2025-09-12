@@ -1,6 +1,6 @@
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Impressao/loadImage.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/loadImage.dart';
 
 class PWCabecalhoParecer extends pw.StatelessWidget {
   final String? titulo;

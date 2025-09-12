@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Componentes/titulo_secao_pareceres.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Componentes/tituloSecao_termos.dart';
 
 class StackContainer extends StatefulWidget {
   final String title;

@@ -1,7 +1,7 @@
 import 'package:intl/intl.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Componentes/identificacaoField_pdf.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Componentes/identificacaoField_pdf.dart';
 
 class PWRodapeParecer extends pw.StatelessWidget {
   final ParecerSanitario parecerSanitario;

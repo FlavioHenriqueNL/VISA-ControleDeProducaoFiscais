@@ -1,5 +1,5 @@
 import 'package:pdf/widgets.dart' as pw;
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Componentes/stack_container_pdf.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Componentes/stack_container_pdf.dart';
 
 class PWAtividadesParecer extends pw.StatelessWidget {
   final Map<String, String> atividadePrincipal;

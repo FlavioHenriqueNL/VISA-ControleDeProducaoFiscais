@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Componentes/identificacaoField_pareceres.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Componentes/identificacaoField_preview.dart';
 
 class RodapeParecer extends StatelessWidget {
   final ParecerSanitario parecerSanitario;

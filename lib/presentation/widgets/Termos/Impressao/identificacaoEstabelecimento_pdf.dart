@@ -1,98 +1,98 @@
-import 'package:flutter/material.dart';
+import 'package:pdf/widgets.dart' as pw;
 import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Componentes/identificacaoField_pareceres.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Componentes/stack_container.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Componentes/identificacaoField_pdf.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Componentes/stack_container_pdf.dart';
 
-class IdentificacaoEstabelecimentoParecer extends StatelessWidget {
+class PWIdentificacaoEstabelecimentoParecer extends pw.StatelessWidget {
   final Estabelecimento estabelecimento;
   final String? numeroProcesso;
-  const IdentificacaoEstabelecimentoParecer({
+
+  PWIdentificacaoEstabelecimentoParecer({
     required this.estabelecimento,
     this.numeroProcesso,
-    super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
-    return StackContainer(
+  pw.Widget build(pw.Context context) {
+    return PWStackContainer(
       title: "Identificação do Estabelecimento",
-      child: Column(
+      child: pw.Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          pw.Row(
+            mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                child: IdentificacaoField(
+              pw.Expanded(
+                child: PWIdentificacaoField(
                   field: "CNPJ ou CPF:",
                   value: estabelecimento.cpfCnpj,
                 ),
               ),
-              Expanded(
-                child: IdentificacaoField(
+              pw.Expanded(
+                child: PWIdentificacaoField(
                   field: "Número do Processo",
-                  value: estabelecimento.numeroAlvara ?? "N/A",
+                  value: numeroProcesso,
                 ),
               ),
             ],
           ),
-          SizedBox(height: 5),
-          IdentificacaoField(
+          pw.SizedBox(height: 5),
+          PWIdentificacaoField(
             field: "Razão Social:",
             value: estabelecimento.razaoSocial,
           ),
-          SizedBox(height: 5),
-          IdentificacaoField(
+          pw.SizedBox(height: 5),
+          PWIdentificacaoField(
             field: "Nome Fantasia:",
             value: estabelecimento.nomeFantasia,
           ),
 
-          SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          pw.SizedBox(height: 10),
+          pw.Row(
+            mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                child: IdentificacaoField(
+              pw.Expanded(
+                child: PWIdentificacaoField(
                   field: "CEP:",
                   value: estabelecimento.cep,
                 ),
               ),
-              Expanded(child: IdentificacaoField(field: "Endereço:")),
+              pw.Expanded(child: PWIdentificacaoField(field: "Endereço:")),
             ],
           ),
-          SizedBox(height: 5),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          pw.SizedBox(height: 5),
+          pw.Row(
+            mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                child: IdentificacaoField(
+              pw.Expanded(
+                child: PWIdentificacaoField(
                   field: "Telefone:",
                   value: estabelecimento.telefone,
                 ),
               ),
-              Expanded(
-                child: IdentificacaoField(
+              pw.Expanded(
+                child: PWIdentificacaoField(
                   field: "E-mail:",
                   value: estabelecimento.email,
                 ),
               ),
             ],
           ),
-          SizedBox(height: 10),
-          IdentificacaoField(
+          pw.SizedBox(height: 10),
+          PWIdentificacaoField(
             field: "Responsável:",
             value: estabelecimento.responsavel,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          pw.Row(
+            mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                child: IdentificacaoField(
+              pw.Expanded(
+                child: PWIdentificacaoField(
                   field: "CPF do Responsável:",
                   value: estabelecimento.cpfResponsavel,
                 ),
               ),
-              Expanded(
-                child: IdentificacaoField(
+              pw.Expanded(
+                child: PWIdentificacaoField(
                   field: "Código do Conselho:",
                   value: estabelecimento.codigoConselho ?? "N/A",
                 ),

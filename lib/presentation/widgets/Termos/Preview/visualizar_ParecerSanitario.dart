@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:printing/printing.dart';
 import 'package:visa_arapiraca_app/data/dtos/ParecerDTO.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Impressao/GerarParecer.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Preview/analisetecnica_pareceres.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Preview/atividades_pareceres.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Preview/cabecalho_pareceres.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Preview/identificacaoestabelecimento_pareceres.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Preview/rodape_pareceres.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/GerarParecer.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/analisetecnica_pareceres.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/atividades_pareceres.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/cabecalho_pareceres.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/identificacaoestabelecimento_pareceres.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/rodape_pareceres.dart';
 
 class PreviewParecerSanitario extends StatelessWidget {
   final ParecerDTO parecerSanitario;

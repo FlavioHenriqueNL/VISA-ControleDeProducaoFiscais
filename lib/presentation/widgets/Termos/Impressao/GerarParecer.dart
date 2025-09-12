@@ -2,11 +2,11 @@ import 'dart:typed_data';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/pdf.dart';
 import 'package:visa_arapiraca_app/data/dtos/ParecerDTO.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Impressao/analisetecnica_pdf.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Impressao/atividades_pdf.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Impressao/cabecalho_pdf.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Impressao/identificacaoEstabelecimento_pdf.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/ParecerSanitario/Impressao/rodape_pdf.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/analisetecnica_pdf.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/atividades_pdf.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/cabecalho_pdf.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/identificacaoEstabelecimento_pdf.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/rodape_pdf.dart';
 
 Future<Uint8List> generateDocument(ParecerDTO parecerSanitario) async {
   final pdf = pw.Document();

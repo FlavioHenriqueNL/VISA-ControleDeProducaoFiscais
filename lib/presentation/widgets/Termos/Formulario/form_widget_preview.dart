@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/forms/formControllers/informacaoEstabelecimentoController.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/Termos/Formulario/identificacaoEstabelecimento.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Controllers/parecerTecnico_controller.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Formulario/analiseTecnicaWidget.dart';
 
 void main() {
   
@@ -13,8 +13,8 @@ void main() {
             padding: const EdgeInsets.all(16.0),
             child: Form(
               key: GlobalKey<FormState>(),
-              child: IdentificacaoestabelecimentoFormWidget(
-                controller: Informacaoestabelecimentocontroller(),
+              child: AnaliseTecnicaForm(
+                controller: ParecerTecnicoController(),
               ),
             )
           ),
