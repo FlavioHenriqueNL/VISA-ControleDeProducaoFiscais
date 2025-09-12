@@ -1,27 +1,29 @@
-class ParecerSanitario {
+class TermoInspecao {
   final String id;
   final String cnpj;
   final String razaoSocial;
   final String numeroProcesso;
   final String cnaePrincipal;
   final List<String>? cnaesSecundarios;
-  final String analiseTecnica;
-  final DateTime data;
-  final String validade;
-  final String taxa;
+  final DateTime dataCompleta;
+  final String objetoInspecao;
+  final String fatoInspecao;
+  final String fundamentosLegais;
   final String matriculaFiscal; // Identificador do fiscal responsável
+  final String fiscalResponsavel;
 
-  ParecerSanitario({
+  TermoInspecao({
     required this.id,
     required this.cnpj,
     required this.razaoSocial,
-    required this.data,
     required this.numeroProcesso,
     required this.cnaePrincipal,
     this.cnaesSecundarios,
-    required this.analiseTecnica,
-    required this.validade,
-    required this.taxa,
+    required this.dataCompleta,
+    required this.objetoInspecao,
+    required this.fatoInspecao,
+    required this.fundamentosLegais,
+    required this.fiscalResponsavel,
     required this.matriculaFiscal,
   });
 }
