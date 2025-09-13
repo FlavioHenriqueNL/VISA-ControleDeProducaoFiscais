@@ -23,24 +23,37 @@ class _AtividadesParecerState extends State<AtividadesParecer> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "Atividade Principal",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          Row(
+            children: [
+              Text(
+            "Atividade Principal: ",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           ),
           Text(
             "${widget.atividadePrincipal.entries.first.key} - ${widget.atividadePrincipal.entries.first.value}",
-            style: TextStyle(fontSize: 14),
+            style: TextStyle(fontSize: 16),
           ),
-          SizedBox(height: 15),
-          Text(
-            "Atividades Secundárias",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ],
           ),
-          if (widget.atividadesSecundarias?.isNotEmpty ?? false)
-            ...widget.atividadesSecundarias!.map((item) {
-              var entry = item.entries.first;
-              return Text("${entry.key} - ${entry.value}");
-            }),
+
+
+          if (widget.atividadesSecundarias?.isNotEmpty ?? false) 
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 15),
+                Text(
+                  "Atividades Secundárias",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                ...widget.atividadesSecundarias!.map(
+                  (item) => Text(
+                    "${item.entries.first.key} - ${item.entries.first.value}",
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+              ],
+            )
         ],
       ),
     );
