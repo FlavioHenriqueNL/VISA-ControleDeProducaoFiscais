@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/VisualizarDocumento.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/Termos/Formulario/termoInspecao_formWidget.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/Termos/Controllers/termodeinspecaoController.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/assinaturas_termo.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/info_termoInspecao.dart';
 
 void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: TermoinspecaoFormwidget(controller: TermoInspecaoController())
+        body: Column(
+          children: [
+            InfoTermoInspecao(),
+            AssinaturasTermo()
+          ],
+        )
       ),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,

@@ -75,7 +75,7 @@ class _TermoinspecaoFormwidgetState extends State<TermoinspecaoFormwidget> {
               floatingLabelBehavior: FloatingLabelBehavior.always,
               border: OutlineInputBorder(),
             ),
-            validator: (value) => null,
+            validator: (value) => campoVazio("Fato da Inspeção", value),
           ),
         ),
 
@@ -84,7 +84,7 @@ class _TermoinspecaoFormwidgetState extends State<TermoinspecaoFormwidget> {
         SizedBox(
           height: 100,
           child: TextFormField(
-            controller: widget.controller.fatoInspecao,
+            controller: widget.controller.fundamentosLegais,
             maxLines: null,
             expands: true,
             keyboardType: TextInputType.multiline,

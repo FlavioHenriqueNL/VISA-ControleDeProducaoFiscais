@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/data/dtos/ParecerDTO.dart';
+import 'package:visa_arapiraca_app/data/dtos/TermoInspecaoDTO.dart';
 import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/CriarParecerWidget.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/visualizar_ParecerSanitario.dart';
@@ -63,25 +64,23 @@ class _TermoInspecaoPageState extends State<TermoInspecaoPage> {
                 ElevatedButton.icon(
                   // ignore: avoid_print
                   onPressed: () async {
-                    final ParecerDTO novoParecer = await showDialog(
+                    final TermoInspecaoDTO novoTermo = await showDialog(
                       context: context,
                       builder: (context) => CriarTermoinspecaoWidget(),
                     );
 
-                    print(novoParecer);
+                    print(novoTermo);
 
-                    if (novoParecer != null) {
+                    if (novoTermo != null) {
                       print(
-                        "Novo parecer criado: ${novoParecer.parecerSanitario.numeroProcesso} - ${novoParecer.parecerSanitario.cnpj}",
+                        "Novo parecer criado: ${novoTermo.estabelecimento.numeroAlvara} - ${novoTermo.estabelecimento.cpfCnpj}",
                       );
                     }
 
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PreviewParecerSanitario(
-                          parecerSanitario: novoParecer,
-                        ),
+                        builder: (context) => PreviewTermoInspecao(termoInspecao: novoTermo)
                       ),
                     );
                   },

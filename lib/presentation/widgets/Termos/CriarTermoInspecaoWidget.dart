@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:visa_arapiraca_app/data/dtos/TermoInspecaoDTO.dart';
 import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
 import 'package:visa_arapiraca_app/domain/entities/termoInspecao.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Componentes/DialogFooter.dart';
@@ -43,20 +45,34 @@ class _CriarTermoinspecaoWidgetState extends State<CriarTermoinspecaoWidget> {
           : null,
     );
 
+    String dataInspecao = termoInspecaoController.dataInspecaoController.text;
+    String horaInspecao = termoInspecaoController.horaInspecaoController.text;
+    DateTime dataCompletaInspecao = DateTime.parse("$dataInspecao $horaInspecao");
+    
+    print(dataCompletaInspecao);
+
     final termoDeInspecao = TermoInspecao(
       id: "", 
       numeroProcesso: termoInspecaoController.informacaoEstabelecimento.numeroProcessoController.text, 
       cnpj: termoInspecaoController.informacaoEstabelecimento.cpfCnpjController.text, 
       razaoSocial: termoInspecaoController.informacaoEstabelecimento.razaoSocialController.text, 
       cnaePrincipal: termoInspecaoController.informacaoEstabelecimento.cnaeController.text, 
-      data: DateTime.parse(termoInspecaoController.dataInspecaoController.text), 
-      hora: DateTime.parse(termoInspecaoController.horaInspecaoController.text),
+      dataCompleta: dataCompletaInspecao,
       objetoInspecao: termoInspecaoController.objetoInspecao.text,
       fatoInspecao: termoInspecaoController.fatoInspecao.text,
       fundamentosLegais: termoInspecaoController.fundamentosLegais.text,
       fiscalResponsavel: termoInspecaoController.fiscalResponsavel.text,
       matriculaFiscal: termoInspecaoController.matriculaFiscal.text
     );
+
+    final termoDTO = TermoInspecaoDTO(
+      estabelecimento: estabelecimento,
+      termoInspecao: termoDeInspecao,
+    );
+
+    if (_formKey.currentState!.validate()) {
+      context.pop(termoDTO);
+    }
   }
 
   @override
