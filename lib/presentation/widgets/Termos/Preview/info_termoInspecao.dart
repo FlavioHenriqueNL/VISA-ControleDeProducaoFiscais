@@ -23,17 +23,26 @@ class InfoTermoInspecao extends StatelessWidget {
  
   @override
   Widget build(BuildContext context) {
-    return StackContainer(title: "Fato da ação", 
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text("Aos $dia do mês de $mes do ano de $ano, às $hora, no exercício da FISCALIZAÇÃO SANITÁRIA, foi realizado inspeção em ${termo.objetoInspecao} constatamos o seguinte: \n"),
-          Text(termo.fatoInspecao),
-          SizedBox(height: 10),
-          Text("Fatos e decisões fundamentadas nos seguintes dispositivos legais e/ou regulamentos: \n"),
-          termo.fundamentosLegais.isEmpty ? Text("Nenhum fundamento legal registrado") : Text(termo.fundamentosLegais),
-        ],
-      )
+    return Column(
+      children: [
+        StackContainer(title: "Fato da ação", 
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Aos $dia do mês de $mes do ano de $ano, às $hora, no exercício da FISCALIZAÇÃO SANITÁRIA, foi realizado inspeção em ${termo.objetoInspecao} constatamos o seguinte:",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+              ),
+              Text(termo.fatoInspecao, style: TextStyle(fontSize: 16), textAlign: TextAlign.justify,),
+            ],
+          )
+        ),
+        SizedBox(height: 25,),
+
+        StackContainer(title: "Fatos e decisões fundamentadas nos seguintes dispositivos legais e/ou regulamentos:", 
+          child: termo.fundamentosLegais.isEmpty ? Text("Nenhum fundamento legal registrado") : Text(termo.fundamentosLegais, style: TextStyle(fontSize: 16)),
+        )
+      ],
     );
   }
 }
