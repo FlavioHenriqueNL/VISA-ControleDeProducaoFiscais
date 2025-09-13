@@ -48,11 +48,12 @@ class PreviewTermoInspecao extends StatelessWidget {
                     const SizedBox(height: 40),
                     IdentificacaoEstabelecimentoParecer(
                       estabelecimento: termoInspecao.estabelecimento,
+                      endereco: termoInspecao.endereco,
                     ),
                     const SizedBox(height: 30),
                     AtividadesParecer(
                       atividadePrincipal: {
-                        termoInspecao.estabelecimento.cnae: "",
+                        termoInspecao.cnae.codigo : termoInspecao.cnae.descricao,
                       },
                       
                     ),

@@ -45,11 +45,12 @@ class PreviewParecerSanitario extends StatelessWidget {
                     const SizedBox(height: 40),
                     IdentificacaoEstabelecimentoParecer(
                       estabelecimento: parecerSanitario.estabelecimento,
+                      endereco: parecerSanitario.endereco,
                     ),
                     const SizedBox(height: 30),
                     AtividadesParecer(
                       atividadePrincipal: {
-                        parecerSanitario.estabelecimento.cnae: "",
+                        parecerSanitario.cnae.codigo : parecerSanitario.cnae.descricao,
                       },
                     ),
                     const SizedBox(height: 30),

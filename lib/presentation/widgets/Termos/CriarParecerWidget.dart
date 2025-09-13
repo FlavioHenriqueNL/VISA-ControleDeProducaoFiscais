@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:visa_arapiraca_app/data/dtos/CnaeDTO.dart';
+import 'package:visa_arapiraca_app/data/dtos/EnderecoDTO.dart';
 import 'package:visa_arapiraca_app/data/dtos/ParecerDTO.dart';
 import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
 import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/forms/formControllers/informacaoEstabelecimentoController.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Controllers/parecerTecnico_controller.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Formulario/analiseTecnicaWidget.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Componentes/DialogHeader.dart';
@@ -35,91 +38,25 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
   void salvarParecer() {
     final parecer = ParecerSanitario(
       id: "", // ID será gerado pelo backend
-      cnpj: parecerTecnicoController
-          .informacaoEstabelecimento
-          .cpfCnpjController
-          .text,
-      razaoSocial: parecerTecnicoController
-          .informacaoEstabelecimento
-          .razaoSocialController
-          .text,
+      cnpj: parecerTecnicoController.informacaoEstabelecimento.cpfCnpjController.text,
+      razaoSocial: parecerTecnicoController.informacaoEstabelecimento.razaoSocialController.text,
       data: DateTime.now(),
-      numeroProcesso: parecerTecnicoController
-          .informacaoEstabelecimento
-          .numeroProcessoController
-          .text,
-      cnaePrincipal: parecerTecnicoController
-          .informacaoEstabelecimento
-          .cnaeController
-          .text,
+      numeroProcesso: parecerTecnicoController.informacaoEstabelecimento.numeroProcessoController.text,
+      cnaePrincipal: parecerTecnicoController.informacaoEstabelecimento.cnaeController.text,
       analiseTecnica: parecerTecnicoController.parecerController.text,
       validade: parecerTecnicoController.validadeAlvaraController.text,
       taxa: parecerTecnicoController.taxaAlvaraController.text,
       matriculaFiscal: "107363", // Manter o CPF do fiscal existente
     );
 
-    final estabelecimento = Estabelecimento(
-      numeroAlvara: parecerTecnicoController
-          .informacaoEstabelecimento
-          .numeroProcessoController
-          .text,
-      cpfCnpj: parecerTecnicoController
-          .informacaoEstabelecimento
-          .cpfCnpjController
-          .text,
-      razaoSocial: parecerTecnicoController
-          .informacaoEstabelecimento
-          .razaoSocialController
-          .text,
-      nomeFantasia: parecerTecnicoController
-          .informacaoEstabelecimento
-          .nomeFantasiaController
-          .text,
-      telefone: parecerTecnicoController
-          .informacaoEstabelecimento
-          .telefoneController
-          .text,
-      email: parecerTecnicoController
-          .informacaoEstabelecimento
-          .emailController
-          .text,
-      cnae: parecerTecnicoController
-          .informacaoEstabelecimento
-          .cnaeController
-          .text,
-      cep:
-          parecerTecnicoController.informacaoEstabelecimento.cepController.text,
-      numeroResidencia: parecerTecnicoController
-          .informacaoEstabelecimento
-          .numeroResidenciaController
-          .text,
-      complemento: parecerTecnicoController
-          .informacaoEstabelecimento
-          .complementoController
-          .text,
-      responsavel: parecerTecnicoController
-          .informacaoEstabelecimento
-          .responsavelController
-          .text,
-      cpfResponsavel: parecerTecnicoController
-          .informacaoEstabelecimento
-          .cpfResponsavelController
-          .text,
-      codigoConselho:
-          parecerTecnicoController
-              .informacaoEstabelecimento
-              .codigoConselhoController
-              .text
-              .isNotEmpty
-          ? parecerTecnicoController
-                .informacaoEstabelecimento
-                .codigoConselhoController
-                .text
-          : null,
-    );
+    final estabelecimento = parecerTecnicoController.informacaoEstabelecimento.toEntity();
+    final cnaeCompleto = parecerTecnicoController.informacaoEstabelecimento.toCnaeDTO();
+    final enderecoCompleto = parecerTecnicoController.informacaoEstabelecimento.toEnderecoDTO();
 
     final parecerCompleto = ParecerDTO(
       estabelecimento: estabelecimento,
+      cnae: cnaeCompleto,
+      endereco: enderecoCompleto,
       parecerSanitario: parecer,
     );
 

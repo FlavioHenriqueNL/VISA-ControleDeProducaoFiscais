@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:visa_arapiraca_app/data/dtos/TermoInspecaoDTO.dart';
+import 'package:visa_arapiraca_app/domain/entities/cnae.dart';
 import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
 import 'package:visa_arapiraca_app/domain/entities/termoInspecao.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Componentes/DialogFooter.dart';
@@ -9,6 +10,7 @@ import 'package:visa_arapiraca_app/presentation/widgets/Termos/Controllers/termo
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Formulario/identificacaoEstabelecimento.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/Formulario/termoInspecao_formWidget.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Componentes/scrollable_page.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/forms/formControllers/informacaoEstabelecimentoController.dart';
 
 class CriarTermoinspecaoWidget extends StatefulWidget {
   const CriarTermoinspecaoWidget({super.key});
@@ -25,25 +27,10 @@ class _CriarTermoinspecaoWidgetState extends State<CriarTermoinspecaoWidget> {
 
   void salvar() {
     print("Apenas pra saber se o botão foi acionado.");
-    final estabelecimento = Estabelecimento(
-      numeroAlvara: termoInspecaoController.informacaoEstabelecimento.numeroProcessoController.text,
-      cpfCnpj: termoInspecaoController.informacaoEstabelecimento.cpfCnpjController.text,
-      razaoSocial: termoInspecaoController.informacaoEstabelecimento.razaoSocialController.text,
-      nomeFantasia: termoInspecaoController.informacaoEstabelecimento.nomeFantasiaController.text,
-      telefone: termoInspecaoController.informacaoEstabelecimento.telefoneController.text,
-      email: termoInspecaoController.informacaoEstabelecimento.emailController.text,
-      cnae: termoInspecaoController.informacaoEstabelecimento.cnaeController.text,
-      cep: termoInspecaoController.informacaoEstabelecimento.cepController.text,
-      numeroResidencia: termoInspecaoController.informacaoEstabelecimento.numeroResidenciaController.text,
-      complemento: termoInspecaoController.informacaoEstabelecimento.complementoController.text,
-      responsavel: termoInspecaoController.informacaoEstabelecimento.responsavelController.text,
-      cpfResponsavel: termoInspecaoController.informacaoEstabelecimento.cpfResponsavelController.text,
-      codigoConselho: 
-        termoInspecaoController.informacaoEstabelecimento.codigoConselhoController.text.isNotEmpty
-          ? 
-        termoInspecaoController.informacaoEstabelecimento.codigoConselhoController.text
-          : null,
-    );
+    
+    final estabelecimento = termoInspecaoController.informacaoEstabelecimento.toEntity();
+    final endereco = termoInspecaoController.informacaoEstabelecimento.toEnderecoDTO();
+    final atividade = termoInspecaoController.informacaoEstabelecimento.toCnaeDTO();
 
     String dataInspecao = termoInspecaoController.dataInspecaoController.text;
     String horaInspecao = termoInspecaoController.horaInspecaoController.text;
@@ -65,8 +52,11 @@ class _CriarTermoinspecaoWidgetState extends State<CriarTermoinspecaoWidget> {
       matriculaFiscal: termoInspecaoController.matriculaFiscal.text
     );
 
+
     final termoDTO = TermoInspecaoDTO(
       estabelecimento: estabelecimento,
+      cnae: atividade,
+      endereco: endereco,
       termoInspecao: termoDeInspecao,
     );
 

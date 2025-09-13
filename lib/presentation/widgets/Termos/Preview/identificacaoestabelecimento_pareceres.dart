@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:visa_arapiraca_app/data/dtos/CnaeDTO.dart';
+import 'package:visa_arapiraca_app/data/dtos/EnderecoDTO.dart';
 import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Componentes/identificacaoField_preview.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Componentes/stack_container.dart';
 
 class IdentificacaoEstabelecimentoParecer extends StatelessWidget {
+  
   final Estabelecimento estabelecimento;
+  final EnderecoDTO endereco;
   final String? numeroProcesso;
+  
   const IdentificacaoEstabelecimentoParecer({
     required this.estabelecimento,
+    required this.endereco,
     this.numeroProcesso,
     super.key,
   });
@@ -53,10 +59,13 @@ class IdentificacaoEstabelecimentoParecer extends StatelessWidget {
               Expanded(
                 child: IdentificacaoField(
                   field: "CEP:",
-                  value: estabelecimento.cep,
+                  value: endereco.cep,
                 ),
               ),
-              Expanded(child: IdentificacaoField(field: "Endereço:")),
+              Expanded(child: IdentificacaoField(
+                field: "Endereço:",
+                value: "${endereco.logradouro}, ${endereco.numeroResidencia},${endereco.bairro}"
+              )),
             ],
           ),
           SizedBox(height: 5),

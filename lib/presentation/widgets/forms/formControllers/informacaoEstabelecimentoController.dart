@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:visa_arapiraca_app/data/dtos/CnaeDTO.dart';
+import 'package:visa_arapiraca_app/data/dtos/EnderecoDTO.dart';
+import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
 
 class Informacaoestabelecimentocontroller {
   // Identificação e contato do estabelecimento
@@ -41,5 +44,44 @@ class Informacaoestabelecimentocontroller {
     responsavelController.dispose();
     cpfResponsavelController.dispose();
     codigoConselhoController.dispose();
+  }
+}
+extension InformacaoEstabelecimentoMapper on Informacaoestabelecimentocontroller{
+  Estabelecimento toEntity(){
+    return Estabelecimento(
+      numeroAlvara: numeroProcessoController.text,
+      cpfCnpj: cpfCnpjController.text,
+      razaoSocial: razaoSocialController.text,
+      nomeFantasia: nomeFantasiaController.text,
+      telefone: telefoneController.text,
+      email: emailController.text,
+      cnae: cnaeController.text,
+      cep: cepController.text,
+      numeroResidencia: numeroResidenciaController.text,
+      complemento: complementoController.text,
+      responsavel: responsavelController.text,
+      cpfResponsavel: cpfResponsavelController.text,
+      codigoConselho:
+        codigoConselhoController.text.isNotEmpty
+        ? codigoConselhoController.text
+        : null,
+    );
+  }
+  CnaeDTO toCnaeDTO() {
+    return CnaeDTO(
+      codigo: cnaeController.text,
+      descricao: cnaeDescricaoController.text,
+    );
+  }
+
+  EnderecoDTO toEnderecoDTO() {
+    return EnderecoDTO(
+      cep: cepController.text,
+      numeroResidencia: numeroResidenciaController.text,
+      logradouro: logradouroController.text,
+      complemento: complementoController.text,
+      bairro: bairroController.text,
+      cidade: cidadeController.text,
+    );
   }
 }
