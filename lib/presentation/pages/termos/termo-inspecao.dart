@@ -85,7 +85,7 @@ class _TermoInspecaoPageState extends State<TermoInspecaoPage> {
                     );
                   },
                   icon: Icon(Icons.add_box_outlined, color: Colors.white),
-                  label: Text('Adicionar Parecer'),
+                  label: Text('Criar Novo Termo'),
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                     textStyle: TextStyle(
@@ -111,16 +111,16 @@ class _TermoInspecaoPageState extends State<TermoInspecaoPage> {
             SizedBox(height: 60),
 
             Text(
-              "Seus últimos pareceres",
+              "Suas últimas Inspeções",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             Text(
-              "Gerencie e visualize os pareceres emitidos recentemente.",
+              "Gerencie e visualize os termos de inspeção emitidos recentemente.",
               style: TextStyle(fontSize: 16, color: Colors.grey[800]),
             ),
             SizedBox(height: 30),
             Text(
-              "Lista de pareceres (em desenvolvimento)...",
+              "Lista de Inspeções (em desenvolvimento)...",
               style: TextStyle(fontSize: 16, color: Colors.grey[800]),
             ),
           ],

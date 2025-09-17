@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:printing/printing.dart';
-import 'package:visa_arapiraca_app/data/dtos/ParecerDTO.dart';
 import 'package:visa_arapiraca_app/data/dtos/TermoInspecaoDTO.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/GerarParecer.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/analisetecnica_pareceres.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/assinaturas_termo.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/atividades_pareceres.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/gerar_termoInspecao.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/cabecalho_pareceres.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/identificacaoestabelecimento_pareceres.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/atividades_pareceres.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/info_termoInspecao.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/rodape_pareceres.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/assinaturas_termo.dart';
+
 
 class PreviewTermoInspecao extends StatelessWidget {
   final TermoInspecaoDTO termoInspecao;
@@ -44,27 +42,27 @@ class PreviewTermoInspecao extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    CabecalhoParecer(),
+                    CabecalhoParecer(titulo: "Termo de Inspeção",),
                     const SizedBox(height: 40),
+
                     IdentificacaoEstabelecimentoParecer(
                       estabelecimento: termoInspecao.estabelecimento,
                       endereco: termoInspecao.endereco,
                     ),
                     const SizedBox(height: 30),
-                    AtividadesParecer(
-                      atividadePrincipal: {
+
+                    AtividadesParecer(atividadePrincipal: {
                         termoInspecao.cnae.codigo : termoInspecao.cnae.descricao,
-                      },
-                      
-                    ),
+                    }),
                     const SizedBox(height: 30),
+
                     InfoTermoInspecao(termo: termoInspecao.termoInspecao,),
                     const SizedBox(height: 75),
+
                     AssinaturasTermo(
                       fiscalResponsavel: termoInspecao.termoInspecao.fiscalResponsavel, 
                       matriculaFiscal: termoInspecao.termoInspecao.matriculaFiscal,
                     )
-                    
                   ],
                 ),
               ),
@@ -73,11 +71,10 @@ class PreviewTermoInspecao extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => {},
-        // onPressed: () async {
-        //   final pdfData = await generateDocument(termoInspecaoDTO);
-        //   await Printing.layoutPdf(onLayout: (_) async => pdfData);
-        // },
+        onPressed: () async {
+          final pdfData = await generateDocument(termoInspecao);
+          await Printing.layoutPdf(onLayout: (_) async => pdfData);
+        },
         icon: const Icon(Icons.print),
         label: const Text('Imprimir PDF'),
       ),

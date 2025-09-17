@@ -25,6 +25,7 @@ class _TermoinspecaoFormwidgetState extends State<TermoinspecaoFormwidget> {
     return Form(child: Column(
       children: [
         Text("Sobre a inspeção"),
+        SizedBox(height: 25,),
         Row(
           children: [
             Expanded(

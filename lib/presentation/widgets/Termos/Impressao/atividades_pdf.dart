@@ -18,28 +18,36 @@ class PWAtividadesParecer extends pw.StatelessWidget {
         children: [
           pw.Text(
             "Atividade Principal",
-            style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 12),
+            style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 10),
           ),
+          pw.SizedBox(height: 2),
           pw.Text(
             "${atividadePrincipal.entries.first.key} - ${atividadePrincipal.entries.first.value}",
             style: pw.TextStyle(fontSize: 10),
           ),
-          pw.SizedBox(height: 10),
-          pw.Text(
-            "Atividades Secundárias",
-            style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 12),
-          ),
-          if (atividadesSecundarias?.isNotEmpty ?? false)
-            ...atividadesSecundarias!.map((item) {
-              var entry = item.entries.first;
-              return pw.Text(
-                "${entry.key} - ${entry.value}",
-                style: pw.TextStyle(
-                  fontWeight: pw.FontWeight.bold,
-                  fontSize: 10,
+         
+          if (atividadesSecundarias?.isNotEmpty ?? false) 
+            pw.Column(
+              crossAxisAlignment: pw.CrossAxisAlignment.start,
+              children: [
+                pw.SizedBox(height: 10),
+                pw.Text(
+                  "Atividades Secundárias",
+                  style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 12),
                 ),
-              );
-            }),
+                pw.SizedBox(height: 15),
+                pw.Text(
+                  "Atividades Secundárias",
+                  style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 18),
+                ),
+                ...atividadesSecundarias!.map(
+                  (item) => pw.Text(
+                    "${item.entries.first.key} - ${item.entries.first.value}",
+                    style: pw.TextStyle(fontSize: 16),
+                  ),
+                ),
+              ],
+            )
         ],
       ),
     );

@@ -1,15 +1,17 @@
 import 'package:pdf/widgets.dart' as pw;
+import 'package:visa_arapiraca_app/data/dtos/EnderecoDTO.dart';
 import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Componentes/identificacaoField_pdf.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Componentes/stack_container_pdf.dart';
 
 class PWIdentificacaoEstabelecimentoParecer extends pw.StatelessWidget {
   final Estabelecimento estabelecimento;
-  final String? numeroProcesso;
+  final EnderecoDTO endereco;
 
   PWIdentificacaoEstabelecimentoParecer({
     required this.estabelecimento,
-    this.numeroProcesso,
+    required this.endereco,
+    
   });
 
   @override
@@ -30,23 +32,23 @@ class PWIdentificacaoEstabelecimentoParecer extends pw.StatelessWidget {
               pw.Expanded(
                 child: PWIdentificacaoField(
                   field: "Número do Processo",
-                  value: numeroProcesso,
+                  value: estabelecimento.numeroAlvara,
                 ),
               ),
             ],
           ),
-          pw.SizedBox(height: 5),
+          pw.SizedBox(height: 3),
           PWIdentificacaoField(
             field: "Razão Social:",
             value: estabelecimento.razaoSocial,
           ),
-          pw.SizedBox(height: 5),
+          pw.SizedBox(height: 3),
           PWIdentificacaoField(
             field: "Nome Fantasia:",
             value: estabelecimento.nomeFantasia,
           ),
 
-          pw.SizedBox(height: 10),
+          pw.SizedBox(height: 7),
           pw.Row(
             mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
             children: [
@@ -56,10 +58,15 @@ class PWIdentificacaoEstabelecimentoParecer extends pw.StatelessWidget {
                   value: estabelecimento.cep,
                 ),
               ),
-              pw.Expanded(child: PWIdentificacaoField(field: "Endereço:")),
+              pw.Expanded(
+                child: PWIdentificacaoField(
+                  field: "Endereço:",
+                  value: "${endereco.logradouro}, ${endereco.numeroResidencia}, ${endereco.bairro}"
+                )
+              ),
             ],
           ),
-          pw.SizedBox(height: 5),
+          pw.SizedBox(height: 3),
           pw.Row(
             mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
             children: [
@@ -77,7 +84,7 @@ class PWIdentificacaoEstabelecimentoParecer extends pw.StatelessWidget {
               ),
             ],
           ),
-          pw.SizedBox(height: 10),
+          pw.SizedBox(height: 7),
           PWIdentificacaoField(
             field: "Responsável:",
             value: estabelecimento.responsavel,

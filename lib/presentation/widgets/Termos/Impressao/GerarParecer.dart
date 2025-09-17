@@ -26,6 +26,7 @@ Future<Uint8List> generateDocument(ParecerDTO parecerSanitario) async {
               pw.SizedBox(height: 20),
               PWIdentificacaoEstabelecimentoParecer(
                 estabelecimento: parecerSanitario.estabelecimento,
+                endereco: parecerSanitario.endereco
               ),
               pw.SizedBox(height: 20),
               PWAtividadesParecer(
