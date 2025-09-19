@@ -1,18 +1,39 @@
 class Notificacao{
   final String id;
   final String cnpj;
-  final DateTime data;
+  final String razaoSocial;
+
+  final DateTime dataEmissao;
+  final String exigencias;
   final String fundamentoLegal;
-  final String descricao;
-  final String lavratura;
+  final String prazo;
+  final String? observacoes;
+
+  final String fiscalResponsavel;
+  final String matriculaFiscal;
+
+  final String? numeroProcessoAdministrativo;
+  final String? status;
+  final DateTime? dataCumprimento;
+
 
   Notificacao({
     required this.id,
     required this.cnpj,
-    required this.data,
+    required this.razaoSocial,
+
+    required this.dataEmissao,
+    required this.exigencias,
     required this.fundamentoLegal,
-    required this.descricao,
-    required this.lavratura
+    required this.prazo,
+    this.observacoes,
+
+    required this.fiscalResponsavel,
+    required this.matriculaFiscal,
+        
+    this.numeroProcessoAdministrativo,
+    this.status,
+    this.dataCumprimento
   });
 
 }

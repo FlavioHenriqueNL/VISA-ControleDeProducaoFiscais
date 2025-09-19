@@ -42,11 +42,11 @@ class _IdentificacaoestabelecimentoFormWidgetState
       informacaoEstabelecimentoController.razaoSocialController.text =
           estabelecimentoPesquisado.razaoSocial;
       informacaoEstabelecimentoController.nomeFantasiaController.text =
-          estabelecimentoPesquisado.nomeFantasia;
+          estabelecimentoPesquisado.nomeFantasia ?? "";
       informacaoEstabelecimentoController.telefoneController.text =
-          estabelecimentoPesquisado.telefone;
+          estabelecimentoPesquisado.telefone ?? "";
       informacaoEstabelecimentoController.emailController.text =
-          estabelecimentoPesquisado.email;
+          estabelecimentoPesquisado.email ?? "";
       informacaoEstabelecimentoController.cnaeController.text =
           estabelecimentoPesquisado.cnae;
       informacaoEstabelecimentoController.cepController.text =
@@ -54,11 +54,11 @@ class _IdentificacaoestabelecimentoFormWidgetState
       informacaoEstabelecimentoController.numeroResidenciaController.text =
           estabelecimentoPesquisado.numeroResidencia;
       informacaoEstabelecimentoController.complementoController.text =
-          estabelecimentoPesquisado.complemento;
+          estabelecimentoPesquisado.complemento ?? "";
       informacaoEstabelecimentoController.responsavelController.text =
-          estabelecimentoPesquisado.responsavel;
+          estabelecimentoPesquisado.responsavel ?? "";
       informacaoEstabelecimentoController.cpfResponsavelController.text =
-          estabelecimentoPesquisado.cpfResponsavel;
+          estabelecimentoPesquisado.cpfResponsavel ?? "";
       informacaoEstabelecimentoController.codigoConselhoController.text =
           estabelecimentoPesquisado.codigoConselho ?? "N/A";
       _carregarCnae(estabelecimentoPesquisado.cnae);
