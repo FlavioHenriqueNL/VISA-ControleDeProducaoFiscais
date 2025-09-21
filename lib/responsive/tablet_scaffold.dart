@@ -25,7 +25,7 @@ class _TabletScaffoldState extends State<TabletScaffold> {
                 color: Colors.grey[300],
                 child: Column(
                   children: [
-                    VisaAppBar(title: "VISA Arapiraca"),
+                    VisaAppBar(title: "VISA Arapiraca" ),
                     Expanded(
                       child: Padding(
                         padding: EdgeInsets.all(15.0),

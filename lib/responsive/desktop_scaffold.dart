@@ -4,9 +4,10 @@ import 'package:visa_arapiraca_app/presentation/widgets/MenuLateral/menu_lateral
 import 'package:visa_arapiraca_app/presentation/widgets/Componentes/visa_app_bar.dart';
 
 class DesktopScaffold extends StatelessWidget {
+  final String? title;
   final Widget content; // Recebe o conteúdo da rota filha
 
-  const DesktopScaffold({super.key, required this.content});
+  const DesktopScaffold({super.key, this.title,required this.content});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class DesktopScaffold extends StatelessWidget {
                 color: Colors.grey[300],
                 child: Column(
                   children: [
-                    VisaAppBar(title: "VISA Arapiraca"),
+                    VisaAppBar(title: title ?? "VISA Arapiraca" ),
                     Expanded(
                       child: Padding(
                         padding: EdgeInsets.all(15.0),

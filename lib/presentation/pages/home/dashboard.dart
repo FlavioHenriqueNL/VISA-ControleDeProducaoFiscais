@@ -6,8 +6,10 @@ import 'package:visa_arapiraca_app/responsive/tablet_scaffold.dart';
 
 class Dashboard extends StatefulWidget {
   final Widget content;
+  final String? title;
   const Dashboard({
     required this.content,
+    this.title,
     super.key
   });
 
@@ -24,7 +26,7 @@ class _DashboardState extends State<Dashboard> {
     return ResponsiveLayout(
       mobile: const MobileScaffold(),
       tablet:  TabletScaffold(content: widget.content),
-      desktop: DesktopScaffold(content: widget.content),
+      desktop: DesktopScaffold(content: widget.content, title:  widget.title),
     );
   }
 }

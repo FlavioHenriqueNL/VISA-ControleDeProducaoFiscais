@@ -2,15 +2,21 @@ class Fiscal {
   final String cpf;
   final String nome;
   final String matricula;
-  final String phone;
-  final String address;
+  final String email;
+  final String? role;
+  final bool isAdmin;
+  final String? phone;
+  final String? address;
 
   Fiscal({
     required this.cpf,
     required this.nome,
     required this.matricula,
-    required this.phone,
-    required this.address,
+    required this.email,
+    this.role,
+    required this.isAdmin,
+    this.phone,
+    this.address,
   });
 
   @override
