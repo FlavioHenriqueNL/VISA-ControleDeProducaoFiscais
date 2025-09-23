@@ -3,7 +3,8 @@ import 'package:visa_arapiraca_app/core/utils/form_masks.dart';
 import 'package:visa_arapiraca_app/core/utils/form_validators.dart';
 import 'package:visa_arapiraca_app/data/repositories/cnae_repository.dart';
 import 'package:visa_arapiraca_app/data/repositories/endereco_repository.dart';
-import 'package:visa_arapiraca_app/data/repositories/estabelecimento_repository.dart';
+import 'package:visa_arapiraca_app/data/repositories/estabelecimento_repository_impl.dart';
+import 'package:visa_arapiraca_app/domain/useCases/estabelecimento/getEstabelecimento.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_cep.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_cnae.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_cpfCnpj.dart';
@@ -31,43 +32,47 @@ class _IdentificacaoestabelecimentoFormWidgetState
   late bool estabelecimentoExiste = false;
   // late Estabelecimento estabelecimentoPesquisado;
 
+  //implementar nessa função.
   Future<void> _carregarEstabelecimento(String cnpj) async {
-    print(cnpj);
+   
     cnpj = cnpj.replaceAll(RegExp(r'[^0-9]'), '');
-    print(cnpj);
 
-    final estabelecimentoPesquisado = await EstabelecimentoRepository()
-        .getEstabelecimentoByCpfCnpj(cnpj);
+    final repository = EstabelecimentoRepositoryImpl();
+    final getEstabelecimento = GetEstabelecimento(repository);
+    final estabelecimentoPesquisado = await getEstabelecimento(cnpj);
+
     if (estabelecimentoPesquisado != null) {
-      informacaoEstabelecimentoController.razaoSocialController.text =
-          estabelecimentoPesquisado.razaoSocial;
-      informacaoEstabelecimentoController.nomeFantasiaController.text =
-          estabelecimentoPesquisado.nomeFantasia ?? "";
-      informacaoEstabelecimentoController.telefoneController.text =
-          estabelecimentoPesquisado.telefone ?? "";
-      informacaoEstabelecimentoController.emailController.text =
-          estabelecimentoPesquisado.email ?? "";
-      informacaoEstabelecimentoController.cnaeController.text =
-          estabelecimentoPesquisado.cnae;
-      informacaoEstabelecimentoController.cepController.text =
-          estabelecimentoPesquisado.cep;
-      informacaoEstabelecimentoController.numeroResidenciaController.text =
-          estabelecimentoPesquisado.numeroResidencia;
-      informacaoEstabelecimentoController.complementoController.text =
-          estabelecimentoPesquisado.complemento ?? "";
-      informacaoEstabelecimentoController.responsavelController.text =
-          estabelecimentoPesquisado.responsavel ?? "";
-      informacaoEstabelecimentoController.cpfResponsavelController.text =
-          estabelecimentoPesquisado.cpfResponsavel ?? "";
-      informacaoEstabelecimentoController.codigoConselhoController.text =
-          estabelecimentoPesquisado.codigoConselho ?? "N/A";
-      _carregarCnae(estabelecimentoPesquisado.cnae);
-      _carregarCEP(estabelecimentoPesquisado.cep);
+    informacaoEstabelecimentoController.razaoSocialController.text =
+        estabelecimentoPesquisado.razaoSocial;
+    informacaoEstabelecimentoController.nomeFantasiaController.text =
+        estabelecimentoPesquisado.nomeFantasia ?? "";
+    informacaoEstabelecimentoController.telefoneController.text =
+        estabelecimentoPesquisado.telefone ?? "";
+    informacaoEstabelecimentoController.emailController.text =
+        estabelecimentoPesquisado.email ?? "";
+    informacaoEstabelecimentoController.cnaeController.text =
+        estabelecimentoPesquisado.cnae;
+    informacaoEstabelecimentoController.cepController.text =
+        estabelecimentoPesquisado.cep;
+    informacaoEstabelecimentoController.numeroResidenciaController.text =
+        estabelecimentoPesquisado.numeroResidencia;
+    informacaoEstabelecimentoController.complementoController.text =
+        estabelecimentoPesquisado.complemento ?? "";
+    informacaoEstabelecimentoController.responsavelController.text =
+        estabelecimentoPesquisado.responsavel ?? "";
+    informacaoEstabelecimentoController.cpfResponsavelController.text =
+        estabelecimentoPesquisado.cpfResponsavel ?? "";
+    informacaoEstabelecimentoController.codigoConselhoController.text =
+        estabelecimentoPesquisado.codigoConselho ?? "N/A";
+    
+    _carregarCnae(estabelecimentoPesquisado.cnae);
+    _carregarCEP(estabelecimentoPesquisado.cep);
 
-      setState(() {
-        estabelecimentoExiste = true;
-      });
+    setState(() {
+      estabelecimentoExiste = true;
+    });
     }
+
   }
 
   Future<void> _carregarCnae(String cnae) async {
