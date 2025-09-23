@@ -15,9 +15,15 @@ String? authGuard(BuildContext context, GoRouterState state){
   final fiscal = StaticSessionHelper().currentFiscal;
   final logginIn = state.matchedLocation == '/login';
 
-  if(fiscal == null && !logginIn)  return '/login';
-  if(fiscal != null && logginIn)   return '/dashboard';
+  String finalRoute;
   
+  if(fiscal != null && logginIn){
+    finalRoute = '/dashboard';
+  }else{
+    finalRoute = '/login';
+  }   
+  
+  return finalRoute;
 }
 
 final GoRouter router = GoRouter(
