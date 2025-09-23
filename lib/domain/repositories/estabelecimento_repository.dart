@@ -1,6 +1,6 @@
 import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
 
-abstract class EstabelecimentoRepository {
+abstract class EstabelecimentoRepositoryI {
 
   Future<Estabelecimento?> getByCnpj(String id);
   // Future<List<Estabelecimento>> getAll();

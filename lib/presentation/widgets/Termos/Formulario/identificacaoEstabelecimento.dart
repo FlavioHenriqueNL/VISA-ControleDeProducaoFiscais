@@ -37,7 +37,7 @@ class _IdentificacaoestabelecimentoFormWidgetState
    
     cnpj = cnpj.replaceAll(RegExp(r'[^0-9]'), '');
 
-    final repository = EstabelecimentoRepositoryImpl();
+    final repository = EstabelecimentoRepository();
     final getEstabelecimento = GetEstabelecimento(repository);
     final estabelecimentoPesquisado = await getEstabelecimento(cnpj);
 

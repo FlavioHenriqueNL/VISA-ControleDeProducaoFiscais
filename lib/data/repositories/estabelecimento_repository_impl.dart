@@ -6,7 +6,7 @@ import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
 import 'package:visa_arapiraca_app/domain/repositories/estabelecimento_repository.dart';
 
 
-class EstabelecimentoRepositoryImpl implements EstabelecimentoRepository {
+class EstabelecimentoRepository implements EstabelecimentoRepositoryI {
 
   @override
   Future<Estabelecimento?> getByCnpj(String id) async{

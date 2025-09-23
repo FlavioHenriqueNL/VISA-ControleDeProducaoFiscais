@@ -2,7 +2,7 @@ import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
 import 'package:visa_arapiraca_app/domain/repositories/estabelecimento_repository.dart';
 
 class GetEstabelecimento {
-  final EstabelecimentoRepository repository;
+  final EstabelecimentoRepositoryI repository;
 
   GetEstabelecimento(this.repository);
 
