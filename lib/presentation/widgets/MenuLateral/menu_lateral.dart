@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:visa_arapiraca_app/domain/useCases/user/logout.dart';
 
 class MenuLateral extends StatelessWidget {
   const MenuLateral({super.key});
@@ -39,6 +40,11 @@ class MenuLateral extends StatelessWidget {
               onTap: () => context.go('/lista-cnaes'),
               leading: Icon(Icons.list_alt),
               title: Text("Lista de CNAES"),
+            ),
+            ListTile(
+              onTap: () => Logout().call(context),
+              leading: Icon(Icons.exit_to_app),
+              title: Text("Sair do aplicativo"),
             ),
           ],
         ),

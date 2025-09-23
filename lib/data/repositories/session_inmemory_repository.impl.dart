@@ -16,7 +16,7 @@ class SessionInMemoryManager implements ISessionManagerRepository{
   }
 
   @override
-  Future<void> load() async {}
+  Future<Fiscal?> load() async => _fiscal;
 
   @override
   Fiscal? get currentFiscal => _fiscal;

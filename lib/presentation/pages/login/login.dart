@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:visa_arapiraca_app/data/repositories/fiscal_repository_impl.dart';
 import 'package:visa_arapiraca_app/data/repositories/session_cached_repository_impl.dart';
 import 'package:visa_arapiraca_app/data/repositories/session_inmemory_repository.impl.dart';
 import 'package:visa_arapiraca_app/data/repositories/user_repository_impl.dart';
+import 'package:visa_arapiraca_app/domain/repositories/fiscal_repository.dart';
+import 'package:visa_arapiraca_app/domain/repositories/session_repository.dart';
+import 'package:visa_arapiraca_app/domain/repositories/user_repository.dart';
 import 'package:visa_arapiraca_app/domain/useCases/user/login.dart';
 import 'package:visa_arapiraca_app/presentation/pages/cadastro/cadastro.dart';
 import 'package:visa_arapiraca_app/presentation/pages/recuperar_senha/recuperar_senha.dart';
@@ -21,34 +23,42 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   
   bool isChecked = false;
-  final login = TextEditingController();
-  final senha = TextEditingController();
+  final loginController = TextEditingController();
+  final senhaController = TextEditingController();
   bool loading = false;
 
-  late final loginUseCase = LoginUser(
-    UserRepository(), 
-    FiscalRepository(), 
-    SessionInMemoryManager(), 
-    SessionCachedRepository()
-  );
+  // Repositórios (dependências do UseCase)
+  final IUserRepository userRepository = UserRepository();
+  final IFiscalRepository fiscalRepository = FiscalRepository();
 
+  late final LoginUser loginUseCase;
+
+  @override
+  void initState() {
+    super.initState();
+    // Inicializa o useCase sem decidir a implementação da sessão ainda
+    loginUseCase = LoginUser(userRepository, fiscalRepository);
+  }
 
   Future<void> doLogin() async {
     if (!_formKey.currentState!.validate()) return;
+
+    // Define a implementação de sessão com base no checkbox
+    final ISessionManagerRepository session = isChecked
+        ? SessionCachedRepository()
+        : SessionInMemoryManager();
 
     setState(() => loading = true);
 
     try {
       await loginUseCase.call(
-        login.text,
-        senha.text,
-        manterConectado: isChecked,
+        loginController.text.trim(),
+        senhaController.text,
+        session,
       );
 
-      // Se chegou aqui, login e sessão OK
-      // Redireciona para tela principal
-      context.go('/dashboard'); // usando GoRouter
-
+      // Login e sessão OK, redireciona
+      context.go('/dashboard');
     } catch (e) {
       // Exibe erro na UI
       showDialog(
@@ -105,10 +115,10 @@ class _LoginState extends State<Login> {
                 child: Column(
                   children: [
 
-                    TextFormField(autofocus: true, decoration: textFieldDecoration("Número de Matrícula ou CPF", Icons.people), controller: login,),
+                    TextFormField(autofocus: true, decoration: textFieldDecoration("Número de Matrícula ou CPF", Icons.people), controller: loginController,),
                     const SizedBox(height: 15),
 
-                    TextFormField(autofocus: false, obscureText: true, decoration: textFieldDecoration("Senha", Icons.key), controller: senha,),
+                    TextFormField(autofocus: false, obscureText: true, decoration: textFieldDecoration("Senha", Icons.key), controller: senhaController,),
                     const SizedBox(height: 25),
 
                     Row(

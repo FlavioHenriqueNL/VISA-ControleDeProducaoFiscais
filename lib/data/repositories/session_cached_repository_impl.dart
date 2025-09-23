@@ -36,7 +36,7 @@ static const _key = 'fiscal_session';
   }
 
   @override
-  Future<void> load() async {
+  Future<Fiscal?> load() async {
     final prefs = await SharedPreferences.getInstance();
     final jsonData = prefs.getString(_key);
     if (jsonData != null) {
@@ -50,6 +50,8 @@ static const _key = 'fiscal_session';
         isAdmin: map["isAdmin"],
         phone: map["phone"],
       );
+      return _fiscal;
     }
+    return null;
   }
 }

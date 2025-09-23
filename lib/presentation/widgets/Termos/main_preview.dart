@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/assinaturas_termo.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/info_termoInspecao.dart';
+// import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/assinaturas_termo.dart';
+// import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/info_termoInspecao.dart';
 
 void main() {
   runApp(
@@ -10,8 +10,9 @@ void main() {
       home: Scaffold(
         body: Column(
           children: [
-            InfoTermoInspecao(),
-            AssinaturasTermo()
+            // InfoTermoInspecao(),
+            // AssinaturasTermo()
+            Text("Nada para ser mostrado.")
           ],
         )
       ),

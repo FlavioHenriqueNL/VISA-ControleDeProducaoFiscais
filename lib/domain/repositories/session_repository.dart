@@ -5,6 +5,6 @@ abstract class ISessionManagerRepository{
   Future<void> saveFiscal(Fiscal fiscal); 
   Fiscal? get currentFiscal;
   Future<void> clear();
-  Future<void> load();
+  Future<Fiscal?> load();
 
 }

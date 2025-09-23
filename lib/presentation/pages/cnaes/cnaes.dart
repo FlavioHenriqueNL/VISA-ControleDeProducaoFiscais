@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:visa_arapiraca_app/core/utils/session_helper.dart';
 import 'package:visa_arapiraca_app/data/repositories/cnae_repository.dart';
 import 'package:visa_arapiraca_app/domain/entities/cnae.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Componentes/visa_app_bar.dart';
@@ -38,8 +39,11 @@ class _CnaesPageState extends State<CnaesPage> {
     super.initState();
   }
 
+  final fiscal = StaticSessionHelper().currentFiscal; 
+
   @override
   Widget build(BuildContext context) {
+    print(fiscal?.nome);
     if (_loading) {
       return const Center(child: CircularProgressIndicator());
     }

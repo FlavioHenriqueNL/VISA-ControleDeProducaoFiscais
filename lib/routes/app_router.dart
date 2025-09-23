@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:visa_arapiraca_app/core/utils/session_helper.dart';
 import 'package:visa_arapiraca_app/presentation/pages/Termos/termos.dart';
 import 'package:visa_arapiraca_app/presentation/pages/cnaes/cnaes.dart';
 import 'package:visa_arapiraca_app/presentation/pages/home/dashboard.dart';
@@ -10,8 +11,18 @@ import 'package:visa_arapiraca_app/presentation/pages/recuperar_senha/recuperar_
 import 'package:visa_arapiraca_app/presentation/pages/termos/parecer-sanitario.dart';
 import 'package:visa_arapiraca_app/presentation/pages/termos/termo-inspecao.dart';
 
+String? authGuard(BuildContext context, GoRouterState state){
+  final fiscal = StaticSessionHelper().currentFiscal;
+  final logginIn = state.matchedLocation == '/login';
+
+  if(fiscal == null && !logginIn)  return '/login';
+  if(fiscal != null && logginIn)   return '/dashboard';
+  
+}
+
 final GoRouter router = GoRouter(
   initialLocation: '/login',
+  redirect: authGuard,
   routes: [
 
     GoRoute(path: '/login', builder: (context, state) => Login()),
