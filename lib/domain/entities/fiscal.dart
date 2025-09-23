@@ -6,7 +6,7 @@ class Fiscal {
   final String? role;
   final bool isAdmin;
   final String? phone;
-  final String? address;
+
 
   Fiscal({
     required this.cpf,
@@ -16,11 +16,11 @@ class Fiscal {
     this.role,
     required this.isAdmin,
     this.phone,
-    this.address,
+ 
   });
 
   @override
   String toString() {
-    return 'Fiscal{id: $cpf, nome: $nome, matricula: $matricula, phone: $phone, address: $address}';
+    return 'Fiscal{id: $cpf, nome: $nome, matricula: $matricula, phone: $phone}';
   }
 }
