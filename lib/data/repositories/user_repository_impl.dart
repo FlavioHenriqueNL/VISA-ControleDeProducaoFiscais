@@ -15,8 +15,10 @@ class UserRepository implements IUserRepository{
       );
       final user = credential.user;
       if (user == null) return null;
+      print("Deu certo aqui: ${user!.email}");
       return AuthUserDTO(email: user.email ?? "", uuid: user.uid);
     } on FirebaseAuthException catch (e) {
+      print("Erro de autenticação: ${e.code}");
       throw Exception(e.message);
     }
   }

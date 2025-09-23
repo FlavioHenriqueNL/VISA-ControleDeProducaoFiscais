@@ -1,10 +1,11 @@
 import 'package:visa_arapiraca_app/domain/entities/fiscal.dart';
 
-abstract class FiscalRepositoryI {
+abstract class IFiscalRepository {
 
-  Future<List<Fiscal>?> getAll ();
-  Future<Fiscal?> getByCpf (String cpf);
-  Future<Fiscal?> getByMatricula (String matricula);
+  // Future<List<Fiscal>?> getAll ();
+  // Future<Fiscal?> getByCpf (String cpf);
+  // Future<Fiscal?> getByMatricula (String matricula);
+  Future<Fiscal?> getByUuid (String uuid);
   
   // Future<void> create (Fiscal fiscal, String uuid);
   // Future<void> update (Fiscal fiscal);

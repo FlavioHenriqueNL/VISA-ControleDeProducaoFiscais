@@ -1,5 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:visa_arapiraca_app/data/repositories/fiscal_repository_impl.dart';
+import 'package:visa_arapiraca_app/data/repositories/session_cached_repository_impl.dart';
+import 'package:visa_arapiraca_app/data/repositories/session_inmemory_repository.impl.dart';
+import 'package:visa_arapiraca_app/data/repositories/user_repository_impl.dart';
+import 'package:visa_arapiraca_app/domain/useCases/user/login.dart';
 import 'package:visa_arapiraca_app/presentation/pages/cadastro/cadastro.dart';
 import 'package:visa_arapiraca_app/presentation/pages/recuperar_senha/recuperar_senha.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Componentes/scrollable_page.dart';
@@ -16,6 +23,66 @@ class _LoginState extends State<Login> {
   bool isChecked = false;
   final login = TextEditingController();
   final senha = TextEditingController();
+  bool loading = false;
+
+  late final loginUseCase = LoginUser(
+    UserRepository(), 
+    FiscalRepository(), 
+    SessionInMemoryManager(), 
+    SessionCachedRepository()
+  );
+
+
+  Future<void> doLogin() async {
+    if (!_formKey.currentState!.validate()) return;
+
+    setState(() => loading = true);
+
+    try {
+      await loginUseCase.call(
+        login.text,
+        senha.text,
+        manterConectado: isChecked,
+      );
+
+      // Se chegou aqui, login e sessão OK
+      // Redireciona para tela principal
+      context.go('/dashboard'); // usando GoRouter
+
+    } catch (e) {
+      // Exibe erro na UI
+      showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: const Text("Erro no login"),
+          content: Text(e.toString()),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text("Fechar"),
+            ),
+          ],
+        ),
+      );
+    } finally {
+      setState(() => loading = false);
+    }
+  }
+
+  Future<void> testGetAllFiscais() async {
+  try {
+    final snapshot = await FirebaseFirestore.instance
+        .collection('fiscal')
+        .get();
+
+    print('Total de documentos: ${snapshot.docs.length}');
+    for (var doc in snapshot.docs) {
+      print(doc.data());
+    }
+  } catch (e) {
+    print('Erro ao buscar fiscais: $e');
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -62,9 +129,7 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         ElevatedButton(
-                          onPressed: (){
-                            context.go('/dashboard'); // ou a rota inicial do seu dashboard
-                          },
+                          onPressed: () => doLogin(),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.amber,
                             foregroundColor: Colors.white,
