@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class ScrollablePage extends StatelessWidget {
   final Widget child;
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 
   const ScrollablePage({
     super.key,
     required this.child,
-    this.padding = const EdgeInsets.symmetric(horizontal: 24),
+    this.padding,
   });
 
   @override
@@ -15,7 +15,7 @@ class ScrollablePage extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         return SingleChildScrollView(
-          padding: padding,
+          // padding: padding,
           child: ConstrainedBox(
             constraints: BoxConstraints(minHeight: constraints.maxHeight),
             child: IntrinsicHeight(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/Componentes/scrollable_page.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/componentes/dashboard_body.dart';
 
 class TermosPage extends StatefulWidget {
   const TermosPage({super.key});
@@ -9,45 +9,83 @@ class TermosPage extends StatefulWidget {
   State<TermosPage> createState() => _TermosPageState();
 }
 
-final List<List<String>> termosLista = [
-  ['Parecer Sanitário', 'parecer-sanitario'],
-  ['Termo de Inspeção', 'termo-inspecao'],
-  ['Notificação', 'notificacao'],
-  ['Auto de Infração', 'auto-infracao'],
-  ['Termo de Apreensão', 'termo-apreensao'],
-  ['Interdição', 'interdicao'],
+final List<List<dynamic>> termosLista = [
+  ['Parecer Sanitário', 'parecer-sanitario', Icons.fact_check_sharp],
+  ['Termo de Inspeção', 'termo-inspecao', Icons.assignment],
+  ['Notificação', 'notificacao', Icons.notifications],
+  ['Auto de Infração', 'auto-infracao', Icons.report], 
+  ['Termo de Apreensão', 'termo-apreensao', Icons.block],
+  ['Interdição', 'interdicao', Icons.inventory_2],
 ];
 
 class _TermosPageState extends State<TermosPage> {
   @override
   Widget build(BuildContext context) {
-    return ScrollablePage(
-      child: Container(
-        padding: const EdgeInsets.all(25.0),
-        color: Colors.white,
+
+    return SingleChildScrollView(
+      child: DashboardBody(
         child: Column(
           children: [
-            const Text(
-              "Termos e Pareceres",
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+            ListTile(
+              contentPadding: EdgeInsets.all(0),
+              leading: Icon(
+                Icons.description,
+                size: 60,
+                color: Colors.blue,
+              ),
+              title: Text(
+                'Termos e Pareceres',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              subtitle: Text(
+                "Documentos oficiais VISA de forma ágil e prática.",
+                style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+              ),
             ),
-            const SizedBox(height: 20),
-            Wrap(
-              spacing: 12, // espaço horizontal entre os cards
-              runSpacing: 12, // espaço vertical entre as linhas
-              children: termosLista.map((termo) {
-                return ElevatedButton(
-                  style: botaoTermos,
-                  onPressed: () {
-                    context.go('/termos/${termo[1]}');
-                  },
-                  child: Text(termo[0], textAlign: TextAlign.center),
+
+            const SizedBox(height: 50),
+
+            LayoutBuilder(
+              builder: (context, constraints) {
+                const maxItemsPerRow = 3;
+                const spacing = 12.0;
+                final totalSpacing = spacing * (maxItemsPerRow - 1);
+                final buttonWidth = (constraints.maxWidth - totalSpacing) / maxItemsPerRow;
+
+                return Wrap(
+                  spacing: spacing,
+                  runSpacing: spacing,
+                  children: termosLista.map((termo) {
+                    return SizedBox(
+                      width: buttonWidth,
+                      height: 150,
+                      child: ElevatedButton.icon(
+                        style: botaoTermos,
+
+                        onPressed: () {
+                          context.go('/termos/${termo[1]}');
+                        },
+                        icon: Icon(termo[2], size: 80,),
+                        label: Flexible(      // ⚡ importante!
+                          child: Text(
+                            termo[0],
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 22),
+                            softWrap: true,
+                          ),
+                        ),
+                      ),
+                    );
+                  }).toList(),
                 );
-              }).toList(),
+              },
             ),
           ],
         ),
-      ),
+      )
     );
   }
 }
@@ -60,3 +98,5 @@ final ButtonStyle botaoTermos = ElevatedButton.styleFrom(
   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
   minimumSize: Size(200, 120),
 );
+
+

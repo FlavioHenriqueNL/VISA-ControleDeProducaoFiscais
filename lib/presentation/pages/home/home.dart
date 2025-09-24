@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:visa_arapiraca_app/core/utils/session_helper.dart';
+import 'package:visa_arapiraca_app/core/utils/string_utils.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/Componentes/scrollable_page.dart';
+
+import '../../widgets/componentes/dashboard_body.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -8,39 +13,43 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  final fiscalInfo = StaticSessionHelper().currentFiscal;
+
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints){
-      return SingleChildScrollView(
-        child: ConstrainedBox(
-          constraints: BoxConstraints(minHeight: constraints.maxHeight),
-          child: Column(
+
+    return ScrollablePage(
+      child: DashboardBody(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ListTile(
+              contentPadding: EdgeInsets.all(0),
+              leading: Icon(
+                Icons.home,
+                size: 60,
+                color: Colors.blue,
+              ),
+              title: Text(
+                'Dashboard',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              subtitle: Text(
+                'Seja bem vindo! ${fiscalInfo?.nome.primeiroNome()}',
+                style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+              ),
+            ),
+
+            SizedBox(height: 35),
+            Text("O programa ainda está em fase de desenvolvimento, logo algumas partes do sistema ainda não operam plenamente."),
             
-            children: [
-              Text("Produção de Julho", style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
-              Padding(
-                padding: EdgeInsets.all(25),
-                child: Wrap(
-                  spacing: 12,    // espaço horizontal entre os cards
-                  runSpacing: 12, // espaço vertical entre as linhas
-                  children: 
-                    List.generate(8, (index) {
-                    return SizedBox(
-                      width: 150,
-                      height: 150,
-                      child: Card(
-                        child: Center(child: Text('Card $index')),
-                      ),
-                    );
-                  }),
-                  
-                  
-                )
-              )
-            ],
-          )
-        ), 
-      );
-    });
+          ],
+        ),
+      ),
+    );
   }
 }
