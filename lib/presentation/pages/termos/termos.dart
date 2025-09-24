@@ -13,7 +13,7 @@ class TermosPage extends StatefulWidget {
 final List<List<dynamic>> termosLista = [
   ['Parecer Sanitário', 'parecer-sanitario', Icons.fact_check_sharp],
   ['Termo de Inspeção', 'termo-inspecao', Icons.assignment],
-  ['Notificação', 'notificacao', Icons.notifications],
+  ['Notificação', 'termo-notificacao', Icons.notifications],
   ['Auto de Infração', 'auto-infracao', Icons.report], 
   ['Termo de Apreensão', 'termo-apreensao', Icons.block],
   ['Interdição', 'interdicao', Icons.inventory_2],

@@ -6,6 +6,8 @@ import 'package:visa_arapiraca_app/presentation/widgets/termos/Componentes/criar
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/visualizar_TermoInspecao.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/CriarTermoInspecaoWidget.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Componentes/scrollable_page.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/visualizar_TermoNotificacao.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/termoNotificacao_criar.dart';
 
 class TermoNotificacaoPage extends StatefulWidget {
   const TermoNotificacaoPage({super.key});
@@ -16,25 +18,25 @@ class TermoNotificacaoPage extends StatefulWidget {
 
 class _TermoNotificacaoPageState extends State<TermoNotificacaoPage> {
 
-  // Future<void> criarTermo () async{
-  //   final TermoNotificacaoDTO novoTermo = await showDialog(
-  //     context: context,
-  //     builder: (context) => CriarTermoinspecaoWidget(),
-  //   );
+  Future<void> criarTermo () async{
+    final TermoNotificacaoDTO novoTermo = await showDialog(
+      context: context,
+      builder: (context) => CriarTermoNotificacaoWidget(),
+    );
 
-  //   if (novoTermo != null) {
-  //     print(
-  //       "Novo parecer criado: ${novoTermo.estabelecimento.numeroAlvara} - ${novoTermo.estabelecimento.cpfCnpj}",
-  //     );
-  //   }
+    if (novoTermo != null) {
+      print(
+        "Novo parecer criado: ${novoTermo.estabelecimento.numeroAlvara} - ${novoTermo.estabelecimento.cpfCnpj}",
+      );
+    }
 
-  //   Navigator.push(
-  //     context,
-  //     MaterialPageRoute(
-  //       builder: (context) => PreviewTermoInspecao(termoInspecao: novoTermo)
-  //     ),
-  //   );
-  // }
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PreviewTermoNotificacao(termoNotificacao: novoTermo)
+      ),
+    );
+  }
 
 
   @override
@@ -48,7 +50,7 @@ class _TermoNotificacaoPageState extends State<TermoNotificacaoPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(child: PageTitle(icon: Icons.description, title: "Termo de Notificação", subtitle: "Termos e Pareceres"),),
-                ButtonCriarTermo(label: "Notificar Estabelecimento", onPressedAction: () => {})
+                ButtonCriarTermo(label: "Notificar Estabelecimento", onPressedAction: () => criarTermo())
               ],
             ),
 

@@ -21,5 +21,8 @@ class TermoInspecaoController {
     objetoInspecao.dispose();
     fatoInspecao.dispose();
     fundamentosLegais.dispose();
+    fiscalResponsavel.dispose();
+    matriculaFiscal.dispose();
+   
   }
 }

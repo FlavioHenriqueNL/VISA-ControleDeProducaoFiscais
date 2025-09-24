@@ -10,6 +10,7 @@ import 'package:visa_arapiraca_app/presentation/pages/producao/producao_diaria.d
 import 'package:visa_arapiraca_app/presentation/pages/recuperar_senha/recuperar_senha.dart';
 import 'package:visa_arapiraca_app/presentation/pages/termos/parecer-sanitario.dart';
 import 'package:visa_arapiraca_app/presentation/pages/termos/termo-inspecao.dart';
+import 'package:visa_arapiraca_app/presentation/pages/termos/termo-notificacao.dart';
 
 String? authGuard(BuildContext context, GoRouterState state){
   final fiscal = StaticSessionHelper().currentFiscal;
@@ -41,6 +42,7 @@ final GoRouter router = GoRouter(
           '/termos': "Termos",
           '/termos/parecer-sanitario': "Parecer Sanitário",
           '/termos/termo-inspecao': "Termo de Inspeção",
+          '/termos/termo-notificacao': "Termo de Notificação",
           '/producao': "Produção",
           '/lista-cnaes': "CNAEs",
         };
@@ -57,6 +59,7 @@ final GoRouter router = GoRouter(
           builder: (context, state) => ParecerSanitarioPage(),
         ),
         GoRoute(path: '/termos/termo-inspecao', builder: (context, state) => TermoInspecaoPage()),
+        GoRoute(path: '/termos/termo-notificacao', builder: (context, state) => TermoNotificacaoPage()),
         GoRoute(path: '/producao', builder: (context, state) => ProducaoPage()),
         GoRoute(
           path: '/estabelecimentos',
