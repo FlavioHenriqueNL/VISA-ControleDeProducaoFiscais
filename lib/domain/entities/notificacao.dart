@@ -1,5 +1,5 @@
-class Notificacao{
-  final String id;
+ class Notificacao{
+  final String? id;
   final String cnpj;
   final String razaoSocial;
 
@@ -12,13 +12,13 @@ class Notificacao{
   final String fiscalResponsavel;
   final String matriculaFiscal;
 
-  final String? numeroProcessoAdministrativo;
+  final String numeroDocumento;
   final String? status;
   final DateTime? dataCumprimento;
 
 
   Notificacao({
-    required this.id,
+    this.id,
     required this.cnpj,
     required this.razaoSocial,
 
@@ -31,7 +31,7 @@ class Notificacao{
     required this.fiscalResponsavel,
     required this.matriculaFiscal,
         
-    this.numeroProcessoAdministrativo,
+    required this.numeroDocumento,
     this.status,
     this.dataCumprimento
   });
