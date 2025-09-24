@@ -24,6 +24,20 @@ class UserRepository implements IUserRepository{
   }
 
   @override
+  Future<AuthUserDTO?> register(String email, String password) async{
+    try{
+      final credential = await _auth.createUserWithEmailAndPassword(
+        email: email, 
+        password: password
+      );
+
+      return AuthUserDTO(email: email, uuid: credential.user!.uid);
+    }on FirebaseAuthException catch (e){
+      throw Exception(e.message);
+    }
+  }
+
+  @override
   Future<void> logout() async{
     return await _auth.signOut();
   }

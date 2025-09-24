@@ -6,8 +6,7 @@ abstract class IFiscalRepository {
   // Future<Fiscal?> getByCpf (String cpf);
   // Future<Fiscal?> getByMatricula (String matricula);
   Future<Fiscal?> getByUuid (String uuid);
-  
-  // Future<void> create (Fiscal fiscal, String uuid);
+  Future<void> create (String userID, Fiscal fiscal);
   // Future<void> update (Fiscal fiscal);
   // Future<void> delete (String uuid);
 

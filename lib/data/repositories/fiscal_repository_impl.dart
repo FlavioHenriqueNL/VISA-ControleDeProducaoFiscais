@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:visa_arapiraca_app/data/models/fiscal_model.dart';
 import 'package:visa_arapiraca_app/domain/entities/fiscal.dart';
 import 'package:visa_arapiraca_app/domain/repositories/fiscal_repository.dart';
 
@@ -35,5 +36,23 @@ Future<Fiscal?> getByUuid(String uuid) async {
   );
   
 }
+
+@override
+Future<void> create (String uuid, Fiscal fiscal) async {
+
+  FiscalModel modelFiscal = FiscalModel.fromEntity(fiscal);
+  final data = modelFiscal.toJson();
+
+  try{
+    await _firestore.collection("fiscal").doc(uuid).set(
+      data
+    );
+  } on FirebaseException catch (e){
+    print(e.message);
+    throw Exception(e.message);
+  }
+}
+
+
 
 }
