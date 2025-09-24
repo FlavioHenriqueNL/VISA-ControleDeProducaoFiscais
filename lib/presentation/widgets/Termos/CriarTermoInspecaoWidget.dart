@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:visa_arapiraca_app/core/utils/session_helper.dart';
 import 'package:visa_arapiraca_app/data/dtos/TermoInspecaoDTO.dart';
 import 'package:visa_arapiraca_app/domain/entities/cnae.dart';
 import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
@@ -23,7 +24,18 @@ class CriarTermoinspecaoWidget extends StatefulWidget {
 class _CriarTermoinspecaoWidgetState extends State<CriarTermoinspecaoWidget> {
   final TermoInspecaoController termoInspecaoController =
       TermoInspecaoController();
+
+   //Informação de Fiscal através da Session
+  final fiscalInfoSession = StaticSessionHelper();
+      
   final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    termoInspecaoController.fiscalResponsavel.text = fiscalInfoSession.currentFiscal!.nome;
+    termoInspecaoController.matriculaFiscal.text = fiscalInfoSession.currentFiscal!.matricula;
+    super.initState();
+  }
 
   void salvar() {
     print("Apenas pra saber se o botão foi acionado.");
