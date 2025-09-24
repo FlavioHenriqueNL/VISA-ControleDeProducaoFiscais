@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/data/dtos/ParecerDTO.dart';
 import 'package:visa_arapiraca_app/data/dtos/TermoInspecaoDTO.dart';
 import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/componentes/dashboard_body.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/componentes/page_title.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Componentes/criar_button.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/CriarParecerWidget.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/visualizar_ParecerSanitario.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/visualizar_TermoInspecao.dart';
@@ -16,92 +19,43 @@ class TermoInspecaoPage extends StatefulWidget {
 }
 
 class _TermoInspecaoPageState extends State<TermoInspecaoPage> {
+
+  Future<void> criarTermo () async{
+    final TermoInspecaoDTO novoTermo = await showDialog(
+      context: context,
+      builder: (context) => CriarTermoinspecaoWidget(),
+    );
+
+    if (novoTermo != null) {
+      print(
+        "Novo parecer criado: ${novoTermo.estabelecimento.numeroAlvara} - ${novoTermo.estabelecimento.cpfCnpj}",
+      );
+    }
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PreviewTermoInspecao(termoInspecao: novoTermo)
+      ),
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return ScrollablePage(
-      child: Container(
-        padding: EdgeInsets.all(26),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-          boxShadow: [
-            BoxShadow(
-              // ignore: deprecated_member_use
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 4,
-              offset: Offset(0, 2),
-            ),
-          ],
-        ),
+      child: DashboardBody(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Expanded(
-                  child: ListTile(
-                    contentPadding: EdgeInsets.all(0),
-                    leading: Icon(
-                      Icons.description,
-                      size: 60,
-                      color: Colors.blue,
-                    ),
-                    title: Text(
-                      'Termo de inspeção',
-                      style: TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    subtitle: Text(
-                      'Termos e Pareceres',
-                      style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-                    ),
-                  ),
-                ),
-
-                ElevatedButton.icon(
-                  // ignore: avoid_print
-                  onPressed: () async {
-                    final TermoInspecaoDTO novoTermo = await showDialog(
-                      context: context,
-                      builder: (context) => CriarTermoinspecaoWidget(),
-                    );
-
-                    print(novoTermo);
-
-                    if (novoTermo != null) {
-                      print(
-                        "Novo parecer criado: ${novoTermo.estabelecimento.numeroAlvara} - ${novoTermo.estabelecimento.cpfCnpj}",
-                      );
-                    }
-
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => PreviewTermoInspecao(termoInspecao: novoTermo)
-                      ),
-                    );
-                  },
-                  icon: Icon(Icons.add_box_outlined, color: Colors.white),
-                  label: Text('Criar Novo Termo'),
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                    textStyle: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.normal,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    backgroundColor: Colors.blue,
-                    foregroundColor: Colors.white,
-                  ),
-                ),
+                Expanded(child: PageTitle(icon: Icons.description, title: "Termo de Inspeção", subtitle: "Termos e Pareceres"),),
+                ButtonCriarTermo(label: "Criar Termo de Inspeção", onPressedAction: () => criarTermo())
               ],
             ),
-
+            
             SizedBox(height: 60),
             Center(
               child: Text(
@@ -124,8 +78,9 @@ class _TermoInspecaoPageState extends State<TermoInspecaoPage> {
               style: TextStyle(fontSize: 16, color: Colors.grey[800]),
             ),
           ],
-        ),
-      ),
+        )
+      )
     );
   }
 }
+

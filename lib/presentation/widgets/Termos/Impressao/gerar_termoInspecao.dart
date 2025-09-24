@@ -2,12 +2,12 @@ import 'dart:typed_data';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/pdf.dart';
 import 'package:visa_arapiraca_app/data/dtos/TermoInspecaoDTO.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/cabecalho_pdf.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/identificacaoEstabelecimento_pdf.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/atividades_pdf.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/info_termoInspecao_pdf.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/cabecalho_documento.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/identificacaoEstabelecimento_documento.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/atividades_documento.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/corpo_termoInspecao.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/load_image.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/rodape_Termos_pdf.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/rodape_termo.dart';
 
 
 Future<Uint8List> generateDocument(TermoInspecaoDTO termoInspecao) async {
