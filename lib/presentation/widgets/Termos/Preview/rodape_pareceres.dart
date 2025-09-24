@@ -16,7 +16,7 @@ class RodapeParecer extends StatelessWidget {
           children: [
             IdentificacaoField(
               field: "Taxa do Alvará:",
-              value: "R\$ ${parecerSanitario.taxa})}",
+              value: "R\$ ${parecerSanitario.taxa}",
             ),
             SizedBox(width: 350),
             IdentificacaoField(

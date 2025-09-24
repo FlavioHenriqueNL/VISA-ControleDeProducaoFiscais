@@ -1,4 +1,4 @@
-  import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_parecer.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Controllers/parecerTecnico_controller.dart';
 
@@ -21,8 +21,9 @@ class _AnaliseTecnicaFormState extends State<AnaliseTecnicaForm> {
   Widget build(BuildContext context) {
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("Análise Técnica"),
+        const Text("Análise Técnica" , style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
         const SizedBox(height: 30),
         
         SizedBox(
@@ -44,6 +45,27 @@ class _AnaliseTecnicaFormState extends State<AnaliseTecnicaForm> {
 
         const SizedBox(height: 20),
         Row(
+        children: [
+          Expanded(
+            flex: 1,
+            child: FormfieldParecer(
+              fieldTitle: "Fiscal Responsável", 
+              fieldController: analiseTecnicaController.informacaoFiscal.nomeFiscal,
+              
+            )
+          ),
+          SizedBox(width: 25),
+          Expanded(
+            flex: 1,
+            child: FormfieldParecer(
+              fieldTitle: "Matricula do Fiscal", 
+              fieldController: analiseTecnicaController.informacaoFiscal.matriculaFiscal,
+            )
+          ),
+          ],
+        ),
+        const SizedBox(height: 20),
+        Row(
           children: [
             Expanded(
               child: FormfieldParecer(
@@ -60,7 +82,8 @@ class _AnaliseTecnicaFormState extends State<AnaliseTecnicaForm> {
               ),
             ),
           ],
-        )
+        ),
+        
       ],
     );
   }

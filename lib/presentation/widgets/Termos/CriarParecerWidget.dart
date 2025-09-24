@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:visa_arapiraca_app/core/utils/session_helper.dart';
 import 'package:visa_arapiraca_app/data/dtos/CnaeDTO.dart';
 import 'package:visa_arapiraca_app/data/dtos/EnderecoDTO.dart';
 import 'package:visa_arapiraca_app/data/dtos/ParecerDTO.dart';
@@ -24,9 +25,14 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
   final ParecerTecnicoController parecerTecnicoController =
       ParecerTecnicoController();
 
+  //Informação de Fiscal através da Session
+  final fiscalInfoSession = StaticSessionHelper();
+  
   @override
   void initState() {
     super.initState();
+    parecerTecnicoController.informacaoFiscal.matriculaFiscal.text = fiscalInfoSession.currentFiscal!.matricula;
+    parecerTecnicoController.informacaoFiscal.nomeFiscal.text = fiscalInfoSession.currentFiscal!.nome;
   }
 
   @override
@@ -46,7 +52,7 @@ class _CriarParecerWidgetState extends State<CriarParecerWidget> {
       analiseTecnica: parecerTecnicoController.parecerController.text,
       validade: parecerTecnicoController.validadeAlvaraController.text,
       taxa: parecerTecnicoController.taxaAlvaraController.text,
-      matriculaFiscal: "107363", // Manter o CPF do fiscal existente
+      matriculaFiscal: parecerTecnicoController.informacaoFiscal.matriculaFiscal.text, // Manter o CPF do fiscal existente
     );
 
     final estabelecimento = parecerTecnicoController.informacaoEstabelecimento.toEntity();

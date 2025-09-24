@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/componentes/dashboard_body.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/componentes/page_title.dart';
 
 class TermosPage extends StatefulWidget {
   const TermosPage({super.key});
@@ -26,24 +27,10 @@ class _TermosPageState extends State<TermosPage> {
       child: DashboardBody(
         child: Column(
           children: [
-            ListTile(
-              contentPadding: EdgeInsets.all(0),
-              leading: Icon(
-                Icons.description,
-                size: 60,
-                color: Colors.blue,
-              ),
-              title: Text(
-                'Termos e Pareceres',
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              subtitle: Text(
-                "Documentos oficiais VISA de forma ágil e prática.",
-                style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-              ),
+            PageTitle(
+              icon: Icons.description, 
+              title: "Termos e Pareceres", 
+              subtitle: "Documentos oficiais VISA de forma ágil e prática",
             ),
 
             const SizedBox(height: 50),

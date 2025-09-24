@@ -104,7 +104,7 @@ class _IdentificacaoestabelecimentoFormWidgetState
       context: context,
       builder: (_) => AlertDialog(
         title: Text("Aviso"),
-        content: Text("Esse é um aviso dentro de um Dialog"),
+        content: Text("Com esse CEP, não foi possível encontrar o endereço completo."),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
@@ -119,8 +119,9 @@ class _IdentificacaoestabelecimentoFormWidgetState
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("Identificação do Estabelecimento"),
+        const Text("Identificação do Estabelecimento", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),),
         const SizedBox(height: 30),
         Row(
           children: [
@@ -184,7 +185,7 @@ class _IdentificacaoestabelecimentoFormWidgetState
           ],
         ),
         const SizedBox(height: 30),
-        const Text("Atividades do Estabelecimento"),
+        const Text("Atividades do Estabelecimento" , style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
         const SizedBox(height: 30),
         Row(
           children: [
@@ -211,7 +212,7 @@ class _IdentificacaoestabelecimentoFormWidgetState
         ),
 
         const SizedBox(height: 30),
-        const Text("Localização do Estabelecimento"),
+        const Text("Localização do Estabelecimento" , style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
         const SizedBox(height: 30),
 
         Row(
@@ -274,7 +275,7 @@ class _IdentificacaoestabelecimentoFormWidgetState
         ),
         const SizedBox(height: 30),
 
-        const Text("Responsável Legal e/ou Técnico do Estabelecimento"),
+        const Text("Responsável Legal e/ou Técnico do Estabelecimento", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
         const SizedBox(height: 30),
         FormfieldParecer(
           fieldTitle: "Nome do Responsável",
@@ -311,3 +312,6 @@ class _IdentificacaoestabelecimentoFormWidgetState
     );
   }
 }
+
+// TODO: Criar campo para inserção de CNAES Secundários
+// TODO: Tornar alguns campos autorizados a não ser preenchidos.

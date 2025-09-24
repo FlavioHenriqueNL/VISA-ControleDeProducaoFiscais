@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/data/dtos/ParecerDTO.dart';
 import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/componentes/dashboard_body.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/componentes/page_title.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Componentes/criar_button.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/CriarParecerWidget.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/visualizar_ParecerSanitario.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Componentes/scrollable_page.dart';
@@ -14,6 +16,26 @@ class ParecerSanitarioPage extends StatefulWidget {
 }
 
 class _ParecerSanitarioPageState extends State<ParecerSanitarioPage> {
+
+  Future<void> criarParecer(BuildContext context) async{
+    final ParecerDTO novoParecer = await showDialog(
+      context: context,
+      builder: (context) => CriarParecerWidget(),
+    );
+
+    print(novoParecer);
+  
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PreviewParecerSanitario(
+          parecerSanitario: novoParecer,
+        ),
+      ),
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return ScrollablePage(
@@ -25,67 +47,17 @@ class _ParecerSanitarioPageState extends State<ParecerSanitarioPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
-                  child: ListTile(
-                    contentPadding: EdgeInsets.all(0),
-                    leading: Icon(
-                      Icons.description,
-                      size: 60,
-                      color: Colors.blue,
-                    ),
-                    title: Text(
-                      'Termos e Pareceres',
-                      style: TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    subtitle: Text(
-                      'Parecer Sanitário',
-                      style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-                    ),
-                  ),
+                  child: PageTitle(
+                    icon: Icons.description, 
+                    title: "Parecer Sanitário",
+                    subtitle: "Termos e Pareceres", 
+                   )
                 ),
 
-                ElevatedButton.icon(
-                  // ignore: avoid_print
-                  onPressed: () async {
-                    final ParecerDTO novoParecer = await showDialog(
-                      context: context,
-                      builder: (context) => CriarParecerWidget(),
-                    );
-
-                    print(novoParecer);
-
-                    if (novoParecer != null) {
-                      print(
-                        "Novo parecer criado: ${novoParecer.parecerSanitario.numeroProcesso} - ${novoParecer.parecerSanitario.cnpj}",
-                      );
-                    }
-
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => PreviewParecerSanitario(
-                          parecerSanitario: novoParecer,
-                        ),
-                      ),
-                    );
-                  },
-                  icon: Icon(Icons.add_box_outlined, color: Colors.white),
-                  label: Text('Adicionar Parecer'),
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                    textStyle: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.normal,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    backgroundColor: Colors.blue,
-                    foregroundColor: Colors.white,
-                  ),
-                ),
+                ButtonCriarTermo(
+                  label: "Novo Parecer", 
+                  onPressedAction: () { criarParecer(context); }
+                )
               ],
             ),
 
