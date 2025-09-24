@@ -79,34 +79,17 @@ class _LoginState extends State<Login> {
     }
   }
 
-  Future<void> testGetAllFiscais() async {
-  try {
-    final snapshot = await FirebaseFirestore.instance
-        .collection('fiscal')
-        .get();
-
-    print('Total de documentos: ${snapshot.docs.length}');
-    for (var doc in snapshot.docs) {
-      print(doc.data());
-    }
-  } catch (e) {
-    print('Erro ao buscar fiscais: $e');
-  }
-}
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration: backgroundDecoration,
         child: ScrollablePage(
-          padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 30),
+          padding: EdgeInsetsGeometry.symmetric(vertical: 30, horizontal: 75),   
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            
+            mainAxisAlignment: MainAxisAlignment.spaceAround,       
             children: [
 
-              
               Image.asset("assets/VisaLogo.png"),
               SizedBox(height: 30),
               
@@ -115,7 +98,7 @@ class _LoginState extends State<Login> {
                 child: Column(
                   children: [
 
-                    TextFormField(autofocus: true, decoration: textFieldDecoration("Número de Matrícula ou CPF", Icons.people), controller: loginController,),
+                    TextFormField(autofocus: true, decoration: textFieldDecoration("Login (Email)", Icons.people), controller: loginController,),
                     const SizedBox(height: 15),
 
                     TextFormField(autofocus: false, obscureText: true, decoration: textFieldDecoration("Senha", Icons.key), controller: senhaController,),
