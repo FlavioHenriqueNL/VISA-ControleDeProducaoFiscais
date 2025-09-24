@@ -14,16 +14,14 @@ import 'package:visa_arapiraca_app/presentation/pages/termos/termo-inspecao.dart
 String? authGuard(BuildContext context, GoRouterState state){
   final fiscal = StaticSessionHelper().currentFiscal;
   final logginIn = state.matchedLocation == '/login';
-
-  String finalRoute;
   
   if(fiscal != null && logginIn){
-    finalRoute = '/dashboard';
+    return '/dashboard';
+  }else if(fiscal == null && !logginIn){
+    return '/login';
   }else{
-    finalRoute = '/login';
-  }   
-  
-  return finalRoute;
+    return null;
+  }
 }
 
 final GoRouter router = GoRouter(
