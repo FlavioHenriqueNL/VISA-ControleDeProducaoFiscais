@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/models/producao/producao_model.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/componentes/models/producao/producao_model.dart';
 
 class TableNotificados extends StatefulWidget {
 

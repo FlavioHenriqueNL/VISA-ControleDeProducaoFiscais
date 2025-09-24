@@ -10,6 +10,8 @@
         "**/macos": true,
         "**/web": true,
         "**/windows": true,
+        "**/test": true,
         "pubspec.lock": true
+
     }
 }
