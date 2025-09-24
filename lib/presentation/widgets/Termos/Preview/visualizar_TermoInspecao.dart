@@ -42,7 +42,7 @@ class PreviewTermoInspecao extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    CabecalhoDocumento(titulo: "Termo de Inspeção",),
+                    CabecalhoDocumento(titulo: "Termo de Inspeção",numeroDocumento: termoInspecao.termoInspecao.numeroDocumento,),
                     const SizedBox(height: 40),
 
                     IdentificacaoEstabelecimentoParecer(

@@ -3,17 +3,19 @@ import 'package:visa_arapiraca_app/presentation/widgets/forms/formControllers/in
 
 class TermoInspecaoController {
   final Informacaoestabelecimentocontroller informacaoEstabelecimento;
-  final dataInspecaoController = TextEditingController();
-  final horaInspecaoController = TextEditingController();
-  final objetoInspecao = TextEditingController();
-  final fatoInspecao = TextEditingController();
-  final fundamentosLegais = TextEditingController();
-  final fiscalResponsavel = TextEditingController();
-  final matriculaFiscal = TextEditingController();
+  final TextEditingController identificacaoTermo = TextEditingController();
+  final TextEditingController dataInspecaoController = TextEditingController();
+  final TextEditingController horaInspecaoController = TextEditingController();
+  final TextEditingController objetoInspecao = TextEditingController();
+  final TextEditingController fatoInspecao = TextEditingController();
+  final TextEditingController fundamentosLegais = TextEditingController();
+  final TextEditingController fiscalResponsavel = TextEditingController(); 
+  final TextEditingController matriculaFiscal = TextEditingController();
 
   TermoInspecaoController() : informacaoEstabelecimento = Informacaoestabelecimentocontroller();
 
   void dispose(){
+    identificacaoTermo.dispose();
     dataInspecaoController.dispose();
     horaInspecaoController.dispose();
     objetoInspecao.dispose();

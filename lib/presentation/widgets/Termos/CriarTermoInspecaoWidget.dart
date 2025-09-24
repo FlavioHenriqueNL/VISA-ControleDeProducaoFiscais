@@ -40,6 +40,7 @@ class _CriarTermoinspecaoWidgetState extends State<CriarTermoinspecaoWidget> {
 
     final termoDeInspecao = TermoInspecao(
       id: "", 
+      numeroDocumento: termoInspecaoController.identificacaoTermo.text,
       numeroProcesso: termoInspecaoController.informacaoEstabelecimento.numeroProcessoController.text, 
       cnpj: termoInspecaoController.informacaoEstabelecimento.cpfCnpjController.text, 
       razaoSocial: termoInspecaoController.informacaoEstabelecimento.razaoSocialController.text, 

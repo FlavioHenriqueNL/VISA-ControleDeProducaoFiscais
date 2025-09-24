@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class CabecalhoDocumento extends StatelessWidget {
   final String? titulo;
+  final String? numeroDocumento;
 
-  const CabecalhoDocumento({this.titulo, super.key});
+  const CabecalhoDocumento({this.titulo, this.numeroDocumento, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +29,10 @@ class CabecalhoDocumento extends StatelessWidget {
             ],
           ),
           Text(
-            titulo?.toUpperCase() ?? "Parecer Sanitário".toUpperCase(),
-            style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            titulo != null && numeroDocumento != null
+                ? "${titulo!.toUpperCase()} \nNº $numeroDocumento"
+                : titulo?.toUpperCase() ?? "Parecer Sanitário".toUpperCase(),
+            style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold), textAlign: TextAlign.center,
           ),
           Image.asset("assets/VisaLogo.png", width: 200),
         ],

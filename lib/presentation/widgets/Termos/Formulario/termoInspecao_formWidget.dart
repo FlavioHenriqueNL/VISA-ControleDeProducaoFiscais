@@ -9,7 +9,7 @@ import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_timepick
 class TermoinspecaoFormwidget extends StatefulWidget {
 
   final TermoInspecaoController controller;
-  
+
   const TermoinspecaoFormwidget({
     required this.controller,
     super.key
@@ -23,11 +23,21 @@ class _TermoinspecaoFormwidgetState extends State<TermoinspecaoFormwidget> {
   @override
   Widget build(BuildContext context) {
     return Form(child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Sobre a inspeção"),
+        Text("Sobre a inspeção",style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
         SizedBox(height: 25,),
         Row(
           children: [
+            Expanded(
+              flex: 1,
+              child: FormfieldParecer(
+                fieldTitle: "Número do Termo",
+                fieldController: widget.controller.identificacaoTermo,
+                validator: (value) => campoVazio("Número do Termo", value),
+              ), 
+            ),
+            SizedBox(width: 25,),
             Expanded(
               flex: 1,
               child: FormfieldDatepicker(

@@ -29,7 +29,7 @@ Future<Uint8List> generateDocument(TermoInspecaoDTO termoInspecao) async {
           child: pw.Column(
             crossAxisAlignment: pw.CrossAxisAlignment.center,
             children: [
-              PWCabecalhoParecer(titulo: "Termo de Inspeção", logoPrefeitura: logoPrefeitura, logoSecretaria: logoSecretaria, visaLogo: visaLogo),
+              PWCabecalhoParecer(titulo: "Termo de Inspeção",numeroDocumento: termoInspecao.termoInspecao.numeroDocumento , logoPrefeitura: logoPrefeitura, logoSecretaria: logoSecretaria, visaLogo: visaLogo),
               pw.SizedBox(height: 10),
               PWIdentificacaoEstabelecimentoParecer(
                 estabelecimento: termoInspecao.estabelecimento,

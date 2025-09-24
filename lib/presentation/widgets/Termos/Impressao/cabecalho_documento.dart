@@ -5,12 +5,14 @@ import 'package:pdf/widgets.dart' as pw;
 
 class PWCabecalhoParecer extends pw.StatelessWidget {
   final String? titulo;
+  final String? numeroDocumento;
   final Uint8List logoPrefeitura;
   final Uint8List logoSecretaria;
   final Uint8List visaLogo;
 
   PWCabecalhoParecer({
     this.titulo,
+    this.numeroDocumento,
     required this.logoPrefeitura,
     required this.logoSecretaria,
     required this.visaLogo,
@@ -45,11 +47,10 @@ class PWCabecalhoParecer extends pw.StatelessWidget {
 
           // Título central
           pw.Text(
-            (titulo ?? "Parecer Sanitário").toUpperCase(),
-            style: pw.TextStyle(
-              fontSize: 32/1.7,
-              fontWeight: pw.FontWeight.bold,
-            ),
+            titulo != null && numeroDocumento != null
+                ? "${titulo!.toUpperCase()} \nNº $numeroDocumento"
+                : titulo?.toUpperCase() ?? "Parecer Sanitário".toUpperCase(),
+            style: pw.TextStyle(fontSize: 32/1.7, fontWeight: pw.FontWeight.bold), textAlign: pw.TextAlign.center,
           ),
 
           // Logo direita

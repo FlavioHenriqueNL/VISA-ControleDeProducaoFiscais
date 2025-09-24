@@ -1,8 +1,9 @@
 class TermoInspecao {
-  final String id;
+  final String? id;
+  final String numeroDocumento;
+  final String numeroProcesso;
   final String cnpj;
   final String razaoSocial;
-  final String numeroProcesso;
   final String cnaePrincipal;
   final List<String>? cnaesSecundarios;
   final DateTime dataCompleta;
@@ -13,10 +14,11 @@ class TermoInspecao {
   final String fiscalResponsavel;
 
   TermoInspecao({
-    required this.id,
+    this.id,
+    required this.numeroDocumento,
+    required this.numeroProcesso,
     required this.cnpj,
     required this.razaoSocial,
-    required this.numeroProcesso,
     required this.cnaePrincipal,
     this.cnaesSecundarios,
     required this.dataCompleta,

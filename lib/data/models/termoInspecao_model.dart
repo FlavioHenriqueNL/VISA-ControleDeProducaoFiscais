@@ -2,6 +2,7 @@ import 'package:visa_arapiraca_app/domain/entities/termoInspecao.dart';
 
 class TermoInspecaoModel {
   final String? id;
+  final String numeroDocumento;
   final String cnpj;
   final String razaoSocial;
   final String numeroProcesso;
@@ -17,6 +18,7 @@ class TermoInspecaoModel {
 
   TermoInspecaoModel({
     this.id,
+    required this.numeroDocumento,
     required this.cnpj,
     required this.razaoSocial,
     required this.numeroProcesso,
@@ -33,6 +35,7 @@ class TermoInspecaoModel {
   factory TermoInspecaoModel.fromJson(Map<String, dynamic> json){
     return TermoInspecaoModel(
       id: json['id'], 
+      numeroDocumento: json['numeroDocumento'],
       cnpj: json['cnpj'], 
       razaoSocial: json['razaoSocial'], 
       numeroProcesso: json['numeroProcesso'], 
@@ -48,6 +51,7 @@ class TermoInspecaoModel {
   TermoInspecao toEntity(){
     return TermoInspecao(
       id: id ?? "", 
+      numeroDocumento: numeroDocumento,
       cnpj: cnpj, 
       razaoSocial: razaoSocial, 
       numeroProcesso: numeroProcesso, 
@@ -64,6 +68,7 @@ class TermoInspecaoModel {
   factory TermoInspecaoModel.fromEntity(TermoInspecao entity){
     return TermoInspecaoModel(
       id: entity.id,
+      numeroDocumento: entity.numeroDocumento,
       cnpj: entity.cnpj, 
       razaoSocial: entity.razaoSocial, 
       numeroProcesso: entity.numeroProcesso, 
