@@ -6,10 +6,16 @@ import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/cabecal
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/identificacaoEstabelecimento_pdf.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/atividades_pdf.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/info_termoInspecao_pdf.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/load_image.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/rodape_Termos_pdf.dart';
 
 
 Future<Uint8List> generateDocument(TermoInspecaoDTO termoInspecao) async {
+
+  final logoPrefeitura = await loadImage('assets/logo-prefeitura.png');
+  final logoSecretaria = await loadImage('assets/logo-secretariasaude.png');
+  final visaLogo = await loadImage('assets/VisaLogo.png');
+
   final pdf = pw.Document();
   pdf.addPage(
     pw.Page(
@@ -23,7 +29,7 @@ Future<Uint8List> generateDocument(TermoInspecaoDTO termoInspecao) async {
           child: pw.Column(
             crossAxisAlignment: pw.CrossAxisAlignment.center,
             children: [
-              PWCabecalhoParecer(titulo: "Termo de Inspeção"),
+              PWCabecalhoParecer(titulo: "Termo de Inspeção", logoPrefeitura: logoPrefeitura, logoSecretaria: logoSecretaria, visaLogo: visaLogo),
               pw.SizedBox(height: 10),
               PWIdentificacaoEstabelecimentoParecer(
                 estabelecimento: termoInspecao.estabelecimento,

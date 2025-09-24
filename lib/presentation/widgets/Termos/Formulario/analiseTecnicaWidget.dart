@@ -51,6 +51,7 @@ class _AnaliseTecnicaFormState extends State<AnaliseTecnicaForm> {
             child: FormfieldParecer(
               fieldTitle: "Fiscal Responsável", 
               fieldController: analiseTecnicaController.informacaoFiscal.nomeFiscal,
+              readOnly: true,
               
             )
           ),
@@ -60,6 +61,7 @@ class _AnaliseTecnicaFormState extends State<AnaliseTecnicaForm> {
             child: FormfieldParecer(
               fieldTitle: "Matricula do Fiscal", 
               fieldController: analiseTecnicaController.informacaoFiscal.matriculaFiscal,
+              readOnly: true,
             )
           ),
           ],

@@ -16,7 +16,7 @@ class PWRodapeParecer extends pw.StatelessWidget {
           children: [
             PWIdentificacaoField(
               field: "Taxa do Alvará:",
-              value: "R\$ ${parecerSanitario.taxa})}",
+              value: "R\$ ${parecerSanitario.taxa}",
             ),
             pw.SizedBox(width: 100),
             PWIdentificacaoField(
