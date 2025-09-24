@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Componentes/stack_container.dart';
 
-class AtividadesParecer extends StatefulWidget {
+class AtividadesDocumento extends StatefulWidget {
   final Map<String, String> atividadePrincipal;
   final List<Map<String, String>>? atividadesSecundarias;
 
-  const AtividadesParecer({
+  const AtividadesDocumento({
     super.key,
     required this.atividadePrincipal,
     this.atividadesSecundarias,
   });
 
   @override
-  State<AtividadesParecer> createState() => _AtividadesParecerState();
+  State<AtividadesDocumento> createState() => _AtividadesDocumentoState();
 }
 
-class _AtividadesParecerState extends State<AtividadesParecer> {
+class _AtividadesDocumentoState extends State<AtividadesDocumento> {
   @override
   Widget build(BuildContext context) {
     return StackContainer(

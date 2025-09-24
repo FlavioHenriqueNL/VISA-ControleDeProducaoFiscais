@@ -8,8 +8,8 @@ class PWTituloSecaoPareceres extends pw.StatelessWidget {
   @override
   pw.Widget build(pw.Context context) {
     return pw.Positioned(
-      left: 35,
-      top: -5, // pode ajustar para alinhar melhor
+      right: 70,
+      top: 3000, // pode ajustar para alinhar melhor
       child: pw.Container(
         color: PdfColors.white,
         padding: const pw.EdgeInsets.symmetric(horizontal: 8),

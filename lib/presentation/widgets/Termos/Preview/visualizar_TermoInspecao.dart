@@ -3,10 +3,10 @@ import 'package:printing/printing.dart';
 import 'package:visa_arapiraca_app/data/dtos/TermoInspecaoDTO.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/gerar_termoInspecao.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/cabecalho_documento.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/identificacaoestabelecimento_pareceres.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/atividades_pareceres.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/info_termoInspecao.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/assinaturas_termo.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/identificacaoEstabelecimento_documento.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/atividades_documento.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/corpo_termoInspecao.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/rodape_termo.dart';
 
 
 class PreviewTermoInspecao extends StatelessWidget {
@@ -51,7 +51,7 @@ class PreviewTermoInspecao extends StatelessWidget {
                     ),
                     const SizedBox(height: 30),
 
-                    AtividadesParecer(atividadePrincipal: {
+                    AtividadesDocumento(atividadePrincipal: {
                         termoInspecao.cnae.codigo : termoInspecao.cnae.descricao,
                     }),
                     const SizedBox(height: 30),

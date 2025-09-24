@@ -16,14 +16,18 @@ class PWAtividadesParecer extends pw.StatelessWidget {
       child: pw.Column(
         crossAxisAlignment: pw.CrossAxisAlignment.start,
         children: [
-          pw.Text(
-            "Atividade Principal",
-            style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 10),
-          ),
-          pw.SizedBox(height: 2),
-          pw.Text(
-            "${atividadePrincipal.entries.first.key} - ${atividadePrincipal.entries.first.value}",
-            style: pw.TextStyle(fontSize: 10),
+          pw.Row(
+            children: [
+              pw.Text(
+                "Atividade Principal",
+                style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 10),
+              ),
+              pw.SizedBox(width: 5),
+              pw.Text(
+                "${atividadePrincipal.entries.first.key} - ${atividadePrincipal.entries.first.value}",
+                style: pw.TextStyle(fontSize: 10),
+              ),
+            ]
           ),
          
           if (atividadesSecundarias?.isNotEmpty ?? false) 

@@ -47,7 +47,7 @@ class PWCabecalhoParecer extends pw.StatelessWidget {
           pw.Text(
             (titulo ?? "Parecer Sanitário").toUpperCase(),
             style: pw.TextStyle(
-              fontSize: 32/2,
+              fontSize: 32/1.7,
               fontWeight: pw.FontWeight.bold,
             ),
           ),

@@ -21,8 +21,24 @@ class PWStackContainer extends pw.StatelessWidget {
           padding: const pw.EdgeInsets.all(15),
           child: child,
         ),
-        PWTituloSecaoPareceres(title: title),
+        pw.Positioned(
+          left: 3.5,
+          top: -2, // pode ajustar para alinhar melhor
+          child: pw.Container(
+            color: PdfColors.white,
+            padding: const pw.EdgeInsets.symmetric(horizontal: 8),
+            child: pw.Text(
+              title,
+              style: pw.TextStyle(
+                fontSize: 8,
+                color: PdfColors.grey700,
+                fontWeight: pw.FontWeight.bold,
+              ),
+            ),
+          ),
+        )
       ],
     );
   }
 }
+

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:printing/printing.dart';
 import 'package:visa_arapiraca_app/data/dtos/ParecerDTO.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Impressao/GerarParecer.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/analisetecnica_pareceres.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/atividades_pareceres.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/corpo_parecer.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/atividades_documento.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/cabecalho_documento.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/identificacaoestabelecimento_pareceres.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/rodape_pareceres.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/identificacaoEstabelecimento_documento.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/rodape_parecer.dart';
 
 class PreviewParecerSanitario extends StatelessWidget {
   final ParecerDTO parecerSanitario;
@@ -48,7 +48,7 @@ class PreviewParecerSanitario extends StatelessWidget {
                       endereco: parecerSanitario.endereco,
                     ),
                     const SizedBox(height: 30),
-                    AtividadesParecer(
+                    AtividadesDocumento(
                       atividadePrincipal: {
                         parecerSanitario.cnae.codigo : parecerSanitario.cnae.descricao,
                       },
