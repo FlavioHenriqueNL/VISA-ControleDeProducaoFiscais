@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/models/producao/producao_model.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Componentes/accordion.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/componentes/models/producao/producao_model.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/producao/producao_resumo.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/producao/producao_resumo_box_item.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Componentes/producao_criar.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:visa_arapiraca_app/data/dtos/ParecerDTO.dart';
 import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/componentes/dashboard_body.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/CriarParecerWidget.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/visualizar_ParecerSanitario.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Componentes/scrollable_page.dart';
@@ -16,20 +17,7 @@ class _ParecerSanitarioPageState extends State<ParecerSanitarioPage> {
   @override
   Widget build(BuildContext context) {
     return ScrollablePage(
-      child: Container(
-        padding: EdgeInsets.all(26),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-          boxShadow: [
-            BoxShadow(
-              // ignore: deprecated_member_use
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 4,
-              offset: Offset(0, 2),
-            ),
-          ],
-        ),
+      child: DashboardBody(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
