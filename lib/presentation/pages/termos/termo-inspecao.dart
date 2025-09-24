@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:visa_arapiraca_app/data/dtos/ParecerDTO.dart';
 import 'package:visa_arapiraca_app/data/dtos/TermoInspecaoDTO.dart';
-import 'package:visa_arapiraca_app/domain/entities/parecersanitario.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/componentes/dashboard_body.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/componentes/page_title.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Componentes/criar_button.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/CriarParecerWidget.dart';
-import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/visualizar_ParecerSanitario.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/termos/Preview/visualizar_TermoInspecao.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Termos/CriarTermoInspecaoWidget.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Componentes/scrollable_page.dart';
@@ -55,7 +51,7 @@ class _TermoInspecaoPageState extends State<TermoInspecaoPage> {
                 ButtonCriarTermo(label: "Criar Termo de Inspeção", onPressedAction: () => criarTermo())
               ],
             ),
-            
+
             SizedBox(height: 60),
             Center(
               child: Text(
