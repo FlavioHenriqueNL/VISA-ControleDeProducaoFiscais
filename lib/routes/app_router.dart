@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:visa_arapiraca_app/core/utils/session_helper.dart';
 import 'package:visa_arapiraca_app/presentation/pages/Termos/termos.dart';
+import 'package:visa_arapiraca_app/presentation/pages/cadastro/cadastro.dart';
 import 'package:visa_arapiraca_app/presentation/pages/cnaes/cnaes.dart';
 import 'package:visa_arapiraca_app/presentation/pages/home/dashboard.dart';
 import 'package:visa_arapiraca_app/presentation/pages/home/home.dart';
@@ -14,25 +15,33 @@ import 'package:visa_arapiraca_app/presentation/pages/termos/termo-notificacao.d
 
 String? authGuard(BuildContext context, GoRouterState state){
   final fiscal = StaticSessionHelper().currentFiscal;
-  final logginIn = state.matchedLocation == '/login';
+  final location = state.matchedLocation;
   
-  if(fiscal != null && logginIn){
+  final publicRoutes = ['/login', '/cadastro', 'recuperar-acesso'];
+
+  // Se já está logado e tenta acessar login/cadastrar/recuperar, redireciona para dashboard
+  if (fiscal != null && publicRoutes.contains(location)) {
     return '/dashboard';
-  }else if(fiscal == null && !logginIn){
-    return '/login';
-  }else{
-    return null;
   }
+
+  // Se não está logado e tenta acessar rota privada, redireciona para login
+  if (fiscal == null && !publicRoutes.contains(location)) {
+    return '/login';
+  }
+
+  // Caso contrário, permite acessar a rota
+  return null;
 }
 
 final GoRouter router = GoRouter(
-  initialLocation: '/login',
+  initialLocation: '/cadastrar',
   redirect: authGuard,
   routes: [
 
     GoRoute(path: '/login', builder: (context, state) => Login()),
     GoRoute(path: '/recuperar-acesso',builder: (context, state) => RecuperarSenha()),
     GoRoute(path: '/', redirect: (context, state)=> '/dashboard'),
+    GoRoute(path: '/cadastro', builder: (context, state) => Cadastro()),
 
     //Rotas de Dashboard e suas filhas
     ShellRoute(

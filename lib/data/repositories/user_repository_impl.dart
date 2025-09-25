@@ -6,21 +6,22 @@ class UserRepository implements IUserRepository{
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  @override
-  Future<AuthUserDTO?> login(String email, String password) async {
+  Future<UserCredential> getCredentialAuth(String email, String password) async{
     try {
-      final credential = await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      final user = credential.user;
-      if (user == null) return null;
-      print("Deu certo aqui: ${user!.email}");
-      return AuthUserDTO(email: user.email ?? "", uuid: user.uid);
+      final credential = await _auth.signInWithEmailAndPassword(email: email, password: password);
+      return credential;
     } on FirebaseAuthException catch (e) {
       print("Erro de autenticação: ${e.code}");
       throw Exception(e.message);
-    }
+    }  
+  }
+
+  @override
+  Future<AuthUserDTO?> login(String email, String password) async {
+    final credential = await getCredentialAuth(email, password);
+    final user = credential.user;
+    if (user == null) return null;
+    return AuthUserDTO(email: user.email ?? "", uuid: user.uid);
   }
 
   @override
@@ -36,6 +37,13 @@ class UserRepository implements IUserRepository{
       throw Exception(e.message);
     }
   }
+  @override
+  Future<void> delete(String? uuid, String? email, String? password) {
+    return getCredentialAuth(email!, password!).then((value) async {
+      await value.user?.delete();
+    });
+  }
+  
 
   @override
   Future<void> logout() async{

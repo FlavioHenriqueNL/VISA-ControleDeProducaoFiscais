@@ -8,12 +8,14 @@ class InformacaoFiscalController {
   final emailFiscal = TextEditingController();
   final roleFiscal = TextEditingController();
   final phoneFiscal = TextEditingController();
+  final senhaFiscal = TextEditingController();
 
   void dispose(){
     cpfFiscal.dispose();
     nomeFiscal.dispose();
     matriculaFiscal.dispose();
     emailFiscal.dispose();
+    senhaFiscal.dispose();
     roleFiscal.dispose();
     phoneFiscal.dispose();
   }

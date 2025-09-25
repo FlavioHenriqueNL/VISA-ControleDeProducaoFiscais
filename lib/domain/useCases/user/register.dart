@@ -11,10 +11,21 @@ class RegisterUser {
     required this.fiscalRepository
   });
   
-  Future<void> call (String email, String password, Fiscal fiscal) async {
-    final String userID = await userRepository.register(email, password);
-    final newFiscal = await fiscalRepository.create(userID, fiscal);
+  Future<void> call(String email, String password, Fiscal fiscal) async {
+    try {
+      final userID = await userRepository.register(email, password);
+      if (userID == null) return;
 
+      try {
+        await fiscalRepository.create(userID.uuid, fiscal);
+      } catch (e) {
+        await userRepository.delete(userID.uuid, email, password);
+        rethrow;
+      }
+    } catch (e) {
+      // Ideal: use um logger ao invés de print
+      print('RegisterUser error: $e');
+      rethrow;
+    }
   }
-
 }

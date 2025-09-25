@@ -7,12 +7,14 @@ class FormfieldCpfcnpj extends StatefulWidget {
   final TextEditingController? controller;
   final String? title;
   final VoidCallback? onFieldLostFocus; // <-- função chamada ao perder foco
+  final InputDecoration? decoration;
 
   const FormfieldCpfcnpj({
     super.key,
     this.controller,
     this.title,
     this.onFieldLostFocus,
+    this.decoration
   });
 
   @override
@@ -59,7 +61,7 @@ class _FormfieldCpfcnpjState extends State<FormfieldCpfcnpj> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: InputDecoration(
+      decoration: widget.decoration ?? InputDecoration(
         labelText: widget.title ?? "CPF / CNPJ",
         floatingLabelBehavior: FloatingLabelBehavior.always,
         border: const OutlineInputBorder(),
