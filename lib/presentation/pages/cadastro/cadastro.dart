@@ -4,7 +4,6 @@ import 'package:visa_arapiraca_app/data/models/fiscal_model.dart';
 import 'package:visa_arapiraca_app/data/repositories/fiscal_repository_impl.dart';
 import 'package:visa_arapiraca_app/data/repositories/user_repository_impl.dart';
 import 'package:visa_arapiraca_app/domain/entities/fiscal.dart';
-import 'package:visa_arapiraca_app/domain/repositories/user_repository.dart';
 import 'package:visa_arapiraca_app/domain/useCases/user/register.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Componentes/visa_app_bar.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formControllers/informacaoFiscal_Controller.dart';
@@ -30,10 +29,8 @@ class _CadastroState extends State<Cadastro> {
   }
   
   String? isSenhasCompativeis (String senha, String? confirmacaoSenha){
-    if(senha != confirmacaoSenha)  return "As senhas devem ser iguais.";
-    
+    if(senha != confirmacaoSenha)  return "As senhas devem ser iguais."; 
     return null;
-    
   }
 
   final _formKey = GlobalKey<FormState>();
