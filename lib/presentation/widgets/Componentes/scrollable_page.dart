@@ -18,9 +18,7 @@ class ScrollablePage extends StatelessWidget {
           padding: padding,
           child: ConstrainedBox(
             constraints: BoxConstraints(minHeight: constraints.maxHeight),
-            child: IntrinsicHeight(
-              child: SafeArea(child: child),
-            ),
+            child: SafeArea(child: child),
           ),
         );
       },
