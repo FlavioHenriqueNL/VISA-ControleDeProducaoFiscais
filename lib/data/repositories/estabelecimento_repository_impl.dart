@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/services.dart';
 import 'package:visa_arapiraca_app/data/models/estabelecimento_model.dart';
 import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
