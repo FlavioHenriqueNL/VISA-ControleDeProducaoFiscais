@@ -5,7 +5,7 @@ import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
 import 'package:visa_arapiraca_app/domain/repositories/estabelecimento_repository.dart';
 
 
-class EstabelecimentoRepository implements EstabelecimentoRepositoryI {
+class EstabelecimentoRepository implements IEstabelecimentoRepository {
 
   @override
   Future<Estabelecimento?> getByCnpj(String id) async{
@@ -42,6 +42,11 @@ class EstabelecimentoRepository implements EstabelecimentoRepositoryI {
         codigoConselho: estabelecimentoEncontrado.codigoConselho,
       );
     }
+  }
+  @override
+  Future<List<Estabelecimento>?> getAllByCnpj(String id) {
+    // TODO: implement getAllByCnpj
+    throw UnimplementedError();
   }
 
   // @override

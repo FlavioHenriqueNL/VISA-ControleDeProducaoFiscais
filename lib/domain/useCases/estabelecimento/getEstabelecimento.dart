@@ -2,7 +2,7 @@ import 'package:visa_arapiraca_app/domain/entities/estabelecimento.dart';
 import 'package:visa_arapiraca_app/domain/repositories/estabelecimento_repository.dart';
 
 class GetEstabelecimento {
-  final EstabelecimentoRepositoryI repository;
+  final IEstabelecimentoRepository repository;
 
   GetEstabelecimento(this.repository);
 
@@ -10,5 +10,11 @@ class GetEstabelecimento {
 
     final estabelecimento = await repository.getByCnpj(id);
     return estabelecimento;
+  }
+
+  Future<List<Estabelecimento>?> all(String id) async{
+
+    final estabelecimentos = await repository.getAllByCnpj(id);
+    return estabelecimentos;
   }
 }

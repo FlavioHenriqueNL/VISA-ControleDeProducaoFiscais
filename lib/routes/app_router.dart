@@ -4,6 +4,7 @@ import 'package:visa_arapiraca_app/core/utils/session_helper.dart';
 import 'package:visa_arapiraca_app/presentation/pages/Termos/termos.dart';
 import 'package:visa_arapiraca_app/presentation/pages/cadastro/cadastro.dart';
 import 'package:visa_arapiraca_app/presentation/pages/cnaes/cnaes.dart';
+import 'package:visa_arapiraca_app/presentation/pages/estabelecimentos/estabelecimentos_page.dart';
 import 'package:visa_arapiraca_app/presentation/pages/home/dashboard.dart';
 import 'package:visa_arapiraca_app/presentation/pages/home/home.dart';
 import 'package:visa_arapiraca_app/presentation/pages/login/login.dart';
@@ -70,11 +71,7 @@ final GoRouter router = GoRouter(
         GoRoute(path: '/termos/termo-inspecao', builder: (context, state) => TermoInspecaoPage()),
         GoRoute(path: '/termos/termo-notificacao', builder: (context, state) => TermoNotificacaoPage()),
         GoRoute(path: '/producao', builder: (context, state) => ProducaoPage()),
-        GoRoute(
-          path: '/estabelecimentos',
-          builder: (context, state) =>
-              Center(child: Text('Página em construção')),
-        ),
+        GoRoute(path: '/estabelecimentos', builder: (context, state) => EstabelecimentosPage()),
         GoRoute(path: '/lista-cnaes', builder: (context, state) => CnaesPage()),
         GoRoute(
           path: '/notificacoes',

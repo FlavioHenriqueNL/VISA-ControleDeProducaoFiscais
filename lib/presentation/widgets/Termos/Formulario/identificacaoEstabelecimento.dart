@@ -3,7 +3,8 @@ import 'package:visa_arapiraca_app/core/utils/form_masks.dart';
 import 'package:visa_arapiraca_app/core/utils/form_validators.dart';
 import 'package:visa_arapiraca_app/data/repositories/cnae_repository.dart';
 import 'package:visa_arapiraca_app/data/repositories/endereco_repository.dart';
-import 'package:visa_arapiraca_app/data/repositories/estabelecimento_repository_impl.dart';
+import 'package:visa_arapiraca_app/data/repositories/estabelecimento_firestore_repository.dart';
+import 'package:visa_arapiraca_app/data/repositories/estabelecimento_localData_repository.dart';
 import 'package:visa_arapiraca_app/domain/useCases/estabelecimento/getEstabelecimento.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_cep.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/forms/formfield_cnae.dart';
@@ -37,12 +38,13 @@ class _IdentificacaoestabelecimentoFormWidgetState
    
     cnpj = cnpj.replaceAll(RegExp(r'[^0-9]'), '');
 
-    final repository = EstabelecimentoRepository();
+    final repository = EstabelecimentoFirestoreRepository();
     final getEstabelecimento = GetEstabelecimento(repository);
-    final estabelecimentoPesquisado = await getEstabelecimento(cnpj);
+    var estabelecimentosPesquisados = await getEstabelecimento.all(cnpj);
+    var estabelecimentoPesquisado = estabelecimentosPesquisados?.first;
 
     if (estabelecimentoPesquisado != null) {
-    informacaoEstabelecimentoController.razaoSocialController.text =
+    informacaoEstabelecimentoController.razaoSocialController.text = 
         estabelecimentoPesquisado.razaoSocial;
     informacaoEstabelecimentoController.nomeFantasiaController.text =
         estabelecimentoPesquisado.nomeFantasia ?? "";

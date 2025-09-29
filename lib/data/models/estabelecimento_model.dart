@@ -145,18 +145,18 @@ class EstabelecimentoModel{
       razaoSocial: json['razaoSocial'] ?? '',
       nomeFantasia: json['nomeFantasia'],
       cnae: json['cnae'] ?? '',
-      cnaesSecundarios: json['cnaesSecundarios'] != null
-          ? List<String>.from(json['cnaesSecundarios'])
-          : null,
+      cnaesSecundarios: (json['cnaesSecundarios'] is Iterable)
+      ? List<String>.from(json['cnaesSecundarios'])
+      : (json['cnaesSecundarios'] != null ? [json['cnaesSecundarios'].toString()] : []),
       cep: json['cep'] ?? '',
       numeroResidencia: json['numeroResidencia'] ?? '',
-      complemento: json['complemento'],
-      telefone: json['telefone'],
-      email: json['email'],
-      responsavel: json['responsavel'],
-      cpfResponsavel: json['cpfResponsavel'],
-      codigoConselho: json['codigoConselho'],
-      numeroAlvara: json['numeroAlvara'],
+      complemento: json['complemento']?? '',
+      telefone: json['telefone']?? '',
+      email: json['email']?? '',
+      responsavel: json['responsavel']?? '',
+      cpfResponsavel: json['cpfResponsavel']?? '',
+      codigoConselho: json['codigoConselho']?? '',
+      numeroAlvara: json['numeroAlvara']?? '',
       vencimentoAlvara: json['vencimentoAlvara'] != null
           ? DateTime.parse(json['vencimentoAlvara'])
           : null,
