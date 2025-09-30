@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:visa_arapiraca_app/data/dtos/AuthUserDTO.dart';
+import 'package:visa_arapiraca_app/domain/errors/auth_exceptions.dart';
 import 'package:visa_arapiraca_app/domain/repositories/user_repository.dart';
 
 class UserRepository implements IUserRepository{
@@ -11,8 +12,7 @@ class UserRepository implements IUserRepository{
       final credential = await _auth.signInWithEmailAndPassword(email: email, password: password);
       return credential;
     } on FirebaseAuthException catch (e) {
-      print("Erro de autenticação: ${e.code}");
-      throw Exception(e.message);
+      throw _mapFirebaseAuthExceptionToAuthException(e);
     }  
   }
 
@@ -27,7 +27,7 @@ class UserRepository implements IUserRepository{
   @override
   Future<AuthUserDTO?> register(String email, String password) async{
     try{
-      final credential = await _auth.createUserWithEmailAndPassword(
+      final credential = await _auth.createUserWithEmailAndPassword( 
         email: email, 
         password: password
       );
@@ -48,6 +48,21 @@ class UserRepository implements IUserRepository{
   @override
   Future<void> logout() async{
     return await _auth.signOut();
+  }
+
+  AuthException _mapFirebaseAuthExceptionToAuthException(FirebaseAuthException e) {
+    switch (e.code) {
+      case 'invalid-email':
+        return InvalidEmailException();
+      case 'user-not-found':
+        return UserNotFoundException();
+      case 'wrong-password':
+        return WrongPasswordException();
+      case 'email-already-in-use':
+        return EmailAlreadyExistsException();
+      default:
+        return AuthException("Erro de autenticação: ${e.message}");
+    }
   }
 
 }
