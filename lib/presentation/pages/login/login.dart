@@ -1,10 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:visa_arapiraca_app/core/utils/form_validators.dart';
 import 'package:visa_arapiraca_app/data/repositories/fiscal_repository_impl.dart';
 import 'package:visa_arapiraca_app/data/repositories/session_cached_repository_impl.dart';
 import 'package:visa_arapiraca_app/data/repositories/session_inmemory_repository.impl.dart';
 import 'package:visa_arapiraca_app/data/repositories/user_repository_impl.dart';
+import 'package:visa_arapiraca_app/domain/errors/auth_exceptions.dart';
 import 'package:visa_arapiraca_app/domain/repositories/fiscal_repository.dart';
 import 'package:visa_arapiraca_app/domain/repositories/session_repository.dart';
 import 'package:visa_arapiraca_app/domain/repositories/user_repository.dart';
@@ -12,6 +14,7 @@ import 'package:visa_arapiraca_app/domain/useCases/user/login.dart';
 import 'package:visa_arapiraca_app/presentation/pages/cadastro/cadastro.dart';
 import 'package:visa_arapiraca_app/presentation/pages/recuperar_senha/recuperar_senha.dart';
 import 'package:visa_arapiraca_app/presentation/widgets/Componentes/scrollable_page.dart';
+import 'package:visa_arapiraca_app/presentation/widgets/login/dialog_login.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -20,63 +23,53 @@ class Login extends StatefulWidget {
   State<Login> createState() => _LoginState();
 }
 class _LoginState extends State<Login> {
+
   final _formKey = GlobalKey<FormState>();
-  
+  bool loading = false;
   bool isChecked = false;
   final loginController = TextEditingController();
   final senhaController = TextEditingController();
-  bool loading = false;
-
-  // Repositórios (dependências do UseCase)
-  final IUserRepository userRepository = UserRepository();
-  final IFiscalRepository fiscalRepository = FiscalRepository();
-
-  late final LoginUser loginUseCase;
-
-  @override
-  void initState() {
-    super.initState();
-    // Inicializa o useCase sem decidir a implementação da sessão ainda
-    loginUseCase = LoginUser(userRepository, fiscalRepository);
-  }
-
+  late var login = LoginUser(UserRepository(), FiscalRepository());
+  
   Future<void> doLogin() async {
-    if (!_formKey.currentState!.validate()) return;
+    if (!_formKey.currentState!.validate()) {
+      setState(() {
+        loading = false;
+      }); 
+      return;
+    }
 
     // Define a implementação de sessão com base no checkbox
     final ISessionManagerRepository session = isChecked
-        ? SessionCachedRepository()
-        : SessionInMemoryManager();
-
-    setState(() => loading = true);
+      ? SessionCachedRepository()
+      : SessionInMemoryManager();
 
     try {
-      await loginUseCase.call(
+      await login(
         loginController.text.trim(),
         senhaController.text,
         session,
-      );
-
+      ); 
       // Login e sessão OK, redireciona
       context.go('/dashboard');
     } catch (e) {
-      // Exibe erro na UI
+      // Exibe o diálogo de erro
       showDialog(
         context: context,
-        builder: (_) => AlertDialog(
-          title: const Text("Erro no login"),
-          content: Text(e.toString()),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text("Fechar"),
-            ),
-          ],
-        ),
+        builder: (_) => DialogLogin(
+          title: "Falha ao Efetuar Login", 
+          message: e.toString()
+        )
       );
-    } finally {
       setState(() => loading = false);
     }
+  }
+
+  @override
+  void dispose() {
+    loginController.dispose();
+    senhaController.dispose();
+    super.dispose();
   }
 
   @override
@@ -85,61 +78,68 @@ class _LoginState extends State<Login> {
       body: Container(
         decoration: backgroundDecoration,
         child: ScrollablePage(
-          padding: EdgeInsetsGeometry.symmetric(vertical: 30, horizontal: 75),   
+          padding: EdgeInsetsGeometry.symmetric(horizontal: 75),   
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,       
             children: [
 
-              Image.asset("assets/VisaLogo.png"),
-              SizedBox(height: 30),
-              
-              Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-
-                    TextFormField(autofocus: true, decoration: textFieldDecoration("Login (Email)", Icons.people), controller: loginController,),
-                    const SizedBox(height: 15),
-
-                    TextFormField(autofocus: false, obscureText: true, decoration: textFieldDecoration("Senha", Icons.key), controller: senhaController,),
-                    const SizedBox(height: 25),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: CheckboxListTile(
-                            value: isChecked, 
-                            onChanged: (bool? value){
-                              setState(() {
-                                isChecked = value!;
-                              });
-                            },
-                            title: const Text("Manter Conectado", style: TextStyle(color: Colors.white)),
-                            fillColor: WidgetStateProperty.all(Colors.amber),
-                            controlAffinity: ListTileControlAffinity.leading,
-                            contentPadding: const EdgeInsets.only(right: 16)
-                          ),
-                        ),
-                        ElevatedButton(
-                          onPressed: () => doLogin(),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.amber,
-                            foregroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                          ),
-                          child: const Text("Login", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                        )
-                      ],
-                    ), 
-                  ],
-                ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 40),
+                child: Image.asset("assets/VisaLogo.png"),
               ),
-
-
+              
               Column(
                 children: [
+
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        
+                        TextFormField(autofocus: true, decoration: textFieldDecoration("Login (Email)", Icons.people), controller: loginController, validator: (value) => validarEmail("Email", value),),
+                        const SizedBox(height: 15),
+
+                        TextFormField(autofocus: false, obscureText: true, decoration: textFieldDecoration("Senha", Icons.key), controller: senhaController, validator: (value) => campoVazio
+                        ("Senha", value),),
+                        const SizedBox(height: 25),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: CheckboxListTile(
+                                value: isChecked, 
+                                onChanged: (bool? value){
+                                  setState(() {
+                                    isChecked = value!;
+                                  });
+                                },
+                                title: const Text("Manter Conectado", style: TextStyle(color: Colors.white)),
+                                fillColor: WidgetStateProperty.all(Colors.amber),
+                                controlAffinity: ListTileControlAffinity.leading,
+                                contentPadding: const EdgeInsets.only(right: 16)
+                              ),
+                            ),
+                            ElevatedButton( 
+                              onPressed: () => {
+                                if (!loading) {
+                                  setState(() => loading = true),
+                                  doLogin()
+                                }
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.amber,
+                                foregroundColor: Colors.white,
+                                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                              ),
+                              child: loading ? const CircularProgressIndicator(color: Colors.white) : const Text("Login", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                            )
+                          ],
+                        ), 
+                      ],
+                    ),
+                  ),
 
                   const SizedBox(height: 25),
                   const Divider(color: Colors.white, height: 1),
@@ -165,16 +165,19 @@ class _LoginState extends State<Login> {
                 ],
               ),
 
-              const SizedBox(height: 30),
-              const Text(
-                "Um desenvolvimento de Flávio Henrique",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+              
+              Padding(
+                padding: EdgeInsetsGeometry.symmetric(vertical: 30),
+                child: Text(
+                  "Um desenvolvimento de Flávio Henrique",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
+              )
               
 
             ],
